@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`order` (
   `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   order_time DATE() not null,
+  expected_del_time DATE() not null,
   per_id int not null,
   FOREIGN KEY (per_id)
   	references person (id))
@@ -188,6 +189,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`shipment` (
   l_id int not null,
   foreign key (l_id)
   	references location (id),
+  o_time DATE() not null,
   del_time DATE() not null
   )
 ENGINE = InnoDB;
