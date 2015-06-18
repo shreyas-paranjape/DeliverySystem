@@ -73,10 +73,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  site_id int not null,
   PRIMARY KEY (`id`),
   prod_cat id int not null,
   FOREIGN KEY (prod_cat)
-  	references product_category (id))
+  	references product_category (id),
+  foreign key (site_id)
+  	references site (id)
+  )
 ENGINE = InnoDB;
 
 
@@ -87,7 +91,9 @@ CREATE TABLE IF NOT EXISTS `delivery`.`product_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `parent_id` INT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  foreign key (parent_id)
+    references product_category (id))
 ENGINE = InnoDB;
 
 
@@ -112,12 +118,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`restaurant` (
   `id` INT NOT NULL,
+  name varchar(50),
   PRIMARY KEY (`id`),
   FOREIGN KEY (id)
-  	references site (id),
-  pro_id int not null,
-  FOREIGN KEY (pro_id)
-  	references product (id))
+  	references site (id))
 ENGINE = InnoDB;
 
 
@@ -127,10 +131,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`pharmacy` (
 	id int primary key not null,
 	FOREIGN KEY (id)
-  	references site (id),
-  	pro_id int not null,
-  FOREIGN KEY (pro_id)
-  	references product (id)
+  	references site (id)
 )
 ENGINE = InnoDB;
 
@@ -142,10 +143,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`grocery_store` (
   `id` INT NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (id)
-  	references site (id),
-  	pro_id int not null,
-  FOREIGN KEY (pro_id)
-  	references product (id))
+  	references site (id))
 ENGINE = InnoDB;
 
 
@@ -190,7 +188,8 @@ CREATE TABLE IF NOT EXISTS `delivery`.`shipment` (
   foreign key (l_id)
   	references location (id),
   o_time DATE() not null,
-  del_time DATE() not null
+  del_time DATE() not null,
+  status int(1) DEFAULT 0
   )
 ENGINE = InnoDB;
 
