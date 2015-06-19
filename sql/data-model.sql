@@ -19,6 +19,13 @@ CREATE TABLE IF NOT EXISTS `delivery`.`person` (
   	references comm (id))
 ENGINE = InnoDB;
 
+CREATE TABLE if not exists 'delivery'.'userinfo' (
+id int not null primary key,
+username text,
+token text,
+foreign key (id)
+	references person (id)
+)
 
 -- -----------------------------------------------------
 -- Table `delivery`.`vehicle`
@@ -59,8 +66,9 @@ ENGINE = InnoDB;
 -- Table `delivery`.`order_items`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`order_items` (
-  `id` INT NOT NULL,
-  foreign key (id)
+  id int not null primary key AUTO_INCREMENT,
+  o_id INT ,
+  foreign key (o_id)
   	references order ( id),
   pro_id int not null,
   foreign key (pro_id)

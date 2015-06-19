@@ -36,7 +36,7 @@
 	(pk :id)
 	(belongs-to person {:fk :per_id}))
 (defentity order_items
-	(belongs-to oder {:fk :id})
+	(belongs-to oder {:fk :o_id})
 	(belongs-to product {:fk :pro_id}))
 (defentity site
 	(pk :id)
@@ -51,12 +51,19 @@
 	(belongs-to product_category {:fk :prod_cat}))
 (defentity shipment
 	(pk :ship_id))
-
+(defentity user_info
+	(pk :id)
+	(belongs-to person {:fk :id}))
 
 ;; Functions
+
+(defn register [request]
+
+	
+	)
 (defn sign-in []
 	
-  nil)
+  )
 
 
 ;; Profile
