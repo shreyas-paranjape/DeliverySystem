@@ -54,8 +54,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`order` (
   `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
-  order_time DATE() not null,
-  expected_del_time DATE() not null,
+  order_time datetime not null,
+  expected_del_time date not null,
   )
 ENGINE = InnoDB;
 
