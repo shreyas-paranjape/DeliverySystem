@@ -34,10 +34,12 @@
 
 (defentity order
 	(pk :id)
-	(belongs-to person {:fk :per_id}))
+	)
 (defentity order_items
 	(belongs-to oder {:fk :o_id})
-	(belongs-to product {:fk :pro_id}))
+	(belongs-to product {:fk :pro_id})
+	(belongs-to person {:fk :per_id})
+	)
 (defentity site
 	(pk :id)
 	(belongs-to comm)

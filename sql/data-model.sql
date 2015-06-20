@@ -56,9 +56,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`order` (
   PRIMARY KEY (`id`),
   order_time DATE() not null,
   expected_del_time DATE() not null,
-  per_id int not null,
-  FOREIGN KEY (per_id)
-  	references person (id))
+  )
 ENGINE = InnoDB;
 
 
@@ -67,7 +65,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`order_items` (
   id int not null primary key AUTO_INCREMENT,
-  o_id INT ,
+  o_id INT null,
+  per_id int not null,
+  FOREIGN KEY (per_id)
+    references person (id),
   foreign key (o_id)
   	references order ( id),
   pro_id int not null,
@@ -81,6 +82,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  pro_name varchar(50) null;
   site_id int not null,
   PRIMARY KEY (`id`),
   prod_cat id int not null,

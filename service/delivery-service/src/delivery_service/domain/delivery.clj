@@ -34,8 +34,9 @@
 
 (defentity order
 	(pk :id)
-	(belongs-to person {:fk :per_id}))
+	)
 (defentity order_items
+	(belongs-to person {:fk :per_id})
 	(belongs-to oder {:fk :o_id})
 	(belongs-to product {:fk :pro_id}))
 (defentity site
@@ -57,24 +58,10 @@
 
 ;;Functions
 
-(defn create-plan [request]
-	(insert order_items
-		(values (:order_items request)))
-	(insert order
-		(values (:order request)))
-	(update order_items
-		(set-fields (:o_id (:id (:order request))))
-		(where {:id (subselect order_items
-                                    (aggregate
-                                     (max :id)))}))
+
+
+
+
+(defn assign [request]
+  ;; After working out the algorithm ;;
   )
-
-(defn delete [delivery]
-
-  nil)
-
-(defn update [order delivery]
-  nil)
-
-(defn assign [delivery delivery-boy]
-  nil)
