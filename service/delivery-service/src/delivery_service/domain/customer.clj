@@ -36,7 +36,7 @@
 	(pk :id)
 	)
 (defentity order_items
-	(belongs-to oder {:fk :o_id})
+	(belongs-to order {:fk :o_id})
 	(belongs-to product {:fk :pro_id})
 	(belongs-to person {:fk :per_id})
 	)
@@ -114,7 +114,7 @@
 	)
 )
 
-(defn confirm-delivery []
+(defn confirm-delivery [request]
 	(update shipment
 		(where {:ship_id (:delivered request)})
 		(set-fields (:shipment.status 1)))

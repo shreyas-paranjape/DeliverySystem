@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`order_items` (
   foreign key (o_id)
   	references order ( id),
   pro_id int not null,
+  quantity int not null default 1,
   foreign key (pro_id)
   	references product (id))
 ENGINE = InnoDB;
@@ -82,7 +83,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  pro_name varchar(50) null;
+  pro_name varchar(50) null,
+  price float(10,4) not null,
+  user_rating float(1,2) null,
   site_id int not null,
   PRIMARY KEY (`id`),
   prod_cat id int not null,

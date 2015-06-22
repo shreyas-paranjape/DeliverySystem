@@ -35,7 +35,7 @@
 (defentity order
 	(pk :id))
 (defentity order_items
-	(belongs-to oder {:fk :o_id})
+	(belongs-to order {:fk :o_id})
 	(belongs-to product {:fk :pro_id})
 	(belongs-to person {:fk :per_id}))
 (defentity site
@@ -80,11 +80,18 @@
 		(where {:id (:id (:order request))}))
   )
 
-(defn get order [request]
+(defn get_order [request]
   (select order
   	(with order_items
-  		(with product)))
-  (fields [:]))
+  		(with product))
+  	(fields :order.id :order.order_time :order.expected_del_time :product.pro_name :order_items.quantity)
+  	(where {:order.id (:id (:order request))}))
+  )
 
-(defn get-all []
-  nil)
+(defn get_all_orders []
+  (select order
+  	(with order_items
+  		(with product))
+  	(fields :order.id :order.order_time :order.expected_del_time :product.pro_name :order_items.quantity)
+  	)
+  )
