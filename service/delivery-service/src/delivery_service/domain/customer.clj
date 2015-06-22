@@ -81,18 +81,18 @@
 		(update comm
 			(set-fields (:comm request))
 			(where {:id (:id (:comm request))})))
-	(if (:person request) 
+	(if (> (count (:person request)) 1)  
 		(update person
 			(set-fields (:person request))
 			(where {:id (:id (:person request))})))
 	(if (:location request) 
-		(update person
+		(update location
 			(set-fields (:location request))
 			(where {:id (:id (:location request))})))
 	(if (:person_location request) 
-		(update person
+		(update person_location
 			(set-fields (:person_location request))
-			(where {:id (:id (:person_location request))})))
+			(where {:pid (:id (:person request))})))
 	)
 
 ;; Pay
