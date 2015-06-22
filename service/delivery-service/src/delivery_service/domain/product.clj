@@ -57,9 +57,14 @@
 	(belongs-to person {:fk :id}))
 
 
-(defn get-all []
-  (select product)
+(defn get_all_products []
+  (select product
+  	(where {:site_id (:site_id (:product request))}))
   )
+
+(defn get_specific_product [request]
+	(se)
+	)
 
 (defn search [criteria]
 	(j/query db ["select * from product where price between ? and ? or user_rating >= ?" (:low (:price_range criteria)) (:high (:price_range criteria)) (:user-rating criteria)])

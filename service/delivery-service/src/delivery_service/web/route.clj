@@ -11,6 +11,6 @@
   (ANY "/customer/:id" [id request] (res/customer (conj request {:body (conj (:body request) {:person {:id id}})})))
   (ANY "/customer/:id/add-items" request (res/create-plan request))
   (ANY "/customer/:id/order" [id request] (res/order (conj request {:body (conj (:body request) {:person {:id id}})})))
-  
+  (ANY "")
   )
 
