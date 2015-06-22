@@ -68,12 +68,18 @@
 	(insert order
 		(values (:order request)))
 	(update order_items
-		(set-fields (:o_id (:id (:order request))))
+		(set-fields {:o_id (:id (:order request))})
 		(where {:per_id (:id (:person request))}))
+	(def vals (conj (select person_location
+			(with location)
+			(modifier "DISTINCT")
+			(fields [:location.id :l_id])
+			(where {:person_location.pid (:id (:person request)) :person_location.location_type (:place request)})) (:shipment request)))
+	(insert shipment (values (conj (:ship request) vals)))
 	)
 
 ;; Delete an order
-(defn delete [request]
+(defn delete_order [request]
 	(delete order_items 
 		(where {:o_id (:id (:order request))}))
 	(delete order 

@@ -73,7 +73,7 @@
 	(select person_location
 		(with location)
 		(with person (with comm))
-		(where {:pid (:id request)}))
+		(where {:pid (:id (:person request))}))
   nil)
 
 (defn update-profile [request]
@@ -100,24 +100,10 @@
 
 	)
 
-;; Order
-(defn place-order [request]
-	(transaction
-		(insert order (values (:order request)))
-		(insert order_items (values (:order_items request)))
-		(def vals (conj (select person_location
-			(with location)
-			(modifier "DISTINCT")
-			(fields [:location.id :l_id])
-			(where {:person_location.pid (:per_id (:order request)) :person_location.location_type (:place request)})) (:shipment request)))
-		(insert shipment (values vals))
-	)
-)
-
 (defn confirm-delivery [request]
 	(update shipment
-		(where {:ship_id (:delivered request)})
-		(set-fields (:shipment.status 1)))
+		(set-fields {:shipment.status 1})
+		(where {:ship_id (:delivered request)}))
 	)
 
 

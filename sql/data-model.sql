@@ -192,7 +192,7 @@ ENGINE = InnoDB;
 -- Table `delivery`.`shipment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`shipment` (
-  `ship_id` INT NOT NULL,
+  `ship_id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ship_id`),
   o_id int not null,
   foreign key (o_id)
@@ -200,8 +200,8 @@ CREATE TABLE IF NOT EXISTS `delivery`.`shipment` (
   l_id int not null,
   foreign key (l_id)
   	references location (id),
-  o_time DATE() not null,
-  del_time DATE() not null,
+  o_time DATETIME not null,
+  del_time DATE not null,
   status int(1) DEFAULT 0
   )
 ENGINE = InnoDB;
