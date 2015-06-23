@@ -2,7 +2,8 @@
   (:require [liberator.core :refer [defresource]]
             [taoensso.timbre :as timbre]
             [delivery-service.domain.customer :as customer]
-            [delivery-service.domain.order :as order]))
+            [delivery-service.domain.order :as order]
+            [delivery-service.domain.order :as product]))
 
 (timbre/refer-timbre)
 (timbre/merge-config! {:level :debug})
@@ -27,11 +28,11 @@
     )
   )
 
-(defresource order
+(defresource order_specific
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-    (if (:id (:order request)) (order/get_order (get-in ctx [:request :body])) (order/get_all_orders (get-in ctx [:request :body])))
+    (order/get_order (get-in ctx [:request :body])) 
     )
   :post! (fn [ctx]
     (order/place_order (get-in ctx [:request :body]))
@@ -39,4 +40,32 @@
   :delete (fn [ctx]
     (order/delete_oder (get-in ctx [:request :body]))
     )
+  )
+
+(defresource order
+  :available-media-types ["application/json"]
+  :allowed-methods [:get :post :put :delete]
+  :handle-ok (fn [ctx]
+    (order/get_all_orders (get-in ctx [:request :body])))
+  )
+
+(defresource product_specific
+  :available-media-types ["application/json"]
+  :allowed-methods [:get :post :put :delete]
+  :handle-ok (fn [ctx]
+  	(if (:id (:product (get-in ctx [:request :body]))) (product/get_specific_product (get-in ctx [:request :body])))
+  	(if (or (:price_range (get-in ctx [:request :body])) (:user_rating (get-in ctx [:request :body]))) (product/search (get-in ctx [:request :body]))))
+  :post! (fn [ctx]
+  	(product/add (get-in ctx [:request :body])))
+  :put! (fn [ctx]
+  	(product/update (get-in ctx [:request :body])))
+  :delete (fn [ctx]
+  	(product/delete (get-in ctx [:request :body])))
+  )
+
+(defresource product
+  :available-media-types ["application/json"]
+  :allowed-methods [:get :post :put :delete]
+  :handle-ok (fn [ctx]
+  	(product/get_all_products (get-in ctx [:request :body])))
   )

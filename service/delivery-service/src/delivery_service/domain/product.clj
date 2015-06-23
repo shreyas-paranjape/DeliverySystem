@@ -57,30 +57,31 @@
 	(belongs-to person {:fk :id}))
 
 
-(defn get_all_products []
+(defn get_all_products [request]
   (select product
   	(where {:site_id (:site_id (:product request))}))
   )
 
 (defn get_specific_product [request]
-	(se)
+	(select product
+		(where {:site_id (:site_id (:product request)) :id (:id (:product request))}))
 	)
 
 (defn search [criteria]
-	(j/query db ["select * from product where price between ? and ? or user_rating >= ?" (:low (:price_range criteria)) (:high (:price_range criteria)) (:user-rating criteria)])
+	(j/query db ["select * from product where price between ? and ? or user_rating >= ?" (:low (:price_range criteria)) (:high (:price_range criteria)) (:user_rating criteria)])
   )
 
 (defn add [request]
   (insert product
-  	(values request)))
+  	(values (:product request)))
   )
 
 (defn update [request]
   (update product
-  	(set-fields request)
-  	(where {:id (:id request)})))
+  	(set-fields (:product request)
+  	(where {:id (:id (:product request)})))
 
 (defn delete [request]
 	(delete product
-		where {:id (:id request)})
+		where {:id (:id (:product request))})
 	)
