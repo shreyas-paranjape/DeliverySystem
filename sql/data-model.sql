@@ -105,8 +105,8 @@ CREATE TABLE IF NOT EXISTS `delivery`.`product_category` (
   `name` VARCHAR(45) NULL,
   `parent_id` INT NULL,
   PRIMARY KEY (`id`),
-  foreign key (parent_id)
-    references product_category (id))
+  l INT NOT NULL,
+  r INT NOT NULL)
 ENGINE = InnoDB;
 
 

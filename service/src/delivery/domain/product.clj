@@ -32,24 +32,21 @@
 	(pk :id)
 	 (belongs-to location)
 	  (belongs-to person {:fk :pid}))
-
 (defentity orders
 	(pk :id))
-(defentity product_category
-	(pk :id)
-	(belongs-to product_category {:fk :parent_id}))
-(defentity product
-	(pk :id)
-	(belongs-to site)
-	(belongs-to product_category {:fk :prod_cat}))
-(defentity order_items
-	(belongs-to orders {:fk :o_id})
-	(belongs-to product {:fk :pro_id})
-	(belongs-to person {:fk :per_id}))
 (defentity site
 	(pk :id)
 	(belongs-to comm)
 	(belongs-to location))
+(defentity product_category
+	(pk :id))
+(defentity product
+	(pk :id)
+	(belongs-to site))
+(defentity order_items
+	(belongs-to orders {:fk :o_id})
+	(belongs-to product {:fk :pro_id})
+	(belongs-to person {:fk :per_id}))
 (defentity shipment
 	(pk :ship_id))
 (defentity user_info
@@ -67,21 +64,21 @@
 		(where {:site_id (:site_id (:product request)) :id (:id (:product request))}))
 	)
 
-(defn search [criteria]
+(defn search_p [criteria]
 	(j/query db ["select * from product where price between ? and ? or user_rating >= ?" (:low (:price_range criteria)) (:high (:price_range criteria)) (:user_rating criteria)])
   )
 
-(defn add [request]
+(defn add_p [request]
   (insert product
   	(values (:product request)))
   )
 
-(defn update [request]
+(defn update_p [request]
   (update product
-  	(set-fields (:product request)
-  	(where {:id (:id (:product request)})))
+  	(set-fields (:product request))
+  	(where {:id (:id (:product request))})))
 
-(defn delete [request]
+(defn delete_p [request]
 	(delete product
-		where {:id (:id (:product request))})
+		(where {:id (:id (:product request))}))
 	)

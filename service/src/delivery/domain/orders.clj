@@ -33,9 +33,12 @@
 	  (belongs-to person {:fk :pid}))
 (defentity orders
 	(pk :id))
-(defentity product_category
+(defentity site
 	(pk :id)
-	(belongs-to product_category {:fk :parent_id}))
+	(belongs-to comm)
+	(belongs-to location))
+(defentity product_category
+	(pk :id))
 (defentity product
 	(pk :id)
 	(belongs-to site)
@@ -44,10 +47,6 @@
 	(belongs-to orders {:fk :o_id})
 	(belongs-to product {:fk :pro_id})
 	(belongs-to person {:fk :per_id}))
-(defentity site
-	(pk :id)
-	(belongs-to comm)
-	(belongs-to location))
 (defentity shipment
 	(pk :ship_id))
 (defentity user_info
@@ -69,12 +68,12 @@
 	(update order_items
 		(set-fields {:o_id (:id (:orders request))})
 		(where {:per_id (:id (:person request))}))
-	(def vals (conj (select person_location
+	(def vls (conj (select person_location
 			(with location)
 			(modifier "DISTINCT")
 			(fields [:location.id :l_id])
 			(where {:person_location.pid (:id (:person request)) :person_location.location_type (:place request)})) (:shipment request)))
-	(insert shipment (values (conj (:ship request) vals)))
+	(insert shipment (values (conj (:ship request) vls)))
 	)
 
 ;; Delete an order

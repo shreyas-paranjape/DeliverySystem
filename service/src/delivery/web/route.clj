@@ -8,6 +8,7 @@
 (timbre/refer-timbre)
 
 (defroutes app-routes
+   (ANY "/" [_] "Welcome")
   (ANY "/customer/:person_id" [person_id request] (res/customer (conj request {:body (conj (:body request) {:person {:id person_id}} )})))
   (ANY "/customer/:id/add-items" request (res/create-plan request))
   (ANY "/customer/:person_id/order/:order_id" [person_id order_id request] (res/order_specific (conj request {:body (conj (:body request) {:person {:id person_id}} {:order {:id order_id}})})))

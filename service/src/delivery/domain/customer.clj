@@ -34,9 +34,12 @@
 (defentity orders
 	(pk :id)
 	)
-(defentity product_category
+(defentity site
 	(pk :id)
-	(belongs-to product_category {:fk :parent_id}))
+	(belongs-to comm)
+	(belongs-to location))
+(defentity product_category
+	(pk :id))
 (defentity product
 	(pk :id)
 	(belongs-to site)
@@ -46,10 +49,6 @@
 	(belongs-to product {:fk :pro_id})
 	(belongs-to person {:fk :per_id})
 	)
-(defentity site
-	(pk :id)
-	(belongs-to comm)
-	(belongs-to location))
 (defentity shipment
 	(pk :ship_id))
 (defentity user_info
