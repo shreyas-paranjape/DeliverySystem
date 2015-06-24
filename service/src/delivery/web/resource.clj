@@ -1,9 +1,9 @@
-(ns delivery-service.web.resource
+(ns delivery.web.resource
   (:require [liberator.core :refer [defresource]]
             [taoensso.timbre :as timbre]
-            [delivery-service.domain.customer :as customer]
-            [delivery-service.domain.order :as order]
-            [delivery-service.domain.order :as product]))
+            [delivery.domain.customer :as customer]
+            [delivery.domain.orders :as orders]
+            [delivery.domain.order :as product]))
 
 (timbre/refer-timbre)
 (timbre/merge-config! {:level :debug})
@@ -32,13 +32,13 @@
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-    (order/get_order (get-in ctx [:request :body])) 
+    (orders/get_order (get-in ctx [:request :body])) 
     )
   :post! (fn [ctx]
-    (order/place_order (get-in ctx [:request :body]))
+    (orders/place_order (get-in ctx [:request :body]))
     )
   :delete (fn [ctx]
-    (order/delete_oder (get-in ctx [:request :body]))
+    (orders/delete_oder (get-in ctx [:request :body]))
     )
   )
 
@@ -46,7 +46,7 @@
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-    (order/get_all_orders (get-in ctx [:request :body])))
+    (orders/get_all_orders (get-in ctx [:request :body])))
   )
 
 (defresource product_specific

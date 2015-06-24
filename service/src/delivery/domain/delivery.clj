@@ -1,4 +1,4 @@
-(ns delivery-service.domain.delivery
+(ns delivery.domain.delivery
 	(:require [taoensso.timbre :as timbre]
             [environ.core :refer [env]]
             [clojure.java.jdbc :as j]
@@ -31,18 +31,9 @@
 	(pk :id)
 	 (belongs-to location)
 	  (belongs-to person {:fk :pid}))
-
-(defentity order
+(defentity orders
 	(pk :id)
 	)
-(defentity order_items
-	(belongs-to person {:fk :per_id})
-	(belongs-to order {:fk :o_id})
-	(belongs-to product {:fk :pro_id}))
-(defentity site
-	(pk :id)
-	(belongs-to comm)
-	(belongs-to location))
 (defentity product_category
 	(pk :id)
 	(belongs-to product_category {:fk :parent_id}))
@@ -50,6 +41,14 @@
 	(pk :id)
 	(belongs-to site)
 	(belongs-to product_category {:fk :prod_cat}))
+(defentity order_items
+	(belongs-to person {:fk :per_id})
+	(belongs-to orders {:fk :o_id})
+	(belongs-to product {:fk :pro_id}))
+(defentity site
+	(pk :id)
+	(belongs-to comm)
+	(belongs-to location))
 (defentity shipment
 	(pk :ship_id))
 (defentity user_info

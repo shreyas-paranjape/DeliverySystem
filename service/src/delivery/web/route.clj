@@ -1,9 +1,9 @@
-(ns delivery-service.web.route
+(ns delivery.web.route
   (:use [ring.util.response])
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [taoensso.timbre :as timbre]
-            [delivery-service.web.resource :as res]))
+            [delivery.web.resource :as res]))
 
 (timbre/refer-timbre)
 

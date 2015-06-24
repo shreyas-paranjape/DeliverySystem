@@ -1,6 +1,6 @@
-(ns delivery-service.web.handler
+(ns delivery.web.handler
   (:require [ring.middleware.defaults :refer :all]
-            [delivery-service.web.route :as r]
+            [delivery.web.route :as r]
             [taoensso.carmine.ring :refer [carmine-store]]
             [ring.middleware.json :refer 
              [wrap-json-response wrap-json-body]]

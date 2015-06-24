@@ -1,4 +1,4 @@
-(ns delivery-service.domain.order
+(ns delivery.domain.orders
 	(:require [taoensso.timbre :as timbre]
             [environ.core :refer [env]]
             [clojure.java.jdbc :as j]
@@ -31,17 +31,8 @@
 	(pk :id)
 	 (belongs-to location)
 	  (belongs-to person {:fk :pid}))
-
-(defentity order
+(defentity orders
 	(pk :id))
-(defentity order_items
-	(belongs-to order {:fk :o_id})
-	(belongs-to product {:fk :pro_id})
-	(belongs-to person {:fk :per_id}))
-(defentity site
-	(pk :id)
-	(belongs-to comm)
-	(belongs-to location))
 (defentity product_category
 	(pk :id)
 	(belongs-to product_category {:fk :parent_id}))
@@ -49,6 +40,14 @@
 	(pk :id)
 	(belongs-to site)
 	(belongs-to product_category {:fk :prod_cat}))
+(defentity order_items
+	(belongs-to orders {:fk :o_id})
+	(belongs-to product {:fk :pro_id})
+	(belongs-to person {:fk :per_id}))
+(defentity site
+	(pk :id)
+	(belongs-to comm)
+	(belongs-to location))
 (defentity shipment
 	(pk :ship_id))
 (defentity user_info
@@ -65,10 +64,10 @@
 
 ;; Place an order
 (defn place_order [request]
-	(insert order
-		(values (:order request)))
+	(insert orders
+		(values (:orders request)))
 	(update order_items
-		(set-fields {:o_id (:id (:order request))})
+		(set-fields {:o_id (:id (:orders request))})
 		(where {:per_id (:id (:person request))}))
 	(def vals (conj (select person_location
 			(with location)
@@ -81,23 +80,23 @@
 ;; Delete an order
 (defn delete_order [request]
 	(delete order_items 
-		(where {:o_id (:id (:order request))}))
-	(delete order 
-		(where {:id (:id (:order request))}))
+		(where {:o_id (:id (:orders request))}))
+	(delete orders 
+		(where {:id (:id (:orders request))}))
   )
 
 (defn get_order [request]
-  (select order
+  (select orders
   	(with order_items
   		(with product))
-  	(fields :order.id :order.order_time :order.expected_del_time :product.pro_name :order_items.quantity)
-  	(where {:order.id (:id (:order request))}))
+  	(fields :order.id :orders.order_time :orders.expected_del_time :product.pro_name :order_items.quantity)
+  	(where {:orders.id (:id (:orders request))}))
   )
 
 (defn get_all_orders []
-  (select order
+  (select orders
   	(with order_items
   		(with product))
-  	(fields :order.id :order.order_time :order.expected_del_time :product.pro_name :order_items.quantity)
+  	(fields :orders.id :orders.order_time :orders.expected_del_time :product.pro_name :order_items.quantity)
   	)
   )
