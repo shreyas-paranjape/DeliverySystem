@@ -71,26 +71,26 @@
 	(select person_location
 		(with location)
 		(with person (with comm))
-		(where {:pid (:id (:person request))}))
-  nil)
+		(where {:pid (:person_id (:params request))}))
+  )
 
 (defn update-profile [request]
-	(if (:comm request) 
+	(if (:comm (:body request)) 
 		(update comm
-			(set-fields (:comm request))
-			(where {:id (:id (:comm request))})))
-	(if (> (count (:person request)) 1)  
+			(set-fields (:comm (:body request)))
+			(where {:id (:id (:comm (:body request)))})))
+	(if (:person (:body request))  
 		(update person
-			(set-fields (:person request))
-			(where {:id (:id (:person request))})))
-	(if (:location request) 
+			(set-fields (:person (:body request)))
+			(where {:id (:person_id (:params request))})))
+	(if (:location (:body request)) 
 		(update location
-			(set-fields (:location request))
-			(where {:id (:id (:location request))})))
-	(if (:person_location request) 
+			(set-fields (:location (:body request)))
+			(where {:id (:id (:location (:body request)))})))
+	(if (:person_location (:body request)) 
 		(update person_location
-			(set-fields (:person_location request))
-			(where {:pid (:id (:person request))})))
+			(set-fields (:person_location (:body request)))
+			(where {:pid (:person_id (:params request))})))
 	)
 
 ;; Pay
@@ -101,7 +101,7 @@
 (defn confirm-delivery [request]
 	(update shipment
 		(set-fields {:shipment.status 1})
-		(where {:ship_id (:delivered request)}))
+		(where {:ship_id (:delivered (:body request))}))
 	)
 
 

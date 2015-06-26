@@ -56,12 +56,12 @@
 
 (defn get_all_products [request]
   (select product
-  	(where {:site_id (:site_id (:product request))}))
+  	(where {:site_id (:site_id (:params request))}))
   )
 
 (defn get_specific_product [request]
 	(select product
-		(where {:site_id (:site_id (:product request)) :id (:id (:product request))}))
+		(where {:site_id (:site_id (:params request)) :id (:product_id (:params request))}))
 	)
 
 (defn search_p [criteria]
@@ -70,15 +70,18 @@
 
 (defn add_p [request]
   (insert product
-  	(values (:product request)))
+  	(values (:product (:body request))))
+  (update product
+  	(set-fields {:site_id (:site_id (:params request)) :id (:product_id (:params request))})
+  	(where (:product (:body request))))
   )
 
 (defn update_p [request]
   (update product
-  	(set-fields (:product request))
-  	(where {:id (:id (:product request))})))
+  	(set-fields (:product (:body request)))
+  	(where {:id (:product_id (:params request))})))
 
 (defn delete_p [request]
 	(delete product
-		(where {:id (:id (:product request))}))
+		(where {:id (:product_id (:params request))}))
 	)

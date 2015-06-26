@@ -58,30 +58,36 @@
 ;; Creating list of items for the order i.e. Inserting into order items
 (defn create-plan [request]
 	(insert order_items
-		(values (:order_items request)))
+		(values (:order_items (:body request))))
+	(update order_items
+		(set-fields {:per_id (:person_id (:params request))})
+		(where {:id (:id (:order_items (:body request)))}))
   )
 
 ;; Place an order
 (defn place_order [request]
 	(insert orders
-		(values (:orders request)))
+		(values (:orders (:body request))))
+	(update orders
+		(set-fields {:id (:order_id (:params request))})
+		(where (:orders (:body request))))
 	(update order_items
-		(set-fields {:o_id (:id (:orders request))})
-		(where {:per_id (:id (:person request))}))
+		(set-fields {:o_id (:order_id (:params request))})
+		(where {:per_id (:person_id (:params request))}))
 	(def vls (conj (select person_location
 			(with location)
 			(modifier "DISTINCT")
 			(fields [:location.id :l_id])
-			(where {:person_location.pid (:id (:person request)) :person_location.location_type (:place request)})) (:shipment request)))
-	(insert shipment (values (conj (:ship request) vls)))
+			(where {:person_location.pid (:id (:person (:body request))) :person_location.location_type (:place (:body request))})) (:shipment (:body request))))
+	(insert shipment (values (conj (:ship (:body request)) vls)))
 	)
 
 ;; Delete an order
 (defn delete_order [request]
 	(delete order_items 
-		(where {:o_id (:id (:orders request))}))
+		(where {:o_id (:order_id (:params request))}))
 	(delete orders 
-		(where {:id (:id (:orders request))}))
+		(where {:id (:order_id (:params request))}))
   )
 
 (defn get_order [request]
@@ -89,13 +95,14 @@
   	(with order_items
   		(with product))
   	(fields :order.id :orders.order_time :orders.expected_del_time :product.pro_name :order_items.quantity)
-  	(where {:orders.id (:id (:orders request))}))
+  	(where {:orders.id (:order_id (:params request))}))
   )
 
-(defn get_all_orders []
+(defn get_all_orders [request]
   (select orders
   	(with order_items
   		(with product))
   	(fields :orders.id :orders.order_time :orders.expected_del_time :product.pro_name :order_items.quantity)
+  	(where {:order_items.per_id (:person_id (:params request))})
   	)
   )

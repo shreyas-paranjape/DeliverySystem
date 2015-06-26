@@ -9,22 +9,21 @@
 (timbre/merge-config! {:level :debug})
 
 
-(defresource customer 
+(defresource customer
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-               (debug (get-in ctx [:request :body]))
-               (customer/get-profile (get-in ctx [:request :body]))
+               (customer/get-profile (get-in ctx [:request]))
                )
   :put! (fn [ctx]
-  	(customer/update-profile (get-in ctx [:request :body])))
+  	(customer/update-profile (get-in ctx [:request])))
   )
 
 (defresource create-plan
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :post! (fn [ctx]
-      (orders/create-plan (get-in ctx [:request :body]))
+      (orders/create-plan (get-in ctx [:request]))
     )
   )
 
@@ -32,13 +31,13 @@
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-    (orders/get_order (get-in ctx [:request :body])) 
+    (orders/get_order (get-in ctx [:request])) 
     )
   :post! (fn [ctx]
-    (orders/place_order (get-in ctx [:request :body]))
+    (orders/place_order (get-in ctx [:request]))
     )
   :delete (fn [ctx]
-    (orders/delete_order (get-in ctx [:request :body]))
+    (orders/delete_order (get-in ctx [:request]))
     )
   )
 
@@ -46,14 +45,14 @@
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-    (orders/get_all_orders (get-in ctx [:request :body])))
+    (orders/get_all_orders (get-in ctx [:request])))
   )
 
 (defresource product_specific
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-  	(if (:id (:product (get-in ctx [:request :body]))) (product/get_specific_product (get-in ctx [:request :body])))
+  	(if (:id (:product (get-in ctx [:request :body]))) (product/get_specific_product (get-in ctx [:request ])))
   	(if (or (:price_range (get-in ctx [:request :body])) (:user_rating (get-in ctx [:request :body]))) (product/search_p (get-in ctx [:request :body]))))
   :post! (fn [ctx]
   	(product/add_p (get-in ctx [:request :body])))

@@ -14,18 +14,18 @@ CREATE TABLE IF NOT EXISTS `delivery`.`person` (
   `first_name` VARCHAR(45) NULL,
   `birth_date` DATE NULL,
   comm_id int not null,
-  PRIMARY KEY (`id`),
   FOREIGN KEY (comm_id)
   	references comm (id))
 ENGINE = InnoDB;
 
-CREATE TABLE if not exists 'delivery'.'userinfo' (
+CREATE TABLE if not exists userinfo(
 id int not null primary key,
 username text,
 token text,
 foreign key (id)
 	references person (id)
 )
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `delivery`.`vehicle`
@@ -49,13 +49,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`order`
+-- Table `delivery`.`orders`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`order` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `delivery`.`orders` (
+  `id` INT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   order_time datetime not null,
-  expected_del_time date not null,
+  expected_del_time date not null
   )
 ENGINE = InnoDB;
 
@@ -66,11 +66,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`order_items` (
   id int not null primary key AUTO_INCREMENT,
   o_id INT null,
-  per_id int not null,
+  per_id int null,
   FOREIGN KEY (per_id)
     references person (id),
   foreign key (o_id)
-  	references order ( id),
+  	references orders (id),
   pro_id int not null,
   quantity int not null default 1,
   foreign key (pro_id)
@@ -82,14 +82,14 @@ ENGINE = InnoDB;
 -- Table `delivery`.`product`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`product` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NULL AUTO_INCREMENT,
   pro_name varchar(50) null,
   price float(10,4) not null,
-  user_rating float(1,2) null,
-  site_id int not null,
+  user_rating float(1,1) null,
+  site_id int null,
   PRIMARY KEY (`id`),
-  prod_cat id int not null,
-  FOREIGN KEY (prod_cat)
+  prod_cat_id int not null,
+  FOREIGN KEY (prod_cat_id)
   	references product_category (id),
   foreign key (site_id)
   	references site (id)
@@ -191,21 +191,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `delivery`.`shipment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`shipment` (
-  `ship_id` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`ship_id`),
-  o_id int not null,
-  foreign key (o_id)
-  	references order (id),
-  l_id int not null,
-  foreign key (l_id)
-  	references location (id),
-  o_time DATETIME not null,
-  del_time DATE not null,
-  status int(1) DEFAULT 0
-  )
-ENGINE = InnoDB;
-
+create table shipment (
+	id int not null primary key auto_increment, 
+	o_id int not null, 
+	l_id int not null, 
+	o_time datetime not null, 
+	del_time date not null, 
+	status int default 0,
+	foreign key (o_id)
+		references orders (id),
+	foreign key (l_id)
+		references location (id));
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
