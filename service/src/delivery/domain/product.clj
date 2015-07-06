@@ -3,18 +3,17 @@
             [environ.core :refer [env]]
             [clojure.java.jdbc :as j]
             [noir.session :as session]
-            [delivery.service.db :as db]
             [delivery.service.db :as db])
   (:use korma.db korma.core))
 
 (defn get_all_products [request]
   (select db/product
-  	(where {:site_id (:site_id (:params request))}))
+  	(where {:prod_cat_id (subselect product_category (fields :id) (where {:name (:category (:body request))}))}))
   )
 
 (defn get_specific_product [request]
 	(select db/product
-		(where {:site_id (:site_id (:params request)) :id (:product_id (:params request))}))
+		(where {:site_id (:site_id (:params request)) :id (:product_id (:params request)) :prod_cat_id (subselect product_category (fields :id) (where {:name (:category (:body request))}))
 	)
 
 (defn search_p [criteria]
