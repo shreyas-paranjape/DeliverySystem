@@ -103,7 +103,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`product_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `parent_id` INT NULL,
   PRIMARY KEY (`id`),
   l INT NOT NULL,
   r INT NOT NULL)
