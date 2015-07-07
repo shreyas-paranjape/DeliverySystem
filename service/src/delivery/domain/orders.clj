@@ -27,7 +27,7 @@
 		(set-fields {:o_id (:order_id (:params request))})
 		(where {:per_id (:person_id (:params request))}))
 	(def vls (conj (select db/person_location
-			(with location)
+			(with db/location)
 			(modifier "DISTINCT")
 			(fields [:location.id :l_id])
 			(where {:person_location.pid (:id (:person (:body request))) :person_location.location_type (:place (:body request))})) (:shipment (:body request))))
@@ -43,9 +43,9 @@
   )
 
 (defn get_order [request]
-  (select orders
+  (select db/orders
   	(with db/order_items
-  		(with product))
+  		(with db/product))
   	(fields :order.id :orders.order_time :orders.expected_del_time :product.pro_name :order_items.quantity)
   	(where {:orders.id (:order_id (:params request))}))
   )
