@@ -54,9 +54,14 @@
 (defentity user_info
 	(pk :id)
 	(belongs-to person {:fk :id}))
-
-
-
-
+(defentity restaurant
+	(pk :id)
+	(belongs-to site {:fk :id}))
+(defentity grocery
+	(pk :id)
+	(belongs-to site {:fk :id}))
+(defentity pharmacy
+	(pk :id)
+	(belongs-to site {:fk :id}))
 
 ;; CRUD
