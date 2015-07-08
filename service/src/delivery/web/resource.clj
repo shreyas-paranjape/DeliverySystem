@@ -52,19 +52,35 @@
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-  	(if (:id (:product (get-in ctx [:request :body]))) (product/get_specific_product (get-in ctx [:request ])))
-  	(if (or (:price_range (get-in ctx [:request :body])) (:user_rating (get-in ctx [:request :body]))) (product/search_p (get-in ctx [:request :body]))))
+  	(if (:id (:product (get-in ctx [:request]))) (product/get_specific_product (get-in ctx [:request ])))
+  	(if (or (:price_range (get-in ctx [:request])) (:user_rating (get-in ctx [:request]))) (product/search_p (get-in ctx [:request]))))
   :post! (fn [ctx]
-  	(product/add_p (get-in ctx [:request :body])))
+  	(product/add_p (get-in ctx [:request])))
   :put! (fn [ctx]
-  	(product/update_p (get-in ctx [:request :body])))
+  	(product/update_p (get-in ctx [:request])))
   :delete (fn [ctx]
-  	(product/delete_p (get-in ctx [:request :body])))
+  	(product/delete_p (get-in ctx [:request])))
   )
 
 (defresource product
   :available-media-types ["application/json"]
   :allowed-methods [:get :post :put :delete]
   :handle-ok (fn [ctx]
-  	(product/get_all_products (get-in ctx [:request :body])))
+  	(product/get_all_products (get-in ctx [:request])))
+  )
+
+(defresource ver_email_customer
+  :available-media-types ["application/json"]
+  :allowed-methods [:get :post :put :delete]
+  :handle-created! (fn [ctx]
+                (customer/verify_email (get-in ctx [:request]))
+                )
+  )
+
+(defresource ver_mobile_customer
+  :available-media-types ["application/json"]
+  :allowed-methods [:get :post :put :delete]
+  :handle-created! (fn [ctx]
+                (customer/verify_mobile (get-in ctx [:request]))
+                )
   )

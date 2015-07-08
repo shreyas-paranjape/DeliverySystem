@@ -18,10 +18,16 @@ CREATE TABLE IF NOT EXISTS `delivery`.`person` (
   	references comm (id))
 ENGINE = InnoDB;
 
-CREATE TABLE if not exists userinfo(
+CREATE TABLE if not exists user_info(
 id int not null primary key,
 username text,
-token text,
+pass text,
+email text,
+mobile text,
+email_hash text,
+mobile_hash text,
+email_ver int(1) default 0,
+mobile_ver int(1) default 0,
 foreign key (id)
 	references person (id)
 )

@@ -21,7 +21,13 @@ ENGINE = InnoDB;
 CREATE TABLE if not exists userinfo(
 id int not null primary key,
 username text,
-token text,
+pass text,
+email text,
+mobile text,
+email_hash text,
+mobile_hash text,
+email_ver int(1) default 0,
+mobile_ver int(1) default 0,
 foreign key (id)
 	references person (id)
 )
@@ -103,7 +109,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`product_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `parent_id` INT NULL,
   PRIMARY KEY (`id`),
   l INT NOT NULL,
   r INT NOT NULL)
