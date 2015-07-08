@@ -18,8 +18,8 @@
 	;; if user not present
 	((insert db/user_info
 		(values (:user_info (:body request))))
-	(def e (h/random-string 10))
-	(def m (h/random-string 4))
+	(def e (h/random-string 80))
+	(def m (h/random-string 5))
 	(update db/user_info
 		(set-fields {:email_hash e :mobile_hash m})
 		(where (:user_info (:body request))))
