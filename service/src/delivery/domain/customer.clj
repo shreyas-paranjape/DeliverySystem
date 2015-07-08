@@ -55,6 +55,7 @@
 	  (generate-string {:code 104 :status "Email has been verfied"})) 
 	(generate-string {:code 105 :status "Email was not verfied"})
 	)
+)
 
 (defn verify_mobile [request]
 	(def hash_string (:hash (:body request)))
