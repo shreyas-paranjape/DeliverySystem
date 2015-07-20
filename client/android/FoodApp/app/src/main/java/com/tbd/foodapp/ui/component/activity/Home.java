@@ -32,6 +32,8 @@ public class Home extends AppCompatActivity implements NavigationDrawerFragment.
     // Instance fields
     Account mAccount;
 
+    private boolean dummy = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,10 @@ public class Home extends AppCompatActivity implements NavigationDrawerFragment.
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
         replaceContent(new OrderMenuFragment());
         // mAccount = CreateSyncAccount(this);
-        startActivity(new Intent(this, PlaceOrderActivity.class));
+        if(dummy){
+            dummy = false;
+            startActivity(new Intent(this, PlaceOrderActivity.class));
+        }
     }
 
     private void replaceContent(Fragment newFragment) {

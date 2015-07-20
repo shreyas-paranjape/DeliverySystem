@@ -2,17 +2,21 @@ package com.tbd.foodapp.ui.component.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tbd.foodapp.R;
+import com.tbd.foodapp.ui.component.fragment.DeliveryDetailsFragment;
 import com.tbd.foodapp.ui.component.fragment.OrderConfirmFragment;
+import com.tbd.foodapp.ui.component.fragment.OrderStatusFragment;
+import com.tbd.foodapp.ui.events.Event;
+
+import de.greenrobot.event.EventBus;
 
 public class PlaceOrderActivity extends AppCompatActivity {
 
@@ -20,12 +24,24 @@ public class PlaceOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_order);
+        setupToolbar();
+        EventBus.getDefault().register(this);
+        replaceContent(new OrderConfirmFragment());
+    }
+
+    public void onEvent(Event.PlaceOrder event) {
+        replaceContent(new OrderStatusFragment());
+    }
+
+    public void onEvent(Event.ConfirmOrder event) {
+        replaceContent(new DeliveryDetailsFragment());
+    }
+
+    private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (getActionBar() != null) {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        replaceContent(new OrderConfirmFragment());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     private void replaceContent(Fragment newFragment) {
@@ -40,23 +56,33 @@ public class PlaceOrderActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.dialog_message)
+                .setTitle(R.string.dialog_title)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        PlaceOrderActivity.this.finish();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                }).create().show();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                /*Intent upIntent = NavUtils.getParentActivityIntent(this);
                 if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
-                    // This activity is NOT part of this app's task, so create a new task
-                    // when navigating up, with a synthesized back stack.
                     TaskStackBuilder.create(this)
-                            // Add all of this activity's parents to the back stack
                             .addNextIntentWithParentStack(upIntent)
-                                    // Navigate up to the closest parent
                             .startActivities();
                 } else {
-                    // This activity is part of this app's task, so simply
-                    // navigate up to the logical parent activity.
                     NavUtils.navigateUpTo(this, upIntent);
-                }
+                }*/
                 return true;
             case R.id.action_settings:
                 return true;

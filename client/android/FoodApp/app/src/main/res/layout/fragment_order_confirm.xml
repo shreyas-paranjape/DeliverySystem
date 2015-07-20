@@ -8,10 +8,11 @@
             type="com.tbd.foodapp.domain.product.order.Order" />
     </data>
 
-    <LinearLayout
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".ui.component.activity.PlaceOrderActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,9 +83,11 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnConfirmOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_place_order" />
+            android:text="@string/btn_place_order"
+            android:onClick="placeOrder"/>
         <!-- android:textColor="@color/secondary_color" -->
 
     </LinearLayout>

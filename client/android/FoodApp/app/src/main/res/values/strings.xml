@@ -14,4 +14,8 @@
     <string name="title_activity_place_order">PlaceOrderActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="lbl_placed_on">Your order was placed</string>
+    <string name="dialog_message">Are you sure you want to exit</string>
+    <string name="dialog_title">Confirm exit</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 </resources>
