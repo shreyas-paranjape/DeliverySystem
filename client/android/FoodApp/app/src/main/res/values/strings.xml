@@ -14,4 +14,6 @@
     <string name="title_activity_place_order">PlaceOrderActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="lbl_placed_on">Your order was placed</string>
+    <string name="btn_next">Next</string>
+    <string name="sign_in">Sign in with google</string>
 </resources>

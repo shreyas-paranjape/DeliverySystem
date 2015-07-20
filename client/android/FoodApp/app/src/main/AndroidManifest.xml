@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
     <application
         android:name=".app.FoodApp"
@@ -13,14 +15,29 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".ui.component.activity.Home"
+            android:name=".ui.component.activity.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.component.activity.Home"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".ui.component.activity.PlaceOrderActivity"
+            android:label="@string/title_activity_place_order"
+            android:parentActivityName=".ui.component.activity.Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tbd.foodapp.ui.component.activity.Home" />
         </activity>
 
         <service
@@ -55,14 +72,6 @@
                 android:resource="@xml/syncadapter" />
         </service>
 
-        <activity
-            android:name=".ui.component.activity.PlaceOrderActivity"
-            android:label="@string/title_activity_place_order"
-            android:parentActivityName=".ui.component.activity.Home">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tbd.foodapp.ui.component.activity.Home" />
-        </activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,7 +19,12 @@ import com.tbd.foodapp.R;
 import com.tbd.foodapp.ui.component.fragment.NavigationDrawerFragment;
 import com.tbd.foodapp.ui.component.fragment.OrderMenuFragment;
 
-public class Home extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+import de.greenrobot.event.EventBus;
+
+public class Home extends AppCompatActivity
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    private static final String TAG = Home.class.getName();
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private CharSequence mTitle;
@@ -43,9 +49,11 @@ public class Home extends AppCompatActivity implements NavigationDrawerFragment.
                 R.id.navigation_drawer);
         mTitle = getTitle();
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+        EventBus.getDefault().register(this);
         replaceContent(new OrderMenuFragment());
         // mAccount = CreateSyncAccount(this);
-        startActivity(new Intent(this, PlaceOrderActivity.class));
+        //startActivity(new Intent(this, PlaceOrderActivity.class));
+
     }
 
     private void replaceContent(Fragment newFragment) {
