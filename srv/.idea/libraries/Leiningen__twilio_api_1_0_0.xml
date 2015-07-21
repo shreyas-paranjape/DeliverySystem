@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: twilio-api:1.0.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/twilio-api/twilio-api/1.0.0/twilio-api-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

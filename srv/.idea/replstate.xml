@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ReplState" timestamp="1437484632446">{:repl-history {:ide [], :local [&quot;(+ 1 1)&quot; &quot;(select address)&quot; &quot;(use 'korma.core)&quot; &quot;(in-ns srv.infra.db)&quot; &quot;(in-ns 'srv.infra.db)&quot; &quot;(core/select address)&quot; &quot;(db/select customer)&quot; &quot;(core/select customer)&quot; &quot;(select-all)&quot; &quot;(get-profile)&quot; &quot;(get-profile 1)&quot; &quot;(get-profile 2)&quot;], :remote []}}</component>
+</project>
