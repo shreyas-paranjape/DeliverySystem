@@ -1,4 +1,4 @@
-(ns delivery.domain.send-sms 
+(ns delivery.domain.sendsms 
 (:require [clj-http.client :as client]))
 
 (defn send-sms [rn text]

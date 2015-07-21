@@ -2,6 +2,7 @@
   :description "Web service to manage deliveries of parcels"
   :dependencies [[org.clojure/clojure "1.6.0"]
                            [compojure "1.3.2"]
+                           [com.draines/postal "1.11.3"]
                            [ring/ring-defaults "0.1.4"]
                            [ring/ring-json "0.3.1"]
                            [enlive "1.1.5"]

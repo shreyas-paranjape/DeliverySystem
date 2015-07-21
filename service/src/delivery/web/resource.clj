@@ -2,8 +2,11 @@
   (:require [liberator.core :refer [defresource]]
             [taoensso.timbre :as timbre]
             [delivery.domain.customer :as customer]
+            [delivery.domain.generatejson :as gj]
+            [delivery.domain.ts :as ts]
             [delivery.domain.orders :as orders]
-            [delivery.domain.product :as product]))
+            [delivery.domain.product :as product]
+            [cheshire.core :refer :all]))
 
 (timbre/refer-timbre)
 (timbre/merge-config! {:level :debug})
@@ -84,3 +87,19 @@
                 (customer/verify_mobile (get-in ctx [:request]))
                 )
   )
+
+(defresource getmenu
+  :available-media-types ["application/json"]
+  :allowed-methods [:get]
+  :handle-ok (fn [_]
+  		(generate-string (gj/getval))
+      )
+  )
+
+(defresource getts
+	:available-media-types ["application/json"]
+	:allowed-methods [:get]
+	:handle-ok (fn [_]
+		(ts/getts)
+		)
+	)

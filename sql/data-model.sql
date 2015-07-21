@@ -5,6 +5,12 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `delivery` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `delivery` ;
 
+
+create table if not exists delivery.ts(
+id int primary key not null auto_increment,
+ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+
+ 
 -- -----------------------------------------------------
 -- Table `delivery`.`person`
 -- -----------------------------------------------------
@@ -110,8 +116,8 @@ CREATE TABLE IF NOT EXISTS `delivery`.`product_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
-  l INT NOT NULL,
-  r INT NOT NULL)
+  lft INT NOT NULL,
+  rgt INT NOT NULL)
 ENGINE = InnoDB;
 
 
