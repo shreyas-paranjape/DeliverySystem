@@ -5,18 +5,18 @@
             [delivery.service.db :as db]
             [ring.util.response :as re]
             [delivery.domain.hash :as h]
-            [delivery.domain.send-mail :as m]
-            [delivery.domain.send-sms :as mob]
+            [delivery.domain.sendmail :as m]
+            [delivery.domain.sendsms :as mob]
             [cheshire.core :refer :all])
   (:use korma.db korma.core))
 
 ;; Functions
 
 (defn register [request]
-	(if (not (select db/user_info (where {:email (:email (:user_info (:body request))) :mobile (:mobile (:user_info (:body request)))}))) 
+	(if (empty? (select db/user_info (where {:email (:email (:user_info (:body request))) :mobile (:mobile (:user_info (:body request)))}))) 
 
 	;; if user not present
-	((insert db/user_info
+	(do (insert db/user_info
 		(values (:user_info (:body request))))
 	(def e (h/random-string 80))
 	(def m (h/random-string 5))
@@ -25,9 +25,9 @@
 		(where (:user_info (:body request))))
 	(def sub "Email Verification")
 	(def b (str "Thank you for signing up.\nPlease verify your email address by clicking on the link given below.\n\n\n" 
-		"http://www.xyz.com/customer/email_ver/"e "=" (:email (:user_info (:body request))))
+		"http://www.xyz.com/customer/email_ver/"e "=" (:email (:user_info (:body request)))))
 	(m/send-mail (:email (:user_info (:body request))) sub b)
-	(def txt (str "Please verify your cell phone number by entering the code given below in the app.\n\n" m)
+	(def txt (str "Please verify your cell phone number by entering the code given below in the app.\n\n" m))
 	(mob/send-sms (:mobile (:user_info (:body request))) txt)
 	(generate-string {:code 100 :status "Than You For Signing Up. Please verify your email address by clicking on a link which is sent to your emil address."})) 
 
@@ -36,9 +36,9 @@
 	)
 )
 (defn sign-in [request]
-	(if (select db/user_info (where (:login_info (:body request)))) 
+	(if (not (empty? (select db/user_info (where (:login_info (:body request)))))) 
 	;; if credentials are correct
-	((session/put! :login_info (:login_info (:body request)))
+	(do (session/put! :login_info (:login_info (:body request)))
 	  (generate-string {:code 102 :status "success"})) 
 	;; if credentials are wrong
 	(generate-string {:code 103 :status "failure"}))
@@ -48,11 +48,11 @@
 	(def parts (clojure.string/split (:hash (:params request)) #"=" ))
 	(def hash_string (parts 0))
 	(def email (parts 1))
-	(if (select db/user_info (where {:email_hash hash_string})) 
-	((update db/user_info
+	(if (not (empty? (select db/user_info (where {:email_hash hash_string}))))
+	(do (update db/user_info
 		(set-fields {:email_ver 1})
 		(where {:email email}))
-	  (generate-string {:code 104 :status "Email has been verfied"})) 
+	  (generate-string {:code 104 :status "Email has been verfied"}))
 	(generate-string {:code 105 :status "Email was not verfied"})
 	)
 )
@@ -60,11 +60,11 @@
 (defn verify_mobile [request]
 	(def hash_string (:hash (:body request)))
 	(def number (:number (:params request)))
-	(if (select db/user_info (where {:mobile_hash hash_string})) 
-		((update db/user_info
+	(if (not (empty? (select db/user_info (where {:mobile_hash hash_string}))))
+		(do (update db/user_info
 			(set-fields {:mobile_ver 1})
 			(where {:mobile number}))
-		  (generate-string {:code 106 :status "Mobile Number has been verified"})) 
+		  (generate-string {:code 106 :status "Mobile Number has been verified"}))
 
 		(generate-string {:code 107 :status "Mobile Number was not verified"})
 		)

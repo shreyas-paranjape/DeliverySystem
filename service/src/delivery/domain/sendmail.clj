@@ -1,4 +1,4 @@
-(ns delivery.domain.send-mail
+(ns delivery.domain.sendmail
 (:require [postal.core :as p]))
 
 (defn send-mail [rm sub bod]

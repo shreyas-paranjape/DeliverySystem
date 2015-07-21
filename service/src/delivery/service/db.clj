@@ -20,6 +20,8 @@
 
 
 ;; Entities
+(defentity ts
+	(pk :id))
 (defentity comm
 	(pk :id))
 (defentity person
