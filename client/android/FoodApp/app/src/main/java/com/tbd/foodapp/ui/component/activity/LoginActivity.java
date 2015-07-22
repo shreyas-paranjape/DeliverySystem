@@ -186,6 +186,7 @@ public class LoginActivity extends AppCompatActivity implements
             String token = null;
             try {
                 token = GoogleAuthUtil.getToken(getApplicationContext(), accountName, scopes);
+
             } catch (IOException e) {
                 Log.e(TAG, e.getMessage());
             } catch (UserRecoverableAuthException e) {

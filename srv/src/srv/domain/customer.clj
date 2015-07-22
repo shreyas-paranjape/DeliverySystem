@@ -2,6 +2,7 @@
   (:require [korma.core :as orm]
             [srv.infra.db :as db]
             [srv.infra.util :as util]
+            [srv.infra.comm :as comm]
             [liberator.core :refer [defresource]]
             [compojure.core :refer :all]))
 
@@ -24,12 +25,15 @@
 (defn select-all []
   (orm/select customer))
 
+(defn send-verification-sms [to]
+  (def otp (util/random-number 4))
+  ;;TODO save otp to db
+  (comm/send-sms to otp))
 
 (defn send-verification-mail [to]
-  nil)
-
-(defn send-verification-sms [to]
-  nil)
+  (def hash (util/random-string 64))
+  ;;TODO save generated hash to db
+  (comm/send-mail to hash))
 
 (defn verify-token [token]
   nil)
