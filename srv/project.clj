@@ -27,7 +27,7 @@
                  ;; SMS
                  [twilio-api "1.0.0"]
                  ;; Http Client
-                 [http-kit "2.1.16"]]
+                 [http-kit "2.1.19"]]
   :plugins [[lein-ring "0.8.13"]
             [lein-environ "1.0.0"]]
   :ring {:handler srv.infra.web/app}
