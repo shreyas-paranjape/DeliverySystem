@@ -14,7 +14,7 @@ import com.tbd.foodapp.R;
 import com.tbd.foodapp.ui.component.fragment.DeliveryDetailsFragment;
 import com.tbd.foodapp.ui.component.fragment.OrderConfirmFragment;
 import com.tbd.foodapp.ui.component.fragment.OrderStatusFragment;
-import com.tbd.foodapp.ui.events.Event;
+import com.tbd.foodapp.app.events.Event;
 
 import de.greenrobot.event.EventBus;
 

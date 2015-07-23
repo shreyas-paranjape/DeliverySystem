@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tbd.foodapp.databinding.FragmentOrderConfirmBinding;
-import com.tbd.foodapp.ui.events.Event;
+import com.tbd.foodapp.app.events.Event;
 
 import de.greenrobot.event.EventBus;
 
