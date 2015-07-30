@@ -5,7 +5,7 @@
 
         <variable
             name="mobile"
-            type="com.tbd.foodapp.domain.customer.Mobile" />
+            type="in.co.foodamigo.foodapp.domain.customer.Mobile" />
     </data>
 
     <LinearLayout

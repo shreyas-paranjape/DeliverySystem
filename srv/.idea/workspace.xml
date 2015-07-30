@@ -2,9 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e97576b3-1a48-4ebb-a050-a1d84466efe4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/srv/infra/comm.clj" afterPath="$PROJECT_DIR$/src/srv/infra/comm.clj" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/androidTest/java/com/tbd/foodapp/ApplicationTest.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/androidTest/java/in/co/foodamigo/ApplicationTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/app/FoodApp.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/App.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/app/events/Event.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/events/Event.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/common/Address.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/common/Address.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/customer/Customer.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/customer/Customer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/customer/Mobile.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/customer/Mobile.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/product/Product.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/product/Product.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/product/ProductCategory.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/product/ProductCategory.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/product/order/Order.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/product/order/Order.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/product/order/OrderItem.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/product/order/OrderItem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/domain/product/supply/Supplier.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/domain/product/supply/Supplier.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/service/Authenticator.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/service/sync/Authenticator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/service/AuthenticatorService.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/service/sync/AuthenticatorService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/service/StubProvider.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/service/sync/StubProvider.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/service/SyncAdapter.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/service/sync/SyncAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/service/SyncService.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/service/sync/SyncService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/adapter/AbstractExpandableListAdapter.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/adapter/AbstractExpandableListAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/adapter/CategoryAdapter.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/adapter/CategoryAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/adapter/CategoryPagerAdapter.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/adapter/CategoryPagerAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/adapter/NavigationDrawerAdapter.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/adapter/NavigationDrawerAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/adapter/PastOrderAdapter.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/adapter/PastOrderAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/activity/Home.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/activity/Home.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/activity/LoginActivity.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/activity/LoginActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/activity/PlaceOrderActivity.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/activity/PlaceOrderActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/AddressFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/AddressFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/CategoryFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/CategoryFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/DeliveryDetailsFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/DeliveryDetailsFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/LoginFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/LoginFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/MobileFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/MobileFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/NavigationDrawerFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/NavigationDrawerFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/OrderConfirmFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/OrderConfirmFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/OrderMenuFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/OrderMenuFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/OrderStatusFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/OrderStatusFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/component/fragment/PastOrdersFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/PastOrdersFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/com/tbd/foodapp/ui/events/Event.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/events/Event.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../docs/design/delivery-model.mwb.bak" afterPath="$PROJECT_DIR$/../docs/design/delivery-model.mwb.bak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../docs/design/delivery-model.mwb" afterPath="$PROJECT_DIR$/../docs/design/delivery-model.mwb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/bin/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/bin/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/activity_home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/app.iml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/build.gradle" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/srv/domain/customer.clj" afterPath="$PROJECT_DIR$/src/srv/domain/customer.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/srv/infra/db.clj" afterPath="$PROJECT_DIR$/src/srv/infra/db.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_address.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_address.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_delivery_details.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_delivery_details.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_mobile.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_mobile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_order_confirm.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_order_confirm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_order_status.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_order_status.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/google-services.json" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/google-services.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/group_category.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/group_category.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/group_past_order.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/group_past_order.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_order_current.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_order_current.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_past_order.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_past_order.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_product.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_product.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/srv/domain/order.clj" afterPath="$PROJECT_DIR$/src/srv/domain/order.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/srv/domain/product.clj" afterPath="$PROJECT_DIR$/src/srv/domain/product.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/replstate.xml" afterPath="$PROJECT_DIR$/.idea/replstate.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srv.iml" afterPath="$PROJECT_DIR$/srv.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/xml/syncadapter.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/xml/syncadapter.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/srv/infra/util.clj" afterPath="$PROJECT_DIR$/src/srv/infra/util.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/srv/infra/web.clj" afterPath="$PROJECT_DIR$/src/srv/infra/web.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="srv.iws" />
@@ -40,16 +101,19 @@
       <list>
         <option value="$PROJECT_DIR$/src/srv/service/verify.clj" />
         <option value="$PROJECT_DIR$/test/srv/handler_test.clj" />
-        <option value="$PROJECT_DIR$/src/srv/infra/db.clj" />
-        <option value="$PROJECT_DIR$/src/srv/domain/product.clj" />
-        <option value="$PROJECT_DIR$/src/srv/domain/order.clj" />
         <option value="$PROJECT_DIR$/src/resources/mail.mustache" />
-        <option value="$PROJECT_DIR$/src/srv/infra/web.clj" />
         <option value="$PROJECT_DIR$/src/srv/infra/mail.clj" />
-        <option value="$PROJECT_DIR$/src/srv/infra/util.clj" />
-        <option value="$PROJECT_DIR$/src/srv/domain/customer.clj" />
-        <option value="$PROJECT_DIR$/project.clj" />
         <option value="$PROJECT_DIR$/src/srv/infra/comm.clj" />
+        <option value="$PROJECT_DIR$/src/srv/domain/customer.clj" />
+        <option value="$PROJECT_DIR$/src/srv/domain/order.clj" />
+        <option value="$PROJECT_DIR$/src/srv/infra/util.clj" />
+        <option value="$PROJECT_DIR$/.lein-env" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/srv/infra/db.clj" />
+        <option value="$PROJECT_DIR$/profiles.clj" />
+        <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/src/srv/infra/web.clj" />
+        <option value="$PROJECT_DIR$/src/srv/domain/product.clj" />
       </list>
     </option>
   </component>
@@ -79,7 +143,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -90,7 +154,112 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infra" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -329,13 +498,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34549516" sideWeight="0.49436393" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43633655" sideWeight="0.49436393" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41333333" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4126739" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4132539" sideWeight="0.5056361" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37453464" sideWeight="0.5056361" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -367,11 +536,32 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/srv/infra/comm.clj">
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/domain/order.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/domain/product.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/infra/comm.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -379,7 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6333" column="6" selection-start-line="6333" selection-start-column="6" selection-end-line="6333" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -387,7 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -395,7 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="18" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -403,7 +590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -411,7 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -419,7 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -427,7 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -435,7 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -443,7 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -451,7 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -494,7 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -516,20 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/korma/korma/0.4.2/korma-0.4.2.jar!/korma/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="145" column="10" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/ring/ring-defaults/0.1.4/ring-defaults-0.1.4.jar!/ring/middleware/defaults.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3451777">
-          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -575,27 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/domain/product.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/domain/order.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/compojure/compojure/1.3.2/compojure-1.3.2.jar!/compojure/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/clojurewerkz/mailer/1.2.0/mailer-1.2.0.jar!/clojurewerkz/mailer/core.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -638,59 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/infra/web.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5534884">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/mail.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/domain/customer.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/infra/db.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2744186">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/infra/util.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="18" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.6.0/clojure-1.6.0.jar!/clojure/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6333" column="6" selection-start-line="6333" selection-start-column="6" selection-end-line="6333" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/http-kit/http-kit/2.1.16/http-kit-2.1.16.jar!/org/httpkit/client.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -698,10 +789,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/infra/util.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5023256">
+          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/compojure/compojure/1.3.2/compojure-1.3.2.jar!/compojure/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/ring/ring-defaults/0.1.4/ring-defaults-0.1.4.jar!/ring/middleware/defaults.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05116279">
+          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/domain/customer.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30697674">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.lein-env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.027906977">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29220778">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5023256">
+          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/domain/order.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7767442">
+          <caret line="53" column="51" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/infra/db.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.6.0/clojure-1.6.0.jar!/clojure/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="1" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/domain/product.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/srv/infra/web.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/korma/korma/0.4.2/korma-0.4.2.jar!/korma/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="500" column="6" selection-start-line="500" selection-start-column="6" selection-end-line="500" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/mail.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/srv/infra/comm.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46976745">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.3906977">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
           <folding />
         </state>
       </provider>

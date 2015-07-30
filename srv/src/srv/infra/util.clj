@@ -20,4 +20,3 @@
 
 (defn random-number [length]
   (apply str (take length (repeatedly #(rand-nth (range 0 9))))))
-

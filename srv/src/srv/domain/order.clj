@@ -2,7 +2,7 @@
   (:require [korma.core :as orm]
             [srv.domain.product :as prod]
             [liberator.core :refer [defresource]]
-            [compojure.core :refer :all]))
+            [compojure.core :refer [ANY defroutes]]))
 
 ;; Entities
 (declare orderr order_item)

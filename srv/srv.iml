@@ -31,7 +31,6 @@
     <orderEntry type="library" name="Leiningen: ring-mock:0.1.5" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-defaults:0.1.4" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-json:0.3.1" level="project" />
-    <orderEntry type="library" name="Leiningen: twilio-api:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: clojurewerkz/route-one:1.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: clojurewerkz/support:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: com.draines/postal:1.11.1" level="project" />

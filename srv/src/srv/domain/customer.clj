@@ -4,7 +4,7 @@
             [srv.infra.util :as util]
             [srv.infra.comm :as comm]
             [liberator.core :refer [defresource]]
-            [compojure.core :refer :all]))
+            [compojure.core :refer [ANY defroutes]]))
 
 
 ;; TODO Verify access token from google server
@@ -31,9 +31,10 @@
   (comm/send-sms to otp))
 
 (defn send-verification-mail [to]
-  (def hash (util/random-string 64))
+  ;;(def hash (util/random-string 64))
   ;;TODO save generated hash to db
-  (comm/send-mail to hash))
+  ;;(comm/send-mail to hash))
+  nil)
 
 (defn verify-token [token]
   nil)

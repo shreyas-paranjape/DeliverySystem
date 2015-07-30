@@ -5,7 +5,7 @@
 
         <variable
             name="productCategory"
-            type="com.tbd.foodapp.domain.product.ProductCategory" />
+            type="in.co.foodamigo.foodapp.domain.product.ProductCategory" />
     </data>
 
     <LinearLayout

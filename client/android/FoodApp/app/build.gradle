@@ -3,13 +3,13 @@ apply plugin: 'com.android.databinding'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion "23 rc3"
 
     defaultConfig {
-        applicationId "com.tbd.foodapp"
+        applicationId "in.co.foodamigo.foodapp"
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }

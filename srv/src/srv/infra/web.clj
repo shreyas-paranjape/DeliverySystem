@@ -13,7 +13,7 @@
 
 ;; ROUTES
 (defroutes home
-           (GET "/" [] "Hello World!!"))
+           (GET "/" request (str request)))
 (defroutes not-found
            (route/not-found "Not Found"))
 (def app-routes
@@ -26,13 +26,13 @@
 
 ;; APPLICATION
 (def app
-  (wrap-defaults
-    (wrap-json-body
-      (wrap-json-response
-        (wrap-params
-          app-routes))
-      {:keywords? true})
-    site-defaults))
+  ;;(wrap-defaults
+  (wrap-json-body
+    (wrap-json-response
+      (wrap-params
+        app-routes))
+    {:keywords? true}))
+;;site-defaults)
 
 
 
