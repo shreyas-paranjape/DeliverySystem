@@ -13,4 +13,10 @@ public class Event {
 
     public static class MobileNumberEntered {
     }
+
+    public static class ShowCart {
+    }
+
+    public static class CatalogueRefreshed {
+    }
 }

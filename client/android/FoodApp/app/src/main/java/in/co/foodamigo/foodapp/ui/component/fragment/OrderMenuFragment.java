@@ -9,10 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.astuetz.PagerSlidingTabStrip;
-
 import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.ui.adapter.CategoryPagerAdapter;
+import in.co.foodamigo.foodapp.ui.view.SlidingTabLayout;
 
 public class OrderMenuFragment extends Fragment {
 
@@ -28,11 +27,27 @@ public class OrderMenuFragment extends Fragment {
         initTabs(rootView, mPager);
     }
 
-    private PagerSlidingTabStrip initTabs(View rootView, ViewPager mPager) {
+    private void initTabs(View rootView, ViewPager mPager) {
+        SlidingTabLayout mSlidingTabLayout = (SlidingTabLayout) rootView.findViewById(R.id.tabs);
+        mSlidingTabLayout.setViewPager(mPager);
+        mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+            @Override
+            public int getIndicatorColor(int position) {
+                return getResources().getColor(R.color.second_color);
+            }
+
+            @Override
+            public int getDividerColor(int position) {
+                return getResources().getColor(R.color.second_color);
+            }
+        });
+    }
+
+   /* private PagerSlidingTabStrip initTabs(View rootView, ViewPager mPager) {
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) rootView.findViewById(R.id.tabs);
         tabs.setViewPager(mPager);
         return tabs;
-    }
+    }*/
 
     @NonNull
     private ViewPager initPager(View rootView) {

@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,20 +8,29 @@
     <!--android:background="@color/grey_dark" -->
 
 
-    <com.astuetz.PagerSlidingTabStrip
+    <in.co.foodamigo.foodapp.ui.view.SlidingTabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color" />
+
+    <!--<com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="48dip"
-        app:pstsIndicatorHeight="10dp"
+        app:pstsActivateTextColor="@color/red"
+        app:pstsDeactivateTextColor="@color/grey_darkest"
+        app:pstsIndicatorColor="@color/red"
         app:pstsShouldExpand="true"
-        app:pstsTextAllCaps="true" />
-        <!-- app:pstsTabBackground="@color/primary_color"
-            android:textColor="@color/secondary_color"
-            app:pstsIndicatorColor="@color/secondary_color" -->
+        app:pstsTabBackground="@drawable/selectable_bg"
+        app:pstsTabSwitch="true"
+        app:pstsTextAllCaps="true" />-->
+    <!-- app:pstsTabBackground="@color/primary_color"
+        android:textColor="@color/secondary_color"
+        app:pstsIndicatorColor="@color/secondary_color" -->
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </LinearLayout>

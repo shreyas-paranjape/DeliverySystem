@@ -12,15 +12,27 @@ import in.co.foodamigo.foodapp.ui.adapter.CategoryAdapter;
 
 public class CategoryFragment extends Fragment {
 
-    private ExpandableListView listView;
-    private CategoryAdapter categoryAdapter;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_category, container, false);
-        listView = (ExpandableListView) rootView.findViewById(R.id.elv_category);
-        categoryAdapter = new CategoryAdapter(getActivity());
-        listView.setAdapter(categoryAdapter);
+        initListView(rootView);
         return rootView;
+    }
+
+    private void initListView(View rootView) {
+        final ExpandableListView listView =
+                (ExpandableListView) rootView.findViewById(R.id.elv_category);
+        listView.setAdapter(new CategoryAdapter(getActivity()));
+        listView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            int previousItem = -1;
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                if (groupPosition != previousItem)
+                    listView.collapseGroup(previousItem);
+                previousItem = groupPosition;
+            }
+        });
     }
 }

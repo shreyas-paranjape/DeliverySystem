@@ -25,6 +25,13 @@ public abstract class AbstractExpandableListAdapter<G, C> extends BaseExpandable
         childMapping = new HashMap<>();
     }
 
+    public AbstractExpandableListAdapter(Context context, List<G> groupList,
+                                         Map<G, List<C>> childMapping) {
+        this(context);
+        this.groupList = groupList;
+        this.childMapping = childMapping;
+    }
+
     @Override
     public int getGroupCount() {
         return groupList.size();

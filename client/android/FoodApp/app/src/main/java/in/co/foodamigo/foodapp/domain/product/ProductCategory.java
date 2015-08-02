@@ -4,14 +4,15 @@ import java.io.Serializable;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class ProductCategory extends RealmObject implements Serializable {
 
     private static final long serialVersionUID = 1;
 
+    @PrimaryKey
     private long id;
     private String name;
-    //private ProductCategory parent;
     private RealmList<ProductCategory> subCategories;
     private RealmList<Product> products;
 
@@ -30,14 +31,6 @@ public class ProductCategory extends RealmObject implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    // public ProductCategory getParent() {
-    //  return parent;
-    // }
-
-    // public void setParent(ProductCategory parent) {
-    //   this.parent = parent;
-    // }
 
     public RealmList<Product> getProducts() {
         return products;

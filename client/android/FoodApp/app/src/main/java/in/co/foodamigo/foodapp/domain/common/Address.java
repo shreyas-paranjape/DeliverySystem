@@ -3,12 +3,15 @@ package in.co.foodamigo.foodapp.domain.common;
 import java.io.Serializable;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Address extends RealmObject implements Serializable {
 
     private static final long serialVersionUID = 1;
 
+    @PrimaryKey
     private long id;
+
     private String lineOne;
     private String lineTwo;
     private String locality;

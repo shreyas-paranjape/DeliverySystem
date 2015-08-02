@@ -3,7 +3,10 @@ package in.co.foodamigo.foodapp.ui.component.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -75,14 +78,14 @@ public class PlaceOrderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                /*Intent upIntent = NavUtils.getParentActivityIntent(this);
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
                 if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
                     TaskStackBuilder.create(this)
                             .addNextIntentWithParentStack(upIntent)
                             .startActivities();
                 } else {
                     NavUtils.navigateUpTo(this, upIntent);
-                }*/
+                }
                 return true;
             case R.id.action_settings:
                 return true;

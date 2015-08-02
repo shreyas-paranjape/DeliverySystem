@@ -1,26 +1,36 @@
 package in.co.foodamigo.foodapp.domain.product;
 
-import in.co.foodamigo.foodapp.domain.product.supply.Supplier;
-
 import java.io.Serializable;
 
+import in.co.foodamigo.foodapp.domain.product.supply.Supplier;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Product extends RealmObject implements Serializable {
 
+    @PrimaryKey
     private long id;
+
     private String name;
     private double rate;
     private RealmList<Supplier> productSuppliers;
+    private ProductCategory productCategory;
 
-    //private ProductCategory productCategory;
-    //public ProductCategory getProductCategory() {
-    //return productCategory;
-    //}
-    //public void setProductCategory(ProductCategory productCategory) {
-    //  this.productCategory = productCategory;
-    //}
+    public Product() {
+    }
+
+    public Product(String name) {
+        this.name = name;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
 
     public String getName() {
         return name;

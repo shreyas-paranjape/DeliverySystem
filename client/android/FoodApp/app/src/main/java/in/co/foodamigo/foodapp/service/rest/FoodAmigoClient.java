@@ -7,7 +7,8 @@ import com.loopj.android.http.RequestParams;
 public class FoodAmigoClient {
 
     //private static final String BASE_URL = "https://api.foodamigo.co.in/1/";
-    private static final String BASE_URL = "http://128.199.86.218";
+    //private static final String BASE_URL = "http://128.199.86.218";
+    private static final String BASE_URL = "http://192.168.10.111:3000";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
