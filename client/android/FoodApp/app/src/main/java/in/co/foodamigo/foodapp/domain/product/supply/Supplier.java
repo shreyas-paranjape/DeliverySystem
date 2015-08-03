@@ -1,14 +1,15 @@
 package in.co.foodamigo.foodapp.domain.product.supply;
 
+import org.parceler.Parcel;
+
 import in.co.foodamigo.foodapp.domain.common.Address;
-
-import java.io.Serializable;
-
 import io.realm.RealmObject;
+import io.realm.SupplierRealmProxy;
 
-public class Supplier extends RealmObject implements Serializable {
-
-    private static final long serialVersionUID = 1;
+@Parcel(implementations = {SupplierRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {Supplier.class})
+public class Supplier extends RealmObject {
 
     private long id;
     private String name;

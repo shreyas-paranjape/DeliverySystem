@@ -1,14 +1,20 @@
 package in.co.foodamigo.foodapp.domain.product;
 
-import java.io.Serializable;
+import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
 
+import in.co.foodamigo.foodapp.util.CatListParcelConverter;
+import in.co.foodamigo.foodapp.util.ProdListParcelConverter;
+import io.realm.ProductCategoryRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class ProductCategory extends RealmObject implements Serializable {
+@Parcel(implementations = {ProductCategoryRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {ProductCategory.class})
+public class ProductCategory extends RealmObject {
 
-    private static final long serialVersionUID = 1;
 
     @PrimaryKey
     private long id;
@@ -36,6 +42,7 @@ public class ProductCategory extends RealmObject implements Serializable {
         return products;
     }
 
+    @ParcelPropertyConverter(ProdListParcelConverter.class)
     public void setProducts(RealmList<Product> products) {
         this.products = products;
     }
@@ -44,6 +51,7 @@ public class ProductCategory extends RealmObject implements Serializable {
         return subCategories;
     }
 
+    @ParcelPropertyConverter(CatListParcelConverter.class)
     public void setSubCategories(RealmList<ProductCategory> subCategories) {
         this.subCategories = subCategories;
     }

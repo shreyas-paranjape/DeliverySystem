@@ -1,10 +1,8 @@
 package in.co.foodamigo.foodapp.ui.component.fragment;
 
 import android.app.Fragment;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -34,8 +32,6 @@ public class NavigationDrawerFragment extends Fragment {
     ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private View mFragmentContainerView;
-    private boolean mFromSavedInstanceState;
-    private boolean mUserLearnedDrawer;
     private ExpandableListView mDrawerListView;
 
     public NavigationDrawerFragment() {
@@ -45,12 +41,6 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
-        if (savedInstanceState != null) {
-            mFromSavedInstanceState = true;
-        }
     }
 
     @Override
@@ -81,9 +71,6 @@ public class NavigationDrawerFragment extends Fragment {
         initListView(mDrawerListView);
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mDrawerToggle = getActionBarDrawerToggle();
-        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-            mDrawerLayout.openDrawer(mFragmentContainerView);
-        }
         mDrawerLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -152,12 +139,6 @@ public class NavigationDrawerFragment extends Fragment {
                 super.onDrawerOpened(drawerView);
                 if (!isAdded()) {
                     return;
-                }
-                if (!mUserLearnedDrawer) {
-                    mUserLearnedDrawer = true;
-                    SharedPreferences sp = PreferenceManager
-                            .getDefaultSharedPreferences(getActivity());
-                    sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
                 getActivity().invalidateOptionsMenu();
             }

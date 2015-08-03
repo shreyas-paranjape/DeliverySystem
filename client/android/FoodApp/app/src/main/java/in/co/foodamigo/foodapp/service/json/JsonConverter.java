@@ -23,11 +23,11 @@ public class JsonConverter {
             })
             .create();
 
-    public static String serialize(Object obj) {
+    public static String marshal(Object obj) {
         return gson.toJson(obj);
     }
 
-    public static <T> T serialize(String obj, Class<T> classOfT) {
+    public static <T> T unmarshal(String obj, Class<T> classOfT) {
         return gson.fromJson(obj, classOfT);
     }
 }

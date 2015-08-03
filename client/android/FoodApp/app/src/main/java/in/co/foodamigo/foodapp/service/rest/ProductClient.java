@@ -3,6 +3,7 @@ package in.co.foodamigo.foodapp.service.rest;
 import android.content.Context;
 import android.util.Log;
 
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -18,7 +19,6 @@ import in.co.foodamigo.foodapp.service.repository.RealmManager;
 
 public class ProductClient {
 
-
     private static final String TAG = ProductClient.class.getName();
 
     public static List<Product> getProducts() {
@@ -26,7 +26,9 @@ public class ProductClient {
     }
 
     public static void fetchAndSaveProductCatalogue(final Context context) {
-        FoodAmigoClient.get("/catalogue", null,
+        RequestParams params = new RequestParams();
+        params.add("name", "food");
+        FoodAmigoClient.get("/catalogue", params,
                 new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers,
@@ -37,10 +39,8 @@ public class ProductClient {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers,
                                           String responseString) {
-                        ProductCategory food =
-                                JsonConverter.serialize(responseString, ProductCategory.class);
-                        RealmManager.persist(context, food);
-                        Log.i(TAG, "Got catalogue");
+                        RealmManager.persist(context,
+                                JsonConverter.unmarshal(responseString, ProductCategory.class));
                         EventBus.getDefault().post(new Event.CatalogueRefreshed());
                     }
                 });

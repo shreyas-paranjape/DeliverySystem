@@ -26,11 +26,14 @@ public class Home extends AppCompatActivity {
 
     private static final String TAG = Home.class.getName();
     private DrawerController drawerController;
-    private EventManager eventManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Register Manager
+        EventBus.getDefault().register(new EventManager());
+
+        // Bind view
         setContentView(R.layout.activity_home);
         Button chkOut = (Button) findViewById(R.id.btn_checkout);
         chkOut.setOnClickListener(new View.OnClickListener() {
@@ -40,11 +43,11 @@ public class Home extends AppCompatActivity {
             }
         });
         drawerController = new DrawerController(this);
-        eventManager = new EventManager();
         setupToolbar();
         setupDrawer();
-        ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
 
+        // Refresh data
+        ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
     }
 
     private void setupToolbar() {
@@ -75,11 +78,6 @@ public class Home extends AppCompatActivity {
     }
 
     private class EventManager {
-
-
-        EventManager() {
-            EventBus.getDefault().register(this);
-        }
 
         public void onEvent(NavigationDrawerItemClicked event) {
             replaceContent(drawerController.getFragment(event.getGroup(), event.getChild()), false);

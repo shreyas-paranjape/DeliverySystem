@@ -2,7 +2,11 @@
   (:require [srv.infra.db :as db]
             [korma.core :as orm]
             [liberator.core :refer [defresource]]
-            [compojure.core :refer [ANY defroutes]]))
+            [compojure.core :refer [ANY defroutes]]
+            [taoensso.timbre :as timbre]))
+
+(timbre/refer-timbre)
+(timbre/set-level! :debug)
 
 ;; Entities
 (declare product product_category product_supplier supplier)
@@ -25,15 +29,13 @@
   (first (orm/select product_category
                      (orm/where {:lft 1}))))
 
+(defn- get-category [name]
+  (first (orm/select product_category
+                     (orm/where {:name name}))))
+
 (defn- get-sub-categories [category]
-  (orm/exec-raw ["SELECT child.* FROM
-  product_category AS child LEFT JOIN product_category AS ancestor
-  ON ancestor.lft BETWEEN ?+1 AND ?-1 AND child.lft BETWEEN ancestor.lft+1
-  AND ancestor.rgt-1 WHERE child.lft BETWEEN ?+1 AND ?-1 AND ancestor.id IS NULL"
-                 [(:lft category)
-                  (:rgt category)
-                  (:lft category)
-                  (:rgt category)]]
+  (orm/exec-raw ["CALL get_sub_cat(?)"
+                 [(:id category)]]
                 :results))
 
 (defn- get-products-for-category [category]
@@ -60,12 +62,15 @@
 ;;  (map #(:id %) (get-leaf-categories)))
 
 ;; API
-(defn get-catalogue []
-  (get-category-all (get-root-category)))
+(defn get-catalogue [root-cat]
+  (get-category-all
+    (if (not (nil? root-cat))
+      (get-category (:name root-cat))
+      (get-root-category))))
 
 
 ;; Resource
-(declare product-all product-single catalogue-all)
+(declare product-all product-single catalogue-all catalogue-food)
 (defresource product-all
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :put :delete])
@@ -78,7 +83,7 @@
              :available-media-types ["application/json"]
              :allowed-methods [:get]
              :handle-ok (fn [ctx]
-                          (get-catalogue)))
+                          (get-catalogue (get-in ctx [:request :params]))))
 
 ;; Routes
 (defroutes routes

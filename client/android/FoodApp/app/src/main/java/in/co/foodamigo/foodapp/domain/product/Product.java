@@ -1,13 +1,19 @@
 package in.co.foodamigo.foodapp.domain.product;
 
-import java.io.Serializable;
+import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
 
 import in.co.foodamigo.foodapp.domain.product.supply.Supplier;
+import in.co.foodamigo.foodapp.util.SuppListParcelConverter;
+import io.realm.ProductRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Product extends RealmObject implements Serializable {
+@Parcel(implementations = {ProductRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {Product.class})
+public class Product extends RealmObject {
 
     @PrimaryKey
     private long id;
@@ -52,6 +58,7 @@ public class Product extends RealmObject implements Serializable {
         return productSuppliers;
     }
 
+    @ParcelPropertyConverter(SuppListParcelConverter.class)
     public void setProductSuppliers(RealmList<Supplier> productSuppliers) {
         this.productSuppliers = productSuppliers;
     }

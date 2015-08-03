@@ -1,6 +1,9 @@
 package in.co.foodamigo.foodapp.ui.adapter;
 
+import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -17,22 +20,30 @@ public class CategoryPagerAdapter extends FragmentStatePagerAdapter {
     public CategoryPagerAdapter(android.app.FragmentManager fm) {
         super(fm);
         RealmQuery<ProductCategory> query = Realm.getDefaultInstance().where(ProductCategory.class);
-        query.isNull("subCategories");
-        rootCategories = query.findAll();
+        query.equalTo("name", "food");
+        rootCategories = query.findAll().get(0).getSubCategories();
     }
 
     @Override
     public android.app.Fragment getItem(int position) {
-        return new CategoryFragment();
+        CategoryFragment fragment = new CategoryFragment();
+        if (rootCategories != null && position < rootCategories.size()) {
+            Bundle args = new Bundle();
+            args.putParcelable("parent", Parcels.wrap(ProductCategory.class, rootCategories.get(position)));
+            fragment.setArguments(args);
+        }
+        return fragment;
     }
 
     @Override
     public int getCount() {
-        return rootCategories.size();
+        return rootCategories != null ? rootCategories.size() : 0;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return rootCategories.get(position).getName();
+        return rootCategories != null ? rootCategories.get(position).getName() : "";
     }
+
+
 }

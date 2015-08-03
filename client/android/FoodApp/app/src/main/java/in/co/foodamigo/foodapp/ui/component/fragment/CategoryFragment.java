@@ -7,10 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import org.parceler.Parcels;
+
 import in.co.foodamigo.foodapp.R;
+import in.co.foodamigo.foodapp.domain.product.ProductCategory;
 import in.co.foodamigo.foodapp.ui.adapter.CategoryAdapter;
 
 public class CategoryFragment extends Fragment {
+
+    private ProductCategory parent;
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
+        parent = Parcels.unwrap(args.getParcelable("parent"));
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,7 +34,7 @@ public class CategoryFragment extends Fragment {
     private void initListView(View rootView) {
         final ExpandableListView listView =
                 (ExpandableListView) rootView.findViewById(R.id.elv_category);
-        listView.setAdapter(new CategoryAdapter(getActivity()));
+        listView.setAdapter(new CategoryAdapter(getActivity(), parent));
         listView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             int previousItem = -1;
 

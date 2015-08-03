@@ -5,7 +5,7 @@
 (timbre/set-level! :debug)
 
 (defn request-body [ctx]
-  (str (get-in ctx [:request :params])))
+   (get-in ctx [:request :params :root]))
 
 (defn log-request [ctx]
   (timbre/debug "Request : " + (request-body ctx)))

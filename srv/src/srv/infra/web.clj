@@ -4,12 +4,15 @@
             [ring.middleware.defaults :refer
              [wrap-defaults site-defaults]]
             [ring.middleware.json :refer
-             [wrap-json-response wrap-json-body]]
+             [wrap-json-response wrap-json-body wrap-json-params]]
             [ring.middleware.params :refer
              [wrap-params]]
             [srv.domain.customer :as cust]
             [srv.domain.order :as ord]
-            [srv.domain.product :as prod]))
+            [srv.domain.product :as prod]
+            [srv.middleware.keywordize :as mw]))
+
+
 
 ;; ROUTES
 (defroutes home
@@ -28,11 +31,10 @@
 (def app
   ;;(wrap-defaults
   (wrap-json-body
-    (wrap-json-response
-      (wrap-params
-        app-routes))
-    {:keywords? true}))
+    (wrap-json-params
+      (wrap-json-response
+        (wrap-params
+          (mw/keywordize-params
+            app-routes))))
+    :keywords? true))
 ;;site-defaults)
-
-
-
