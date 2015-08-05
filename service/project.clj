@@ -25,7 +25,13 @@
   :plugins [[lein-ring "0.8.13"]
             [lein-environ "1.0.0"]
             [compojure "1.3.2"]]
-  :ring {:handler delivery.web.handler/app}
+  :ring {:handler delivery.web.handler/app
+            :port 3000
+                        :join? false
+                        :ssl? true
+                        :ssl-port 8443
+                        :keystore "/home/punit/keystore.jks"
+                        :key-password "qwerty"}
   :profiles
   {:uberjar {:aot :all}
    :production
