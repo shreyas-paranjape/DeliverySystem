@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.app.Fragment;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +17,10 @@ import in.co.foodamigo.foodapp.events.Event;
 
 public class CartFragment extends Fragment {
 
-    private static final String TAG = CartFragment.class.getName();
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_cart, null);
+        View v = inflater.inflate(R.layout.fragment_cart, container, false);
         Button chkOut = (Button) v.findViewById(R.id.btn_checkout);
         chkOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +33,6 @@ public class CartFragment extends Fragment {
 
     @Override
     public Animator onCreateAnimator(int transit, boolean enter, int nextAnim) {
-        Log.i(TAG, "Hello");
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -44,10 +40,8 @@ public class CartFragment extends Fragment {
 
         Animator animator;
         if (enter) {
-            Log.i(TAG, "Height : " + displayHeight);
             animator = ObjectAnimator.ofFloat(this, "translationY", displayHeight, 0);
         } else {
-            Log.i(TAG, "Height : " + displayHeight);
             animator = ObjectAnimator.ofFloat(this, "translationY", 0, displayHeight);
         }
         animator.setDuration(300);

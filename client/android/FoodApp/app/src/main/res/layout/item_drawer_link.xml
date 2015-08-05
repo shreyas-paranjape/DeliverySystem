@@ -10,7 +10,7 @@
         android:id="@+id/imgAvatar"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:contentDescription="Avatar"
+        android:contentDescription="@string/link_image"
         android:src="@drawable/ic_account_box" />
 
     <TextView

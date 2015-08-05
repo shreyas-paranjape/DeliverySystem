@@ -2,13 +2,11 @@ package in.co.foodamigo.foodapp.ui.bean;
 
 import android.app.Fragment;
 
-public abstract class Child {
+public abstract class Item {
 
-    private final int id;
     private final String name;
 
-    public Child(int id, String name) {
-        this.id = id;
+    public Item(String name) {
         this.name = name;
     }
 

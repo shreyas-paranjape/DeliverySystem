@@ -86,8 +86,7 @@
             android:id="@+id/btnConfirmOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_place_order"
-            android:onClick="placeOrder"/>
+            android:text="@string/btn_place_order" />
         <!-- android:textColor="@color/secondary_color" -->
 
     </LinearLayout>

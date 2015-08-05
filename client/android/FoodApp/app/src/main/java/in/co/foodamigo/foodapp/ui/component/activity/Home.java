@@ -3,7 +3,9 @@ package in.co.foodamigo.foodapp.ui.component.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.NotificationManager;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RemoteViews;
 
 import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.R;
@@ -25,13 +28,15 @@ import in.co.foodamigo.foodapp.ui.controller.DrawerController;
 public class Home extends AppCompatActivity {
 
     private static final String TAG = Home.class.getName();
-    private DrawerController drawerController;
+    private final DrawerController drawerController = new DrawerController();
+    private int notification_id = 1989;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Register Manager
+        // Register Event Manager
         EventBus.getDefault().register(new EventManager());
+
 
         // Bind view
         setContentView(R.layout.activity_home);
@@ -42,9 +47,18 @@ public class Home extends AppCompatActivity {
                 replaceContent(new CartFragment(), true);
             }
         });
-        drawerController = new DrawerController(this);
+
         setupToolbar();
         setupDrawer();
+
+        RemoteViews statusContent = new RemoteViews(getPackageName(), R.layout.view_order_status);
+        final NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContent(statusContent);
+        final NotificationManager notificationmanager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationmanager.notify(notification_id, builder.build());
 
         // Refresh data
         ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
@@ -80,7 +94,8 @@ public class Home extends AppCompatActivity {
     private class EventManager {
 
         public void onEvent(NavigationDrawerItemClicked event) {
-            replaceContent(drawerController.getFragment(event.getGroup(), event.getChild()), false);
+            replaceContent(drawerController.getFragment(event.getGroup(),
+                    event.getChild()), false);
         }
 
         public void onEvent(Event.ShowCart event) {
@@ -92,45 +107,4 @@ public class Home extends AppCompatActivity {
             replaceContent(new OrderMenuFragment(), false);
         }
     }
-
-
 }
-
-
-//private CharSequence mTitle;
-//public static final String AUTHORITY = "in.co.foodamigo.foodapp.provider";
-//public static final String ACCOUNT_TYPE = "foodamigo.co.in";
-//public static final String ACCOUNT = "FoodAmigo";
-//Account mAccount;
-
-
-// mTitle = getTitle();
-// mAccount = CreateSyncAccount(this);
-
-//public static Account CreateSyncAccount(Context context) {
-// Create the account type and default account
-//Account newAccount = new Account(
-// ACCOUNT, ACCOUNT_TYPE);
-// Get an instance of the Android account manager
-//AccountManager accountManager =
-// (AccountManager) context.getSystemService(
-//ACCOUNT_SERVICE);
-        /*
-         * Add the account and account type, no password or user data
-         * If successful, return the Account object, otherwise report an error.
-         */
-//if (accountManager.addAccountExplicitly(newAccount, null, null)) {
-            /*
-             * If you don't set android:syncable="true" in
-             * in your <provider> element in the manifest,
-             * then call context.setIsSyncable(account, AUTHORITY, 1)
-             * here.
-             */
-// } else {
-            /*
-             * The account exists or some other error occurred. Log this, report it,
-             * or handle it internally.
-             */
-//}
-//return null;
-//}

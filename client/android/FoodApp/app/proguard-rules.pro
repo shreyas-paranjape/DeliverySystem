@@ -15,3 +15,21 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class io.realm.annotations.RealmModule
+-keep @io.realm.annotations.RealmModule class *
+-dontwarn javax.**
+-dontwarn io.realm.**
+
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+# Only required if you use AsyncExecutor
+#-keepclassmembers class * extends de.greenrobot.event.util.ThrowableFailureEvent {
+#   <init>(java.lang.Throwable);
+#}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+-keep class org.parceler.Parceler$$Parcels

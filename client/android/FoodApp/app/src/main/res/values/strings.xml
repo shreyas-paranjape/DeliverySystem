@@ -21,4 +21,5 @@
     <string name="btn_next">Next</string>
     <string name="sign_in">Sign in with google</string>
     <string name="desc_product_image">Product image</string>
+    <string name="link_image">link icon</string>
 </resources>

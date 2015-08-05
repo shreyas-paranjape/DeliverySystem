@@ -26,8 +26,6 @@ import in.co.foodamigo.foodapp.ui.controller.DrawerController;
 public class NavigationDrawerFragment extends Fragment {
 
     //private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-    private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
-    private static final String TAG = NavigationDrawerFragment.class.getName();
     private DrawerController drawerController;
     ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -88,9 +86,9 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private void initListView(ExpandableListView mDrawerListView) {
-        mDrawerListView.setAdapter(new NavigationDrawerAdapter(getActivity(),
-                drawerController.getGroupList(), drawerController.getChildMapping()));
-        for (int i = 0; i < drawerController.getGroupList().size(); i++) {
+        mDrawerListView.setAdapter(
+                new NavigationDrawerAdapter(getActivity(), drawerController.getDrawerItemGroups()));
+        for (int i = 0; i < drawerController.getDrawerItemGroups().size(); i++) {
             mDrawerListView.expandGroup(i);
         }
         mDrawerListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {

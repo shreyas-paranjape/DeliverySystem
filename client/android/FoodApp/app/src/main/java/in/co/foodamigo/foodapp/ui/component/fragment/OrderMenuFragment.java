@@ -43,12 +43,6 @@ public class OrderMenuFragment extends Fragment {
         });
     }
 
-   /* private PagerSlidingTabStrip initTabs(View rootView, ViewPager mPager) {
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) rootView.findViewById(R.id.tabs);
-        tabs.setViewPager(mPager);
-        return tabs;
-    }*/
-
     @NonNull
     private ViewPager initPager(View rootView) {
         PagerAdapter mPagerAdapter = new CategoryPagerAdapter(getActivity().getFragmentManager());
