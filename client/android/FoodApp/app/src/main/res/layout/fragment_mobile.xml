@@ -5,7 +5,7 @@
 
         <variable
             name="mobile"
-            type="com.tbd.foodapp.domain.customer.Mobile" />
+            type="in.co.foodamigo.foodapp.module.profile.domain.Mobile" />
     </data>
 
     <LinearLayout
@@ -16,6 +16,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="phone"
             android:text="@{mobile.number}"
             android:textSize="14sp"
             android:textStyle="" />

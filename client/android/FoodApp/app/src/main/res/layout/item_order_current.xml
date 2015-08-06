@@ -5,7 +5,7 @@
 
         <variable
             name="orderItem"
-            type="com.tbd.foodapp.domain.product.order.OrderItem" />
+            type="in.co.foodamigo.foodapp.module.order.domain.OrderItem" />
     </data>
 
     <LinearLayout

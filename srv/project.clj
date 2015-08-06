@@ -24,8 +24,6 @@
                  [korma "0.4.2"]
                  ;; Mail
                  [clojurewerkz/mailer "1.2.0"]
-                 ;; SMS
-                 [twilio-api "1.0.0"]
                  ;; Http Client
                  [http-kit "2.1.19"]]
   :plugins [[lein-ring "0.8.13"]
@@ -34,7 +32,7 @@
   :profiles
   {:uberjar {:aot :all}
    :production
-   {:ring
-    {:open-browser? false, :stacktraces? false, :auto-reload? false}}
-   :dev {:dependencies [[javax.servlet/servlet-api "2.5"]
-                        [ring-mock "0.1.5"]]}})
+            {:ring
+             {:open-browser? false, :stacktraces? false, :auto-reload? false}}
+   :dev     {:dependencies [[javax.servlet/servlet-api "2.5"]
+                            [ring-mock "0.1.5"]]}})

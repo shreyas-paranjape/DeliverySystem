@@ -5,7 +5,7 @@
 
         <variable
             name="order"
-            type="com.tbd.foodapp.domain.product.order.Order" />
+            type="in.co.foodamigo.foodapp.module.order.domain.Order" />
 
     </data>
 
@@ -16,8 +16,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hi der" />
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnPlaceOrder"

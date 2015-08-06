@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="address"
-            type="com.tbd.foodapp.domain.common.Address" />
+            type="in.co.foodamigo.foodapp.module.common.entity.Address" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Yello"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </layout>

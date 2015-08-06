@@ -22,7 +22,7 @@
                                  your email.\n" rand-string)}))
 
 ;; SMS
-(def sms-api "https://alerts.solutionsinfini.com/api/v3/index.php")
+(def sms-api-url "https://alerts.solutionsinfini.com/api/v3/index.php")
 (def fixed-params {"method"  "sms",
                    "sender"  "CYBCAD",
                    "format"  "json",
@@ -37,7 +37,7 @@
     (apply str (interpose "&" coded))))
 
 (defn- make-request-url [params]
-  (str sms-api "?" (encode-params params)))
+  (str sms-api-url "?" (encode-params params)))
 
 (defn send-sms [to msg]
   (http/post (make-request-url (into fixed-params {"to" to "message" msg}))))
