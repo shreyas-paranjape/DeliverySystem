@@ -10,13 +10,17 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        RealmConfiguration config = new RealmConfiguration.Builder(this).build();
+        RealmConfiguration config =
+                new RealmConfiguration.Builder(this)
+                        .deleteRealmIfMigrationNeeded()
+                        .build();
         Realm.setDefaultConfiguration(config);
     }
 
     @Override
     public void onTerminate() {
         super.onTerminate();
+        Realm.getDefaultInstance().close();
     }
 
 }

@@ -7,7 +7,7 @@
     <!--android:background="@color/grey_dark" -->
 
 
-    <in.co.foodamigo.foodapp.component.tabstrip.SlidingTabStripView
+    <in.co.foodamigo.foodapp.module.common.ui.view.tabstrip.SlidingTabStripView
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

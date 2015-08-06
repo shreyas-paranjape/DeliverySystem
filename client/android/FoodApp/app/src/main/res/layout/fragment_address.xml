@@ -5,7 +5,7 @@
 
         <variable
             name="address"
-            type="in.co.foodamigo.foodapp.domain.common.Address" />
+            type="in.co.foodamigo.foodapp.module.common.entity.Address" />
     </data>
 
     <LinearLayout

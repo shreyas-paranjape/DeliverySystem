@@ -46,7 +46,7 @@
 
     <fragment
         android:id="@+id/navigation_drawer"
-        android:name="in.co.foodamigo.foodapp.module.drawer.NavigationDrawerFragment"
+        android:name="in.co.foodamigo.foodapp.module.drawer.ui.NavigationDrawerFragment"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
