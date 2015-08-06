@@ -30,8 +30,8 @@ public abstract class AbstractDrawerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(getEventManager());
         setContentView(getLayoutID());
-        setupToolbar();
-        setupDrawer();
+        //setupToolbar();
+        //setupDrawer();
         Fragment fragment = getInitialFragment();
         if (fragment != null) {
             replaceContent(fragment, false);

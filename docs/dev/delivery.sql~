@@ -278,30 +278,3 @@ $$
 
 DELIMITER ;
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_sub_cat`(
-	IN cat_id INT
-)
-BEGIN
-	DECLARE l INT;
-    DECLARE r INT;
-    
-SELECT 
-    lft, rgt
-INTO l , r FROM
-    product_category
-WHERE
-    id = cat_id;
-
-SELECT child.*
-FROM product_category AS child LEFT JOIN product_category AS ancestor 
-ON ancestor.lft BETWEEN l+1 AND r-1 AND
-    child.lft BETWEEN ancestor.lft+1 AND ancestor.rgt-1
-WHERE child.lft BETWEEN l+1 AND r-1 AND ancestor.id IS NULL;
-
-END$$
-DELIMITER ;
-call print_cat();
-call insert_cat('chinese','starters');
-select * from product;
-insert into product(name,product_category_id) values ('test',17);

@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Button;
 
 import in.co.foodamigo.foodapp.R;
+import in.co.foodamigo.foodapp.infra.network.NetworkManager;
 import in.co.foodamigo.foodapp.module.catalogue.infra.CatalogueRefreshedEvent;
 import in.co.foodamigo.foodapp.module.catalogue.infra.ProductClient;
+import in.co.foodamigo.foodapp.module.common.infra.NetworkConnectedEvent;
 import in.co.foodamigo.foodapp.module.common.ui.AbstractDrawerActivity;
+import in.co.foodamigo.foodapp.module.common.ui.NoNetworkFragment;
 import in.co.foodamigo.foodapp.module.drawer.infra.DrawerItemClickedEvent;
 import in.co.foodamigo.foodapp.module.profile.infra.ShowCartEvent;
 import in.co.foodamigo.foodapp.module.profile.ui.CartFragment;
@@ -17,6 +20,7 @@ import in.co.foodamigo.foodapp.module.profile.ui.CartFragment;
 public class CatalogueActivity extends AbstractDrawerActivity {
 
     private static final String TAG = CatalogueActivity.class.getName();
+    private NetworkManager networkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,15 @@ public class CatalogueActivity extends AbstractDrawerActivity {
             }
         });
 
+        //check network status and connectivity
+        networkManager = new NetworkManager(this);
+        if (networkManager.isConnected()) {
+            ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
+        } else {
+            replaceContent(new NoNetworkFragment());
+        }
+
         // Refresh data
-        ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
     }
 
     @Override
@@ -83,6 +94,14 @@ public class CatalogueActivity extends AbstractDrawerActivity {
             Log.i(TAG, "Showing Menu");
             if (!isDestroyed()) {
                 replaceContent(new OrderMenuFragment());
+                setupDrawer();
+                setupToolbar();
+            }
+        }
+
+        public void onEvent(NetworkConnectedEvent event) {
+            if (!isDestroyed()) {
+                ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
             }
         }
     }
