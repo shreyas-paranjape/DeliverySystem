@@ -3,7 +3,7 @@ package in.co.foodamigo.foodapp.domain.product;
 import org.parceler.Parcel;
 import org.parceler.ParcelPropertyConverter;
 
-import in.co.foodamigo.foodapp.domain.product.supply.Supplier;
+import in.co.foodamigo.foodapp.domain.supply.Supplier;
 import in.co.foodamigo.foodapp.util.SuppListParcelConverter;
 import io.realm.ProductRealmProxy;
 import io.realm.RealmList;

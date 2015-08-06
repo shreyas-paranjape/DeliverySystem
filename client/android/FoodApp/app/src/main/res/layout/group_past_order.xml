@@ -5,7 +5,7 @@
 
         <variable
             name="order"
-            type="in.co.foodamigo.foodapp.domain.product.order.Order" />
+            type="in.co.foodamigo.foodapp.domain.order.Order" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

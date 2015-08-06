@@ -19,13 +19,13 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.component.activity.LoginActivity"
+            android:name=".module.profile.LoginActivity"
             android:label="@string/app_name">
 
         </activity>
 
         <activity
-            android:name=".ui.component.activity.Home"
+            android:name=".module.catalogue.CatalogueActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,11 +35,11 @@
         </activity>
 
         <activity
-            android:name=".ui.component.activity.PlaceOrderActivity"
+            android:name=".module.order.PlaceOrderActivity"
             android:label="@string/title_activity_place_order">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.component.activity.Home" />
+                android:value=".module.catalogue.CatalogueActivity" />
         </activity>
 
         <!--<service
