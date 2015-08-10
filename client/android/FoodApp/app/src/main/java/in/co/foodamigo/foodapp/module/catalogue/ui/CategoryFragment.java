@@ -7,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.diegocarloslima.fgelv.lib.FloatingGroupExpandableListView;
-import com.diegocarloslima.fgelv.lib.WrapperExpandableListAdapter;
-
 import org.parceler.Parcels;
 
 import in.co.foodamigo.foodapp.R;
@@ -35,11 +32,10 @@ public class CategoryFragment extends Fragment {
     }
 
     private void initListView(View rootView) {
-        final FloatingGroupExpandableListView listView =
-                (FloatingGroupExpandableListView) rootView.findViewById(R.id.elv_category);
+        final ExpandableListView listView =
+                (ExpandableListView) rootView.findViewById(R.id.elv_category);
         CategoryAdapter adapter = new CategoryAdapter(getActivity(), parent);
-        WrapperExpandableListAdapter wrapperAdapter = new WrapperExpandableListAdapter(adapter);
-        listView.setAdapter(wrapperAdapter);
+        listView.setAdapter(adapter);
         listView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             int previousItem = -1;
 

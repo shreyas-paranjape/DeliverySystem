@@ -1,7 +1,8 @@
-package in.co.foodamigo.foodapp.module.common.entity;
+package in.co.foodamigo.foodapp.module.catalogue.domain;
 
 import org.parceler.Parcel;
 
+import in.co.foodamigo.foodapp.module.common.entity.Address;
 import io.realm.RealmObject;
 import io.realm.SupplierRealmProxy;
 
