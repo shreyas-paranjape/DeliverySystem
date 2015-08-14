@@ -2,22 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e97576b3-1a48-4ebb-a050-a1d84466efe4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../docs/design/delivery-model.mwb.bak" afterPath="$PROJECT_DIR$/../docs/design/delivery-model.mwb.bak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../docs/design/delivery-model.mwb" afterPath="$PROJECT_DIR$/../docs/design/delivery-model.mwb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/CartFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/CartFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/NavigationDrawerFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/component/fragment/NavigationDrawerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/view/SlidingTabStrip.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/ui/view/SlidingTabStrip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/activity_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_address.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_address.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_cart.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_cart.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_delivery_details.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_delivery_details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_mobile.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_mobile.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_order_confirm.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_order_confirm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_drawer_link.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/item_drawer_link.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/ui/CatalogueActivity.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/ui/CatalogueActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/ui/adapter/CategoryAdapter.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/ui/adapter/CategoryAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/ui/CategoryFragment.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/ui/CategoryFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/domain/Product.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/domain/Product.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/infra/ProductClient.java" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/java/in/co/foodamigo/foodapp/module/catalogue/infra/ProductClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/app.iml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/build.gradle" afterPath="$PROJECT_DIR$/../client/android/FoodApp/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/build.gradle" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_category.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/layout/fragment_category.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/.idea/misc.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/proguard-rules.pro" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/proguard-rules.pro" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/replstate.xml" afterPath="$PROJECT_DIR$/.idea/replstate.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/../client/android/FoodApp/app/src/main/res/values/styles.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="srv.iws" />
@@ -38,7 +35,18 @@
     <favorites_list name="srv" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="product.clj" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/srv/domain/product.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3736434">
+              <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -85,10 +93,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="y" value="-14" />
-    <option name="width" value="1386" />
-    <option name="height" value="792" />
+    <option name="y" value="-4" />
+    <option name="width" value="1366" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -101,7 +108,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="AndroidView" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -113,8 +120,74 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -123,8 +196,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
@@ -382,8 +480,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="-14" width="1386" height="792" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -396,7 +494,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9303704" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2717796" sideWeight="0.5056361" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2717796" sideWeight="0.5056361" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -772,18 +870,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/domain/product.clj">
+    <entry file="file://$PROJECT_DIR$/src/srv/domain/order.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53023255">
-          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.75503874">
+          <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/srv/domain/order.clj">
+    <entry file="file://$PROJECT_DIR$/src/srv/domain/product.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9488372">
-          <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.3736434">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
           <folding />
         </state>
       </provider>

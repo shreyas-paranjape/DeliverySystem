@@ -11,22 +11,16 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" /> -->
 
     <application
-        android:name=".App"
+        android:name=".app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="false"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".module.profile.ui.LoginActivity"
-            android:label="@string/app_name">
+        <activity android:name=".profile.ui.LoginActivity">
 
         </activity>
 
-        <activity
-            android:name=".module.catalogue.ui.CatalogueActivity"
-            android:label="@string/app_name">
+        <activity android:name=".catalogue.ui.CatalogueActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,12 +28,10 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".module.order.ui.PlaceOrderActivity"
-            android:label="@string/title_activity_place_order">
+        <activity android:name=".order.ui.PlaceOrderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.catalogue.ui.CatalogueActivity" />
+                android:value=".catalogue.ui.CatalogueActivity" />
         </activity>
 
         <!--<service

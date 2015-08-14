@@ -5,7 +5,7 @@
 
         <variable
             name="order"
-            type="in.co.foodamigo.foodapp.module.order.domain.Order" />
+            type="in.co.foodamigo.foodapp.order.domain.Order" />
 
     </data>
 

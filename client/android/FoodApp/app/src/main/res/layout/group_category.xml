@@ -5,7 +5,7 @@
 
         <variable
             name="productCategory"
-            type="in.co.foodamigo.foodapp.module.catalogue.domain.ProductCategory" />
+            type="in.co.foodamigo.foodapp.catalogue.domain.ProductCategory" />
     </data>
 
     <LinearLayout
