@@ -31,17 +31,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // LIBRARY
+    compile project(':common')
+    // SUPPORT
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:support-v13:22.2.1'
+    // VIEW
     compile 'com.android.support:cardview-v7:22.2.1'
-    compile 'com.google.android.gms:play-services:7.5.0'
-    // VIEWS
-    compile 'com.diegocarloslima:fgelv:0.1.+@aar'
-    // HTTP
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    // INFRA
     compile 'com.loopj.android:android-async-http:1.4.7'
     compile "com.squareup.picasso:picasso:2.5.2"
-    // INFRA
+    compile 'com.google.android.gms:play-services:7.5.0'
     compile 'io.realm:realm-android:0.82.0'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.google.code.gson:gson:2.3.1'

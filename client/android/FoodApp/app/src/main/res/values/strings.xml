@@ -23,4 +23,5 @@
     <string name="desc_product_image">Product image</string>
     <string name="link_image">link icon</string>
     <string name="retry">Retry</string>
+    <string name="product_add">Add</string>
 </resources>
