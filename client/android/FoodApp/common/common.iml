@@ -122,8 +122,8 @@
     <orderEntry type="library" exported="" name="play-services-appstate-7.5.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-games-7.5.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-identity-7.5.0" level="project" />
-    <orderEntry type="library" exported="" name="commons-lang3-3.3.2" level="project" />
     <orderEntry type="library" exported="" name="kotlin-stdlib-0.12.613" level="project" />
+    <orderEntry type="library" exported="" name="commons-lang3-3.3.2" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="kotlin-runtime-0.12.613" level="project" />
     <orderEntry type="library" exported="" name="play-services-wallet-7.5.0" level="project" />
