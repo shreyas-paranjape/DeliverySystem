@@ -35,7 +35,7 @@ public class CatalogueActivity extends AbstractDrawerActivity {
         //check network status and connectivity
         if (new NetworkManager(this).isConnected()) {
             // Refresh data
-            ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
+            new ProductClient(CatalogueActivity.this).fetchAndSaveProductCatalogue();
         } else {
             replaceContent(new NoNetworkFragment());
         }
@@ -96,7 +96,7 @@ public class CatalogueActivity extends AbstractDrawerActivity {
 
         public void onEvent(NetworkConnectedEvent event) {
             if (!isDestroyed()) {
-                ProductClient.fetchAndSaveProductCatalogue(getApplicationContext());
+                new ProductClient(CatalogueActivity.this).fetchAndSaveProductCatalogue();
             }
         }
 

@@ -1,8 +1,8 @@
 
 -- -----------------------------------------------------
--- Table `delivery`.`address`
+-- Table `address`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`address` (
+CREATE TABLE IF NOT EXISTS `address` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `line_one` VARCHAR(45) NULL DEFAULT NULL,
   `line_two` VARCHAR(45) NULL DEFAULT NULL,
@@ -16,9 +16,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`customer`
+-- Table `customer`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`customer` (
+CREATE TABLE IF NOT EXISTS `customer` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `last_name` VARCHAR(45) NULL DEFAULT NULL,
   `first_name` VARCHAR(45) NULL DEFAULT NULL,
@@ -35,9 +35,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`customer_address`
+-- Table `customer_address`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`customer_address` (
+CREATE TABLE IF NOT EXISTS `customer_address` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `address_id` INT(11) NOT NULL,
   `customer_id` INT(11) NOT NULL,
@@ -47,12 +47,12 @@ CREATE TABLE IF NOT EXISTS `delivery`.`customer_address` (
   INDEX `fk_customer_address_customer1_idx` (`customer_id` ASC),
   CONSTRAINT `fk_customer_address_address1`
     FOREIGN KEY (`address_id`)
-    REFERENCES `delivery`.`address` (`id`)
+    REFERENCES `address` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_customer_address_customer1`
     FOREIGN KEY (`customer_id`)
-    REFERENCES `delivery`.`customer` (`id`)
+    REFERENCES `customer` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -60,9 +60,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`orderr`
+-- Table `orderr`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`orderr` (
+CREATE TABLE IF NOT EXISTS `orderr` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `customer_id` INT(11) NOT NULL,
   `code` VARCHAR(45) NULL DEFAULT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`orderr` (
   INDEX `fk_order_customer1_idx` (`customer_id` ASC),
   CONSTRAINT `fk_order_customer1`
     FOREIGN KEY (`customer_id`)
-    REFERENCES `delivery`.`customer` (`id`)
+    REFERENCES `customer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -79,9 +79,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`product_category`
+-- Table `product_category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`product_category` (
+CREATE TABLE IF NOT EXISTS `product_category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `lft` INT(11) NOT NULL,
@@ -92,9 +92,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`product`
+-- Table `product`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`product` (
+CREATE TABLE IF NOT EXISTS `product` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `product_category_id` INT(11) NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`product` (
   INDEX `fk_product_product_category1_idx` (`product_category_id` ASC),
   CONSTRAINT `fk_product_product_category1`
     FOREIGN KEY (`product_category_id`)
-    REFERENCES `delivery`.`product_category` (`id`)
+    REFERENCES `product_category` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -114,9 +114,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`order_item`
+-- Table `order_item`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`order_item` (
+CREATE TABLE IF NOT EXISTS `order_item` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `order_id` INT(11) NOT NULL,
   `product_id` INT(11) NOT NULL,
@@ -126,12 +126,12 @@ CREATE TABLE IF NOT EXISTS `delivery`.`order_item` (
   INDEX `fk_order_item_product1_idx` (`product_id` ASC),
   CONSTRAINT `fk_order_item_order1`
     FOREIGN KEY (`order_id`)
-    REFERENCES `delivery`.`orderr` (`id`)
+    REFERENCES `orderr` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_order_item_product1`
     FOREIGN KEY (`product_id`)
-    REFERENCES `delivery`.`product` (`id`)
+    REFERENCES `product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -140,9 +140,9 @@ COMMENT = '		';
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`supplier`
+-- Table `supplier`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`supplier` (
+CREATE TABLE IF NOT EXISTS `supplier` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `type` VARCHAR(45) NULL DEFAULT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`supplier` (
   INDEX `fk_supplier_address1_idx` (`address_id` ASC),
   CONSTRAINT `fk_supplier_address1`
     FOREIGN KEY (`address_id`)
-    REFERENCES `delivery`.`address` (`id`)
+    REFERENCES `address` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -164,9 +164,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`product_supplier`
+-- Table `product_supplier`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`product_supplier` (
+CREATE TABLE IF NOT EXISTS `product_supplier` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `supplier_id` INT(11) NOT NULL,
   `product_id` INT(11) NOT NULL,
@@ -175,12 +175,12 @@ CREATE TABLE IF NOT EXISTS `delivery`.`product_supplier` (
   INDEX `fk_product_supplier_product1_idx` (`product_id` ASC),
   CONSTRAINT `fk_product_supplier_product1`
     FOREIGN KEY (`product_id`)
-    REFERENCES `delivery`.`product` (`id`)
+    REFERENCES `product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_product_supplier_supplier1`
     FOREIGN KEY (`supplier_id`)
-    REFERENCES `delivery`.`supplier` (`id`)
+    REFERENCES `supplier` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -188,29 +188,27 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`shipment`
+-- Table `shipment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`shipment` (
+CREATE TABLE IF NOT EXISTS `shipment` (
   `ship_id` INT(11) NOT NULL AUTO_INCREMENT,
   `order_id` INT(11) NOT NULL,
   PRIMARY KEY (`ship_id`),
   INDEX `fk_shipment_order1_idx` (`order_id` ASC),
   CONSTRAINT `fk_shipment_order1`
     FOREIGN KEY (`order_id`)
-    REFERENCES `delivery`.`orderr` (`id`)
+    REFERENCES `orderr` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-USE `delivery` ;
 
 -- -----------------------------------------------------
 -- procedure insert_product_category
 -- -----------------------------------------------------
 
 DELIMITER $$
-USE `delivery`$$
 CREATE PROCEDURE `insert_product_category` 
 (
 	IN category_name text,
@@ -244,7 +242,6 @@ DELIMITER ;
 -- -----------------------------------------------------
 
 DELIMITER $$
-USE `delivery`$$
 CREATE PROCEDURE `delete_product_category` 
 (
 	IN category_id text
@@ -301,7 +298,4 @@ WHERE child.lft BETWEEN l+1 AND r-1 AND ancestor.id IS NULL;
 
 END$$
 DELIMITER ;
-call print_cat();
-call insert_cat('chinese','starters');
-select * from product;
-insert into product(name,product_category_id) values ('test',17);
+

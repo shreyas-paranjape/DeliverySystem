@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import common.module.common.ui.view.SlidingTabStripView;
 import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.catalogue.ui.adapter.CategoryPagerAdapter;
-import in.co.foodamigo.foodapp.module.common.ui.view.tabstrip.SlidingTabStripView;
 
 public class OrderMenuFragment extends Fragment {
 
