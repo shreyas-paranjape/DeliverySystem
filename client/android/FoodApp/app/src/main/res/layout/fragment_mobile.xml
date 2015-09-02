@@ -5,7 +5,7 @@
 
         <variable
             name="mobile"
-            type="in.co.foodamigo.foodapp.profile.domain.Mobile" />
+            type="in.co.foodamigo.foodapp.module.profile.model.Mobile" />
     </data>
 
     <LinearLayout
