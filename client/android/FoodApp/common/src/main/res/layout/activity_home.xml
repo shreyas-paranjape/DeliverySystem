@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/navigation_drawer"
-        android:name="common.module.drawer.ui.NavigationDrawerFragment"
+        android:name="common.module.drawer.view.app.NavigationDrawerFragment"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"

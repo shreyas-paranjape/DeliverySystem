@@ -5,12 +5,14 @@
     <!-- RED -->
     <!--<color name="primary_color">#f44336</color>
     <color name="primary_color_trans">#ffcdd2</color>
-    <color name="primary_color_dark">#b71c1c</color>-->
+    <color name="primary_color_dark">#b71c1c</color>
+    <color name="text_color_Categories">#ffffff</color>-->
 
     <!-- YELLOW -->
     <color name="primary_color">#ffeb3b</color>
     <color name="primary_color_trans">#fffde7</color>
     <color name="primary_color_dark">#fbc02d</color>
+    <color name="text_color_Categories">#212121</color>
 
     <!-- ORANGE -->
     <!--<color name="primary_color">#ff9800</color>

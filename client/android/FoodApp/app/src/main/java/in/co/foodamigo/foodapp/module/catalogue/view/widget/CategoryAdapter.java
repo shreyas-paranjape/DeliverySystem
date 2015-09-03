@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.module.catalogue.model.Product;
 import in.co.foodamigo.foodapp.module.catalogue.model.ProductCategory;
 import in.co.foodamigo.foodapp.databinding.ItemProductBinding;
@@ -53,7 +54,7 @@ public class CategoryAdapter
         viewHolder.productCardView.btnProductAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                EventBus.getDefault().post(new AddProductToCartEvent());
             }
         });
     }
@@ -70,6 +71,9 @@ public class CategoryAdapter
             super(productCardView.getRoot());
             this.productCardView = productCardView;
         }
+    }
+
+    public static class AddProductToCartEvent {
     }
 }
 

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import common.module.common.ui.adapter.AbstractExpandableListAdapter;
+import common.module.common.view.widget.AbstractExpandableListAdapter;
 import in.co.foodamigo.foodapp.databinding.GroupPastOrderBinding;
 import in.co.foodamigo.foodapp.databinding.ItemPastOrderBinding;
 

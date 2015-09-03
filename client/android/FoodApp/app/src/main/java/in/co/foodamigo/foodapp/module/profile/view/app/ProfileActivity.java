@@ -1,19 +1,14 @@
 package in.co.foodamigo.foodapp.module.profile.view.app;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
@@ -25,16 +20,14 @@ import com.google.android.gms.plus.Plus;
 
 import java.io.IOException;
 
-import common.module.common.ui.AbstractDrawerActivity;
 import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.databinding.FragmentAddressBinding;
-import in.co.foodamigo.foodapp.databinding.FragmentDeliveryDetailsBinding;
 import in.co.foodamigo.foodapp.databinding.FragmentMobileBinding;
-import in.co.foodamigo.foodapp.module.order.view.app.PlaceOrderActivity;
+import in.co.foodamigo.foodapp.view.app.HomeActivity;
 
 
-public class ProfileActivity extends AbstractDrawerActivity implements
+public class ProfileActivity extends HomeActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
@@ -248,61 +241,6 @@ public class ProfileActivity extends AbstractDrawerActivity implements
         }
     }
 
-    public static class CartFragment extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.fragment_cart, container, false);
-            Button chkOut = (Button) v.findViewById(R.id.btn_checkout);
-            chkOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    EventBus.getDefault().post(new ShowCartEvent());
-                }
-            });
-            return v;
-        }
-
-        @Override
-        public Animator onCreateAnimator(int transit, boolean enter, int nextAnim) {
-            Display display = getActivity().getWindowManager().getDefaultDisplay();
-            Point size = new Point();
-            display.getSize(size);
-            float displayHeight = size.y;
-
-            Animator animator;
-            if (enter) {
-                animator = ObjectAnimator.ofFloat(this, "translationY", displayHeight, 0);
-            } else {
-                animator = ObjectAnimator.ofFloat(this, "translationY", 0, displayHeight);
-            }
-            animator.setDuration(300);
-            return animator;
-        }
-    }
-
-    public static class DeliveryDetailsFragment extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            FragmentDeliveryDetailsBinding binding = FragmentDeliveryDetailsBinding.inflate(inflater);
-            binding.btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    placeOrder();
-                }
-            });
-            return binding.getRoot();
-        }
-
-        public void placeOrder() {
-            EventBus.getDefault().post(new PlaceOrderActivity.PlaceOrderEvent());
-        }
-
-
-    }
-
     public static class LoginFragment extends Fragment {
 
         @Override
@@ -332,9 +270,6 @@ public class ProfileActivity extends AbstractDrawerActivity implements
             });
             return binding.getRoot();
         }
-    }
-
-    public static class ShowCartEvent {
     }
 
     public static class SigninEvent {

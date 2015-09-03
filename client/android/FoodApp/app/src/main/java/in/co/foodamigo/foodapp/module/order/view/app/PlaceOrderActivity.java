@@ -2,19 +2,11 @@ package in.co.foodamigo.foodapp.module.order.view.app;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import common.module.common.ui.AbstractDrawerActivity;
-import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.R;
-import in.co.foodamigo.foodapp.databinding.FragmentOrderConfirmBinding;
-import in.co.foodamigo.foodapp.databinding.FragmentOrderStatusBinding;
-import in.co.foodamigo.foodapp.module.profile.view.app.ProfileActivity;
+import in.co.foodamigo.foodapp.view.app.HomeActivity;
 
-public class PlaceOrderActivity extends AbstractDrawerActivity {
+public class PlaceOrderActivity extends HomeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,57 +45,18 @@ public class PlaceOrderActivity extends AbstractDrawerActivity {
 
     private class EventManager {
 
-        public void onEvent(PlaceOrderEvent event) {
+        public void onEvent(DeliveryDetailsFragment.PlaceOrderEvent event) {
             if (!isDestroyed()) {
                 replaceContent(new OrderStatusFragment());
             }
         }
 
-        public void onEvent(ConfirmOrderEvent event) {
+        public void onEvent(OrderConfirmFragment.ConfirmOrderEvent event) {
             if (!isDestroyed()) {
-                replaceContent(new ProfileActivity.DeliveryDetailsFragment());
+                replaceContent(new DeliveryDetailsFragment());
             }
         }
     }
 
 
-    public static class OrderConfirmFragment extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            FragmentOrderConfirmBinding binding = FragmentOrderConfirmBinding.inflate(inflater);
-            binding.btnConfirmOrder.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    confirmOrder();
-                }
-            });
-            return binding.getRoot();
-        }
-
-        private void confirmOrder() {
-            EventBus.getDefault().post(new ConfirmOrderEvent());
-        }
-
-
-    }
-
-    public static class OrderStatusFragment extends Fragment {
-
-        @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            FragmentOrderStatusBinding binding = FragmentOrderStatusBinding.inflate(inflater);
-            return binding.getRoot();
-        }
-    }
-
-    public static class PastOrdersFragment extends Fragment {
-    }
-
-    public static class ConfirmOrderEvent {
-    }
-
-    public static class PlaceOrderEvent {
-    }
 }

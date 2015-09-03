@@ -12,7 +12,8 @@ public class RealmApp extends Application {
         super.onCreate();
         RealmConfiguration config =
                 new RealmConfiguration.Builder(this)
-                        .deleteRealmIfMigrationNeeded()
+                        //.deleteRealmIfMigrationNeeded()
+                        .inMemory()
                         .build();
         Realm.setDefaultConfiguration(config);
     }

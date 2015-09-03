@@ -9,7 +9,7 @@ import org.apache.http.Header;
 
 import common.infra.json.JsonConverter;
 import common.infra.persist.RealmManager;
-import common.module.common.infra.NetworkErrorEvent;
+import common.module.common.view.app.NetworkFragment;
 import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.module.common.infra.net.ServiceClient;
 import in.co.foodamigo.foodapp.module.catalogue.view.app.CatalogueActivity;
@@ -32,7 +32,7 @@ public class ProductClient extends ServiceClient {
                     @Override
                     public void onFailure(int statusCode, Header[] headers,
                                           String responseString, Throwable throwable) {
-                        EventBus.getDefault().post(new NetworkErrorEvent());
+                        EventBus.getDefault().post(new NetworkFragment.NetworkErrorEvent());
                     }
 
                     @Override

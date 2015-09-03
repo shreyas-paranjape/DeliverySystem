@@ -52,8 +52,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/rounded_button"
-                    android:text="@string/product_add"
-                    android:textColor="@color/white" />
+                    android:text="@string/product_add" />
             </RelativeLayout>
 
             <View
