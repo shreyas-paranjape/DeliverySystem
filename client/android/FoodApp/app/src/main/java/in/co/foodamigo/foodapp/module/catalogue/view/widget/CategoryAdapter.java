@@ -11,9 +11,10 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import de.greenrobot.event.EventBus;
+import in.co.foodamigo.foodapp.databinding.ItemProductBinding;
 import in.co.foodamigo.foodapp.module.catalogue.model.Product;
 import in.co.foodamigo.foodapp.module.catalogue.model.ProductCategory;
-import in.co.foodamigo.foodapp.databinding.ItemProductBinding;
+import in.co.foodamigo.foodapp.module.order.view.app.CartFragment;
 
 public class CategoryAdapter
         extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
@@ -22,6 +23,7 @@ public class CategoryAdapter
     protected final Context context;
     protected final ProductCategory productCategory;
     protected final LayoutInflater inflater;
+
 
     public CategoryAdapter(Context context, ProductCategory productCategory) {
         this.context = context;
@@ -41,20 +43,20 @@ public class CategoryAdapter
         viewHolder.productCardView.setProduct(product);
 
         Picasso.with(context)
-                .load("file:///android_asset/food.jpg")
-                        //.load(product.getDish_url())
-                        //.resize(200, 200)
-                        //.centerCrop()
+                .load(product.getDish_url())
                 .into(viewHolder.productCardView.imgProduct, new Callback.EmptyCallback() {
                     @Override
                     public void onError() {
                         Log.d(TAG, "Could not load image");
                     }
                 });
+
+
         viewHolder.productCardView.btnProductAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().post(new AddProductToCartEvent());
+                EventBus.getDefault().post(
+                        new CartFragment.ModifyCartEvent(product, CartFragment.CartAction.ADD));
             }
         });
     }
@@ -73,36 +75,4 @@ public class CategoryAdapter
         }
     }
 
-    public static class AddProductToCartEvent {
-    }
 }
-
-
-/*public CategoryAdapter(Context context, ProductCategory parent) {
-        super(context);
-        if (parent != null) {
-            groupList = parent.getSubCategories();
-            for (ProductCategory category : groupList) {
-                childMapping.put(category, category.getProducts());
-            }
-        }
-    }
-
-    @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-        GroupCategoryBinding binding = GroupCategoryBinding.inflate(inflater);
-        binding.setProductCategory((ProductCategory) getGroup(groupPosition));
-        convertView = binding.getRoot();
-        return convertView;
-    }
-
-    @Override
-    public View getChildView(int groupPosition, int childPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
-        ItemProductBinding binding = ItemProductBinding.inflate(inflater);
-        // binding.imgProduct.setImageBitmap(bm);
-        convertView = binding.getRoot();
-        binding.setProduct((Product) getChild(groupPosition, childPosition));
-        return convertView;
-    }*/

@@ -24,10 +24,10 @@ import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.databinding.FragmentAddressBinding;
 import in.co.foodamigo.foodapp.databinding.FragmentMobileBinding;
-import in.co.foodamigo.foodapp.view.app.HomeActivity;
+import in.co.foodamigo.foodapp.module.common.view.app.AbstractDrawerActivity;
 
 
-public class ProfileActivity extends HomeActivity implements
+public class ProfileActivity extends AbstractDrawerActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
@@ -90,6 +90,11 @@ public class ProfileActivity extends HomeActivity implements
     @Override
     protected int getFragmentContainerId() {
         return R.id.container;
+    }
+
+    @Override
+    protected boolean needsDrawer() {
+        return false;
     }
 
     @Override

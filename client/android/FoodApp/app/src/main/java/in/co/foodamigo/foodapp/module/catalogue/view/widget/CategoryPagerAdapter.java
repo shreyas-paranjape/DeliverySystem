@@ -10,19 +10,16 @@ import java.util.List;
 
 import in.co.foodamigo.foodapp.module.catalogue.model.ProductCategory;
 import in.co.foodamigo.foodapp.module.catalogue.view.app.CategoryFragment;
-import io.realm.Realm;
-import io.realm.RealmQuery;
 
 
 public class CategoryPagerAdapter extends FragmentStatePagerAdapter {
 
     private final List<ProductCategory> rootCategories;
 
-    public CategoryPagerAdapter(android.app.FragmentManager fm) {
+    public CategoryPagerAdapter(android.app.FragmentManager fm,
+                                List<ProductCategory> rootCategories) {
         super(fm);
-        RealmQuery<ProductCategory> query = Realm.getDefaultInstance().where(ProductCategory.class);
-        query.equalTo("name", "food");
-        rootCategories = query.findAll().get(0).getSubCategories();
+        this.rootCategories = rootCategories;
     }
 
     @Override
@@ -43,12 +40,18 @@ public class CategoryPagerAdapter extends FragmentStatePagerAdapter {
     @NonNull
     private CategoryFragment getCategoryFragment(int position) {
         CategoryFragment fragment = new CategoryFragment();
+        setArgs(position, fragment);
+        return fragment;
+    }
+
+    private void setArgs(int position, CategoryFragment fragment) {
         if (rootCategories != null && position < rootCategories.size()) {
             Bundle args = new Bundle();
-            args.putParcelable("parent", Parcels.wrap(ProductCategory.class, rootCategories.get(position)));
+            args.putParcelable(
+                    "parent",
+                    Parcels.wrap(ProductCategory.class, rootCategories.get(position)));
             fragment.setArguments(args);
         }
-        return fragment;
     }
 
 }

@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import org.parceler.Parcels;
 
-import common.util.RealmListParcelConverter;
+import in.co.foodamigo.foodapp.util.RealmListParcelConverter;
 import in.co.foodamigo.foodapp.module.catalogue.model.ProductCategory;
 
 public class CatListParcelConverter  extends RealmListParcelConverter<ProductCategory> {

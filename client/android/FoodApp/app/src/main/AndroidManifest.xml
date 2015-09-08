@@ -3,24 +3,15 @@
     package="in.co.foodamigo.foodapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
-    <!-- <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" /> -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <application
-        android:label="@string/app_name"
         android:name=".CustomerApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".module.profile.view.app.ProfileActivity">
-
-        </activity>
-
         <activity android:name=".module.catalogue.view.app.CatalogueActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,45 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".module.order.view.app.PlaceOrderActivity">
+        <activity android:name=".module.profile.view.app.ProfileActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.catalogue.view.app.CatalogueActivity" />
         </activity>
-
-        <!--<service
-            android:name=".service.sync.AuthenticatorService"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator" />
-            </intent-filter>
-
+        <activity android:name=".module.order.view.app.OrderActivity">
             <meta-data
-                android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/authenticator" />
-        </service>
-
-        <provider
-            android:name=".service.sync.StubProvider"
-            android:authorities="in.co.foodamigo.foodapp"
-            android:exported="false"
-            android:syncable="true" />
-
-        <service
-            android:name=".service.sync.SyncService"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.content.SyncAdapter" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.content.SyncAdapter"
-                android:resource="@xml/syncadapter" />
-        </service>-->
-
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.catalogue.view.app.CatalogueActivity" />
+        </activity>
     </application>
-
 </manifest>

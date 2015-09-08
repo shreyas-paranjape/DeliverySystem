@@ -1,14 +1,15 @@
 package in.co.foodamigo.foodapp.module.order.model;
 
+import org.parceler.Parcel;
+
 import in.co.foodamigo.foodapp.module.catalogue.model.Product;
-
-import java.io.Serializable;
-
+import io.realm.OrderItemRealmProxy;
 import io.realm.RealmObject;
 
-public class OrderItem extends RealmObject implements Serializable {
-
-    private static final long serialVersionUID = 1;
+@Parcel(implementations = {OrderItemRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {OrderItem.class})
+public class OrderItem extends RealmObject {
 
     private Order order;
     private Product product;
@@ -46,4 +47,5 @@ public class OrderItem extends RealmObject implements Serializable {
     public void setCharge(double charge) {
         this.charge = charge;
     }
+
 }

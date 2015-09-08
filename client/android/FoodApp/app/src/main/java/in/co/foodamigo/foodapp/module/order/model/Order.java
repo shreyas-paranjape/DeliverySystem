@@ -1,15 +1,22 @@
 package in.co.foodamigo.foodapp.module.order.model;
 
-import java.io.Serializable;
+import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
 
+import in.co.foodamigo.foodapp.module.order.infra.util.OrderItemParcelConverter;
+import io.realm.OrderRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-public class Order extends RealmObject implements Serializable {
+@Parcel(implementations = {OrderRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {Order.class})
+public class Order extends RealmObject {
 
-    private static final long serialVersionUID = 1;
-
+    @PrimaryKey
     private long id;
+
     private long number;
     private RealmList<OrderItem> orderItems;
     private double tax;
@@ -28,6 +35,7 @@ public class Order extends RealmObject implements Serializable {
         return orderItems;
     }
 
+    @ParcelPropertyConverter(OrderItemParcelConverter.class)
     public void setOrderItems(RealmList<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
@@ -63,4 +71,5 @@ public class Order extends RealmObject implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

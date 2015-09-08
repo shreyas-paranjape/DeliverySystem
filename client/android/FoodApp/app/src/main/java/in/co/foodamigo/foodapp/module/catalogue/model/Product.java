@@ -1,11 +1,8 @@
 package in.co.foodamigo.foodapp.module.catalogue.model;
 
 import org.parceler.Parcel;
-import org.parceler.ParcelPropertyConverter;
 
-import in.co.foodamigo.foodapp.module.catalogue.infra.util.SuppListParcelConverter;
 import io.realm.ProductRealmProxy;
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -18,8 +15,9 @@ public class Product extends RealmObject {
     private long id;
 
     private String name;
+    private String description;
     private double rate;
-    private RealmList<Supplier> productSuppliers;
+    private Supplier productSupplier;
     private String dish_url;
 
     public Product() {
@@ -37,6 +35,14 @@ public class Product extends RealmObject {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }
@@ -45,13 +51,12 @@ public class Product extends RealmObject {
         this.id = id;
     }
 
-    public RealmList<Supplier> getProductSuppliers() {
-        return productSuppliers;
+    public Supplier getProductSupplier() {
+        return productSupplier;
     }
 
-    @ParcelPropertyConverter(SuppListParcelConverter.class)
-    public void setProductSuppliers(RealmList<Supplier> productSuppliers) {
-        this.productSuppliers = productSuppliers;
+    public void setProductSupplier(Supplier productSupplier) {
+        this.productSupplier = productSupplier;
     }
 
     public double getRate() {
@@ -69,6 +74,5 @@ public class Product extends RealmObject {
     public void setDish_url(String dish_url) {
         this.dish_url = dish_url;
     }
-
 
 }

@@ -21,6 +21,14 @@
             android:textSize="14sp"
             android:textStyle="" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:text="@{mobile.number}"
+            android:textSize="14sp"
+            android:textStyle="" />
+
         <Button
             android:id="@+id/btnNext"
             android:layout_width="match_parent"

@@ -4,7 +4,7 @@
     android:orientation="vertical">
 
 
-    <common.module.common.view.widget.SlidingTabStripView
+    <in.co.foodamigo.foodapp.module.common.view.widget.SlidingTabStripView
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

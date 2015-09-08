@@ -7,9 +7,9 @@ import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
 
-import common.infra.json.JsonConverter;
-import common.infra.persist.RealmManager;
-import common.module.common.view.app.NetworkFragment;
+import in.co.foodamigo.foodapp.infra.json.JsonConverter;
+import in.co.foodamigo.foodapp.infra.persist.RealmManager;
+import in.co.foodamigo.foodapp.module.common.view.app.NetworkFragment;
 import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.module.common.infra.net.ServiceClient;
 import in.co.foodamigo.foodapp.module.catalogue.view.app.CatalogueActivity;

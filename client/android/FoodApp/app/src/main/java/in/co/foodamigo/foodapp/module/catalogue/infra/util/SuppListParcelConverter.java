@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 import org.parceler.Parcels;
 
-import common.util.RealmListParcelConverter;
+import in.co.foodamigo.foodapp.util.RealmListParcelConverter;
 import in.co.foodamigo.foodapp.module.catalogue.model.Supplier;
 
 public class SuppListParcelConverter extends RealmListParcelConverter<Supplier> {

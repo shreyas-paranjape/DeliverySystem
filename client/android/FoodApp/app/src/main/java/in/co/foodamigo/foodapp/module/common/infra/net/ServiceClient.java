@@ -1,6 +1,6 @@
 package in.co.foodamigo.foodapp.module.common.infra.net;
 
-import common.util.HttpClient;
+import in.co.foodamigo.foodapp.util.HttpClient;
 
 public class ServiceClient extends HttpClient {
 

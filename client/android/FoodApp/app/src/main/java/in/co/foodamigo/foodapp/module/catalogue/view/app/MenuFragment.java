@@ -9,30 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import common.module.common.view.widget.SlidingTabStripView;
-import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.R;
-import in.co.foodamigo.foodapp.module.catalogue.view.widget.CategoryAdapter;
+import in.co.foodamigo.foodapp.module.catalogue.model.CategoryRepository;
 import in.co.foodamigo.foodapp.module.catalogue.view.widget.CategoryPagerAdapter;
+import in.co.foodamigo.foodapp.module.common.view.widget.SlidingTabStripView;
 
 public class MenuFragment extends Fragment {
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_menu, container, false);
-        /*ViewGroup orderStatusBox = (ViewGroup) rootView.findViewById(R.id.fl_cartContainer);
-        orderStatusBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post(new ShowOrderStatusEvent());
-            }
-        });*/
         initView(rootView);
         return rootView;
     }
@@ -60,7 +52,10 @@ public class MenuFragment extends Fragment {
 
     @NonNull
     private ViewPager initPager(View rootView) {
-        PagerAdapter mPagerAdapter = new CategoryPagerAdapter(getActivity().getFragmentManager());
+        PagerAdapter mPagerAdapter =
+                new CategoryPagerAdapter(
+                        getActivity().getFragmentManager(),
+                        CategoryRepository.getCategories());
         ViewPager mPager = (ViewPager) rootView.findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
         mPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -73,10 +68,6 @@ public class MenuFragment extends Fragment {
     }
 
     public static class ShowOrderStatusEvent {
-    }
-
-    public void onEvent(CategoryAdapter.AddProductToCartEvent event) {
-
     }
 
 }
