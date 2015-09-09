@@ -31,4 +31,5 @@
     <string name="btn_use_current_location">Use current location</string>
     <string name="or">Or</string>
     <string name="enter_new_add">Enter new address</string>
+    <string name="btn_save">Save</string>
 </resources>

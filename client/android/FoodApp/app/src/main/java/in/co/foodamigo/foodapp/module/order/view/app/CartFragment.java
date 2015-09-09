@@ -35,6 +35,7 @@ public class CartFragment extends Fragment {
         rootBinding.btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                orderManager.placeOrder();
                 EventBus.getDefault().post(new CheckOutEvent(orderManager.getOrder().getId()));
 
             }

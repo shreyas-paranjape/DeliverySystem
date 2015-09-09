@@ -89,7 +89,7 @@ public class CatalogueActivity extends AbstractDrawerActivity {
         public void onEvent(NavigationDrawerFragment.DrawerItemClickedEvent event) {
             if (!isDestroyed()) {
                 replaceContent(
-                        getDrawerController().getFragment(event.getGroup(), event.getChild()),
+                        getDrawerController().getFragment(event.getPosition()),
                         false);
             }
         }

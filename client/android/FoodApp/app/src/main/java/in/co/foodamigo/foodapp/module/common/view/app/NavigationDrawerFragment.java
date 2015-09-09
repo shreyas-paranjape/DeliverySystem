@@ -11,12 +11,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.module.common.controller.DrawerController;
-import in.co.foodamigo.foodapp.module.common.view.widget.NavigationDrawerAdapter;
+import in.co.foodamigo.foodapp.module.common.view.widget.NavigationDrawerListAdapter;
 
 /**
  * "https://developer.android.com/design/patterns/navigation-drawer.html#Interaction"
@@ -27,7 +28,7 @@ public class NavigationDrawerFragment extends Fragment {
     private DrawerLayout mDrawerLayout;
     private View mFragmentContainerView;
 
-    private ExpandableListView mDrawerListView;
+    private ListView mDrawerListView;
     ActionBarDrawerToggle mDrawerToggle;
 
     public NavigationDrawerFragment() {
@@ -44,7 +45,7 @@ public class NavigationDrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
-        mDrawerListView = (ExpandableListView) v.findViewById(R.id.elv_drawer);
+        mDrawerListView = (ListView) v.findViewById(R.id.elv_drawer);
         return v;
     }
 
@@ -85,34 +86,26 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    private void initListView(ExpandableListView mDrawerListView) {
+    private void initListView(ListView mDrawerListView) {
         mDrawerListView.setAdapter(
-                new NavigationDrawerAdapter(getActivity(), drawerController.getDrawerItemGroups()));
-        for (int i = 0; i < drawerController.getDrawerItemGroups().size(); i++) {
-            mDrawerListView.expandGroup(i);
-        }
-        mDrawerListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+                new NavigationDrawerListAdapter(
+                        getActivity(),
+                        R.layout.item_drawer_link,
+                        drawerController.getDrawerItems()));
+        mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                return true;
-            }
-        });
-        mDrawerListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                selectItem(groupPosition, childPosition);
-                return true;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectItem(position);
             }
         });
     }
 
 
-    private void selectItem(int group, int child) {
+    private void selectItem(int position) {
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
-        EventBus.getDefault().post(new DrawerItemClickedEvent(group, child));
+        EventBus.getDefault().post(new DrawerItemClickedEvent(position));
     }
 
     @NonNull
@@ -144,20 +137,14 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     public static class DrawerItemClickedEvent {
-        private final int group;
-        private final int child;
+        private final int position;
 
-        public DrawerItemClickedEvent(int child, int group) {
-            this.child = child;
-            this.group = group;
+        public DrawerItemClickedEvent(int position) {
+            this.position = position;
         }
 
-        public int getGroup() {
-            return group;
-        }
-
-        public int getChild() {
-            return child;
+        public int getPosition() {
+            return position;
         }
 
     }

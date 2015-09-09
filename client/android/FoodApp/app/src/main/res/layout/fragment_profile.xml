@@ -5,7 +5,8 @@
 
         <variable
             name="customer"
-            type="in.co.foodamigo.foodapp.module.profile.model.Customer" />
+            type="in.co.foodamigo.foodapp.module.profile.view.model.CustomerViewModel" />
+
     </data>
 
     <LinearLayout
@@ -14,17 +15,17 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{customer.userName}"
             android:textSize="14sp"
             android:textStyle="" />
 
         <EditText
+            android:id="@+id/etMobileNumber"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
-            android:text="@{customer.mobileNumber}"
             android:textSize="14sp"
             android:textStyle="" />
 
@@ -43,11 +44,18 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/etNewAddress"
+            android:id="@+id/etAddress"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_new_add"
             android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/btn_save" />
 
     </LinearLayout>
 </layout>

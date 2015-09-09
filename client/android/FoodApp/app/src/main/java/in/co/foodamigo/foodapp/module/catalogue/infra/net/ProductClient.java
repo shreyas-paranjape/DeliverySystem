@@ -7,13 +7,13 @@ import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
 
+import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.infra.json.JsonConverter;
 import in.co.foodamigo.foodapp.infra.persist.RealmManager;
-import in.co.foodamigo.foodapp.module.common.view.app.NetworkFragment;
-import de.greenrobot.event.EventBus;
-import in.co.foodamigo.foodapp.module.common.infra.net.ServiceClient;
-import in.co.foodamigo.foodapp.module.catalogue.view.app.CatalogueActivity;
 import in.co.foodamigo.foodapp.module.catalogue.model.ProductCategory;
+import in.co.foodamigo.foodapp.module.catalogue.view.app.CatalogueActivity;
+import in.co.foodamigo.foodapp.module.common.infra.net.ServiceClient;
+import in.co.foodamigo.foodapp.module.common.view.app.NetworkFragment;
 
 public class ProductClient extends ServiceClient {
 
@@ -38,7 +38,7 @@ public class ProductClient extends ServiceClient {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers,
                                           String responseString) {
-                        RealmManager.persist(context,
+                        RealmManager.persist(
                                 JsonConverter.unmarshal(responseString, ProductCategory.class));
                         EventBus.getDefault().post(new CatalogueActivity.CatalogueRefreshedEvent());
                     }

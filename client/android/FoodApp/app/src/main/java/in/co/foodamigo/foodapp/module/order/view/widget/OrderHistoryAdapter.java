@@ -5,23 +5,20 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import in.co.foodamigo.foodapp.module.common.view.widget.AbstractExpandableListAdapter;
+import java.util.HashMap;
+import java.util.List;
+
 import in.co.foodamigo.foodapp.databinding.GroupPastOrderBinding;
 import in.co.foodamigo.foodapp.databinding.ItemPastOrderBinding;
-
-import java.util.HashMap;
-
+import in.co.foodamigo.foodapp.module.common.view.widget.AbstractExpandableListAdapter;
 import in.co.foodamigo.foodapp.module.order.model.Order;
 import in.co.foodamigo.foodapp.module.order.model.OrderItem;
-import io.realm.Realm;
-import io.realm.RealmResults;
 
-public class PastOrderAdapter extends AbstractExpandableListAdapter<Order, OrderItem> {
+public class OrderHistoryAdapter extends AbstractExpandableListAdapter<Order, OrderItem> {
 
-    public PastOrderAdapter(Context context) {
+    public OrderHistoryAdapter(Context context, List<Order> orders) {
         super(context);
-        RealmResults<Order> allOrders = Realm.getDefaultInstance().allObjects(Order.class);
-        groupList = allOrders.subList(0, allOrders.size());
+        this.groupList = orders;
         childMapping = new HashMap<>();
         for (Order order : groupList) {
             childMapping.put(order, order.getOrderItems());
