@@ -5,7 +5,7 @@
 
         <variable
             name="product"
-            type="in.co.foodamigo.foodapp.catalogue.domain.Product" />
+            type="in.co.foodamigo.foodapp.module.catalogue.model.Product" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <ImageView
@@ -23,51 +23,75 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/desc_product_image"
-                android:scaleType="centerCrop" />
+                android:contentDescription="@string/desc_product_image" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@{product.name}"
-                android:textSize="15sp" />
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{product.name}"
+                        android:typeface="sans"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{product.productSupplier.name}"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_product_rate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_weight="1"
                     android:text="@{String.valueOf(product.rate)}"
-                    android:textColor="@color/grey_darkest" />
+                    android:typeface="sans"
+                    android:layout_gravity="end"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="0dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@{product.description}"
+                    android:textSize="12sp"
+                    android:lines="4"/>
 
                 <Button
                     android:id="@+id/btn_product_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/rounded_button"
-                    android:text="@string/product_add"
-                    android:textColor="@color/white" />
-            </RelativeLayout>
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/primary_color"
+                    android:textColor="@color/grey_darkest"
+                    android:textSize="12sp"
+                    android:text="@string/product_add" />
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                android:layout_marginTop="50dp"
-                android:alpha="0.2"
-                android:background="@color/grey_normal"
-                android:gravity="center_horizontal" />
-
-
+            </LinearLayout>
         </LinearLayout>
-
     </android.support.v7.widget.CardView>
 </layout>

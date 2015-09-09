@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">FoodApp</string>
-    <string name="title_section1">Section 1</string>
+    <string name="app_name">Food Amigo</string>
+    <string name="title_Catalogue">Panjim, Goa</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -24,4 +24,11 @@
     <string name="link_image">link icon</string>
     <string name="retry">Retry</string>
     <string name="product_add">Add</string>
+    <string name="app_city">Panjim, Goa</string>
+    <string name="Rs">\u20B9</string>
+    <string name="dialog_order_cancel_message">Are you sure you want to cancel the current order</string>
+    <string name="dialog_order_cancel_title">Cancel order</string>
+    <string name="btn_use_current_location">Use current location</string>
+    <string name="or">Or</string>
+    <string name="enter_new_add">Enter new address</string>
 </resources>

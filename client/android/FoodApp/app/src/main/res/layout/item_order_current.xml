@@ -5,7 +5,7 @@
 
         <variable
             name="orderItem"
-            type="in.co.foodamigo.foodapp.order.domain.OrderItem" />
+            type="in.co.foodamigo.foodapp.module.order.model.OrderItem" />
     </data>
 
     <LinearLayout
@@ -17,24 +17,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="@{orderItem.product.name}"
-             />
+            android:text="@{orderItem.product.name}" />
         <!-- android:textColor="@color/secondary_color" -->
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-             />
+            android:text="@{String.valueOf(orderItem.quantity)}" />
         <!-- android:textColor="@color/secondary_color" -->
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-            />
+            android:text="@{String.valueOf(orderItem.charge)}" />
         <!-- android:textColor="@color/secondary_color" -->
 
     </LinearLayout>

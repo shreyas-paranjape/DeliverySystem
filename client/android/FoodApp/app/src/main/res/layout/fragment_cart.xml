@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey_dark"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <data>
 
-    <Button
-        android:id="@+id/btn_checkout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <variable
+            name="order"
+            type="in.co.foodamigo.foodapp.module.order.model.Order" />
+    </data>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--android:paddingTop="?android:attr/actionBarSize"-->
+
+        <LinearLayout
+            android:id="@+id/vg_cartToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageButton1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:contentDescription="Cart"
+                android:src="@drawable/ic_shopping_cart_black_24dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@{@string/Rs + order.total}" />
+
+            <Button
+                android:id="@+id/btn_checkout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:text="CHECKOUT" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Add new Item" />
+
+        <ListView
+            android:id="@+id/lv_cart_items"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+</layout>
