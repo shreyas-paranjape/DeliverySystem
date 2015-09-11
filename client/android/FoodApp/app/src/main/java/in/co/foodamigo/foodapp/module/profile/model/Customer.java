@@ -1,12 +1,20 @@
 package in.co.foodamigo.foodapp.module.profile.model;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
+
 import java.io.Serializable;
 
 import in.co.foodamigo.foodapp.module.common.model.Address;
+import in.co.foodamigo.foodapp.module.profile.infra.util.AddressListParcelConverter;
+import io.realm.CustomerRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
+@Parcel(implementations = {CustomerRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {Customer.class})
 public class Customer extends RealmObject implements Serializable {
 
     private static final long serialVersionUID = 1;
@@ -16,7 +24,7 @@ public class Customer extends RealmObject implements Serializable {
 
     private String mobileNumber;
     private String userName;
-    private RealmList<Address> addresses;
+    private RealmList<Address> addresses = new RealmList<>();
 
     public long getId() {
         return id;
@@ -46,6 +54,7 @@ public class Customer extends RealmObject implements Serializable {
         return addresses;
     }
 
+    @ParcelPropertyConverter(AddressListParcelConverter.class)
     public void setAddresses(RealmList<Address> addresses) {
         this.addresses = addresses;
     }

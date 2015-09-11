@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:contentDescription="Cart"
+                android:contentDescription="@string/cart"
                 android:src="@drawable/ic_shopping_cart_black_24dp" />
 
             <TextView
@@ -41,15 +41,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="4"
-                android:text="CHECKOUT" />
+                android:layout_weight="3"
+                android:text="@string/checkout" />
 
         </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Add new Item" />
+            android:text="@string/add_new_item" />
 
         <ListView
             android:id="@+id/lv_cart_items"

@@ -15,9 +15,8 @@ import in.co.foodamigo.foodapp.module.common.view.app.AbstractDrawerActivity;
 import in.co.foodamigo.foodapp.module.common.view.app.NavigationDrawerFragment;
 import in.co.foodamigo.foodapp.module.common.view.app.NetworkFragment;
 import in.co.foodamigo.foodapp.module.order.view.app.CartFragment;
-import in.co.foodamigo.foodapp.module.order.view.app.OrderStatusFragment;
 import in.co.foodamigo.foodapp.module.order.view.app.OrderActivity;
-import in.co.foodamigo.foodapp.module.profile.view.app.ProfileFragment;
+import in.co.foodamigo.foodapp.module.order.view.app.OrderStatusFragment;
 
 public class CatalogueActivity extends AbstractDrawerActivity {
 
@@ -46,7 +45,15 @@ public class CatalogueActivity extends AbstractDrawerActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.global, menu);
         return true;
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (SlidingUpPanelLayout.PanelState.EXPANDED == cartHolder.getPanelState()) {
+            cartHolder.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -71,7 +78,7 @@ public class CatalogueActivity extends AbstractDrawerActivity {
 
     @Override
     protected Fragment getInitialFragment() {
-        return new ProfileFragment();
+        return new MenuFragment();
     }
 
     @Override
@@ -89,7 +96,7 @@ public class CatalogueActivity extends AbstractDrawerActivity {
         public void onEvent(NavigationDrawerFragment.DrawerItemClickedEvent event) {
             if (!isDestroyed()) {
                 replaceContent(
-                        getDrawerController().getFragment(event.getGroup(), event.getChild()),
+                        getDrawerController().getFragment(event.getPosition()),
                         false);
             }
         }

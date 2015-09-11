@@ -1,7 +1,9 @@
 package in.co.foodamigo.foodapp.module.order.model;
 
+import java.util.List;
 import java.util.Random;
 
+import in.co.foodamigo.foodapp.infra.persist.RealmManager;
 import in.co.foodamigo.foodapp.module.catalogue.model.Product;
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -13,24 +15,20 @@ public class OrderManagerImpl implements OrderManager {
     private final Order order;
 
     public OrderManagerImpl() {
-        Realm.getDefaultInstance().beginTransaction();
-        order = Realm.getDefaultInstance().createObject(Order.class);
+        order = new Order();
         order.setId(new Random().nextLong());
-        Realm.getDefaultInstance().commitTransaction();
     }
 
     @Override
     public void modifyItem(Product product, int quantity) {
-        Realm.getDefaultInstance().beginTransaction();
         OrderItem orderItem = getItemForProduct(product);
         if (orderItem == null) {
-            orderItem = Realm.getDefaultInstance().createObject(OrderItem.class);
+            orderItem = new OrderItem();
             orderItem.setProduct(product);
             orderItem.setOrder(order);
             order.getOrderItems().add(orderItem);
         }
         changeProductQuantity(orderItem, quantity);
-        Realm.getDefaultInstance().commitTransaction();
     }
 
     private OrderItem getItemForProduct(Product product) {
@@ -69,5 +67,16 @@ public class OrderManagerImpl implements OrderManager {
         productOrderItem.setQuantity(productOrderItem.getQuantity() + quantity);
         productOrderItem.setCharge(
                 productOrderItem.getProduct().getRate() * productOrderItem.getQuantity());
+    }
+
+    @Override
+    public List<Order> getOrders() {
+        RealmQuery<Order> orders = Realm.getDefaultInstance().where(Order.class);
+        return orders.findAll();
+    }
+
+    @Override
+    public void placeOrder() {
+        RealmManager.persist(order);
     }
 }

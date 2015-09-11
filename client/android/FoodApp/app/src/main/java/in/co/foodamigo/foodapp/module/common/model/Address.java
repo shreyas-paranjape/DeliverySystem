@@ -15,10 +15,26 @@ public class Address extends RealmObject {
     private long id;
 
     private String lineOne;
-    private String lineTwo;
-    private String locality;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
+
+    public Address() {
+    }
+
+    public Address(String lineOne) {
+        this.lineOne = lineOne;
+    }
+
+    public Address(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Address(String lineOne, double longitude, double latitude) {
+        this.lineOne = lineOne;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
 
     public long getId() {
         return id;
@@ -36,35 +52,19 @@ public class Address extends RealmObject {
         this.lineOne = lineOne;
     }
 
-    public String getLineTwo() {
-        return lineTwo;
-    }
-
-    public void setLineTwo(String lineTwo) {
-        this.lineTwo = lineTwo;
-    }
-
-    public String getLocality() {
-        return locality;
-    }
-
-    public void setLocality(String locality) {
-        this.locality = locality;
-    }
-
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }

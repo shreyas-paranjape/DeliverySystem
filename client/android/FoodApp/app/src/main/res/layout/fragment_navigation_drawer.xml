@@ -5,7 +5,7 @@
     android:background="@color/white">
 
 
-    <ExpandableListView
+    <ListView
         android:id="@+id/elv_drawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

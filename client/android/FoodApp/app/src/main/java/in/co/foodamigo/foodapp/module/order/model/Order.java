@@ -3,6 +3,8 @@ package in.co.foodamigo.foodapp.module.order.model;
 import org.parceler.Parcel;
 import org.parceler.ParcelPropertyConverter;
 
+import java.util.Date;
+
 import in.co.foodamigo.foodapp.module.order.infra.util.OrderItemParcelConverter;
 import io.realm.OrderRealmProxy;
 import io.realm.RealmList;
@@ -18,10 +20,11 @@ public class Order extends RealmObject {
     private long id;
 
     private long number;
-    private RealmList<OrderItem> orderItems;
+    private RealmList<OrderItem> orderItems = new RealmList<>();
     private double tax;
     private double total;
     private String status;
+    private Date orderDate = new Date();
 
     public long getId() {
         return id;
@@ -72,4 +75,11 @@ public class Order extends RealmObject {
         this.status = status;
     }
 
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 }
