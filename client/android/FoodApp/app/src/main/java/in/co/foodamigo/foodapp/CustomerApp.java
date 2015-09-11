@@ -13,6 +13,7 @@ public class CustomerApp extends RealmApp {
         super.onCreate();
         createDemoData();
         FontsOverride.setDefaultFont(this, "MONOSPACE", "Raleway-Thin.ttf");
+        FontsOverride.setDefaultFont(this, "SERIF", "Raleway-Regular.ttf");
     }
 
     private void createDemoData() {
@@ -29,7 +30,7 @@ public class CustomerApp extends RealmApp {
         chickenBiryani.setDescription("Popular indian dish which is a mix of rice and well marinated " +
                 "chicken which is infused with indian spices.");
         chickenBiryani.setRate(220);
-        chickenBiryani.setDish_url("file:///android_asset/chick_bir.JPG");
+        chickenBiryani.setDish_url("file:///android_asset/chick bir.JPG");
         chickenBiryani.setProductSupplier(awesomeRest);
 
         Product butterChicken = objectStore.createObject(Product.class);
@@ -38,53 +39,58 @@ public class CustomerApp extends RealmApp {
         butterChicken.setDescription("North indian dish has a base of tomato puree and cream. " +
                 "Ground cashews are added to enhance the flavour and texture");
         butterChicken.setRate(220);
-        butterChicken.setDish_url("file:///android_asset/but_chick.jpg");
+        butterChicken.setDish_url("file:///android_asset/but chick.jpg");
         butterChicken.setProductSupplier(awesomeRest);
 
-        Product vindalo = objectStore.createObject(Product.class);
-        vindalo.setId(3);
-        vindalo.setName("Chicken Vindalo");
-        vindalo.setDescription("Goan traditional dish with chicken cooked in " +
-                "a spicy gravy using 13 different spices");
-        vindalo.setRate(100);
-        vindalo.setProductSupplier(awesomeRest);
-        vindalo.setDish_url("file:///android_asset/1.jpg");
 
-        Product xacuti = objectStore.createObject(Product.class);
-        xacuti.setId(4);
-        xacuti.setName("Chicken Xacuti");
-        xacuti.setDescription("Goan traditional dish with chicken cooked in " +
+        Product prawnCurry = objectStore.createObject(Product.class);
+        prawnCurry.setId(3);
+        prawnCurry.setName("Prawn Curry");
+        prawnCurry.setDescription("Goan traditional dish with prawn cooked in " +
                 "a spicy gravy using 13 different spices");
-        xacuti.setRate(500);
-        xacuti.setProductSupplier(awesomeRest);
-        xacuti.setDish_url("file:///android_asset/2.jpg");
+        prawnCurry.setRate(1000);
+        prawnCurry.setProductSupplier(awesomeRest);
+        prawnCurry.setDish_url("file:///android_asset/Prawn curry.jpg");
 
-        Product curry = objectStore.createObject(Product.class);
-        curry.setId(5);
-        curry.setName("Mutton Curry");
-        curry.setDescription("Goan traditional dish with chicken cooked in " +
-                "a spicy gravy using 13 different spices");
-        curry.setRate(1000);
-        curry.setProductSupplier(awesomeRest);
-        curry.setDish_url("file:///android_asset/3.jpg");
+        Product chicSukha = objectStore.createObject(Product.class);
+        chicSukha.setId(4);
+        chicSukha.setName("Chicken Sukha");
+        chicSukha.setDescription("Goan traditional dish with chicken");
+        chicSukha.setRate(1000);
+        chicSukha.setProductSupplier(awesomeRest);
+        chicSukha.setDish_url("file:///android_asset/chic sukha.jpg");
+
+        Product butterChickenSand = objectStore.createObject(Product.class);
+        butterChickenSand.setId(5);
+        butterChickenSand.setName("Chicken Sandwich");
+        butterChickenSand.setDescription("Goan traditional dish with chicken");
+        butterChickenSand.setRate(1000);
+        butterChickenSand.setProductSupplier(awesomeRest);
+        butterChickenSand.setDish_url("file:///android_asset/but chick sand.jpg");
 
         String[] categories = new String[]{"Snacks", "Goan", "Oriental", "Rice", "Breads", "Dessert"};
+
         ProductCategory food = objectStore.createObject(ProductCategory.class);
         food.setName("food");
         food.setId(1);
+
         for (int i = 0; i < categories.length; i++) {
             ProductCategory prodCat = objectStore.createObject(ProductCategory.class);
             prodCat.setId(i + 2);
             prodCat.setName(categories[i]);
-            if(i == 0){
+            if (i == 0) {
                 prodCat.getProducts().add(chickenBiryani);
                 prodCat.getProducts().add(butterChicken);
-            }else{
-                prodCat.getProducts().add(vindalo);
-                prodCat.getProducts().add(curry);
+                prodCat.getProducts().add(prawnCurry);
+                prodCat.getProducts().add(chicSukha);
+                prodCat.getProducts().add(butterChickenSand);
+            } else {
+                prodCat.getProducts().add(butterChickenSand);
+                prodCat.getProducts().add(chicSukha);
+                prodCat.getProducts().add(prawnCurry);
+                prodCat.getProducts().add(butterChicken);
+                prodCat.getProducts().add(chickenBiryani);
             }
-
-            //prodCat.getProducts().add(curry);
             food.getSubCategories().add(prodCat);
         }
 

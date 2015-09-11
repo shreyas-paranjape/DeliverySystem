@@ -1,4 +1,4 @@
-(ns srv.infra.util
+(ns delivery.infra.util
   (:require [taoensso.timbre :as timbre]))
 
 (timbre/refer-timbre)

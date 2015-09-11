@@ -1,4 +1,4 @@
-(ns srv.infra.db
+(ns delivery.infra.db
   (:require [korma.core :as core]
             [korma.db :as db]
             [environ.core :refer [env]]))
@@ -16,6 +16,7 @@
 (db/defdb delivery db)
 
 ;; Entities
+(declare address)
 (core/defentity address)
 
 

@@ -1,4 +1,4 @@
-(ns srv.infra.web
+(ns delivery.infra.web
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer
@@ -7,10 +7,10 @@
              [wrap-json-response wrap-json-body wrap-json-params]]
             [ring.middleware.params :refer
              [wrap-params]]
-            [srv.domain.customer :as cust]
-            [srv.domain.order :as ord]
-            [srv.domain.product :as prod]
-            [srv.middleware.keywordize :as mw]))
+            [delivery.domain.party :as cust]
+            [delivery.domain.order :as ord]
+            [delivery.domain.product :as prod]
+            [delivery.middleware.keywordize :as mw]))
 
 
 

@@ -1,6 +1,6 @@
-(ns srv.domain.order
+(ns delivery.domain.order
   (:require [korma.core :as orm]
-            [srv.domain.product :as prod]
+            [delivery.domain.product :as prod]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]))
 

@@ -175,7 +175,7 @@ public class SlidingTabStripView extends HorizontalScrollView {
         TextView textView = new TextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, TAB_VIEW_TEXT_SIZE_SP);
-        textView.setTypeface(Typeface.DEFAULT_BOLD);
+        textView.setTypeface(Typeface.SERIF, Typeface.BOLD);
         textView.setTextColor(context.getResources().getColor(R.color.text_color_Categories));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -187,10 +187,10 @@ public class SlidingTabStripView extends HorizontalScrollView {
             textView.setBackgroundResource(outValue.resourceId);
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            // If we're running on ICS or newer, enable all-caps to match the Action Bar tab style
-            textView.setAllCaps(true);
-        }
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        // If we're running on ICS or newer, enable all-caps to match the Action Bar tab style
+        //textView.setAllCaps(true);
+        //}
 
         int padding = (int) (TAB_VIEW_PADDING_DIPS * getResources().getDisplayMetrics().density);
         textView.setPadding(padding, 0, padding, (padding / 2));

@@ -3,8 +3,7 @@
     package="in.co.foodamigo.foodapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".CustomerApp"
@@ -29,5 +28,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.catalogue.view.app.CatalogueActivity" />
         </activity>
+
+        <service
+            android:name=".module.catalogue.view.app.CatalogueRefreshService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
+
 </manifest>

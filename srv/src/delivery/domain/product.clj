@@ -1,5 +1,5 @@
-(ns srv.domain.product
-  (:require [srv.infra.db :as db]
+(ns delivery.domain.product
+  (:require [delivery.infra.db :as db]
             [korma.core :as orm]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]

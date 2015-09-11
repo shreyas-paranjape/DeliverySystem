@@ -1,6 +1,6 @@
-(ns srv.infra.comm
+(ns delivery.infra.comm
   (:require [postal.core :as mailer]
-            [srv.infra.util :as util]
+            [delivery.infra.util :as util]
             [org.httpkit.client :as http])
   (:import (java.net URLEncoder)))
 
