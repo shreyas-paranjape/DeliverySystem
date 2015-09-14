@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/primary_color_trans" android:state_pressed="true" />
+    <item android:drawable="@color/primary_color_trans"  android:state_focused="true" />
+    <item android:drawable="@android:color/transparent" />
+
+</selector><!-- From: file:/home/shreyas/workspace/DeliverySystem/client/android/FoodApp/common/src/main/res/drawable/selectable_bg.xml --><!-- From: file:/home/shreyas/workspace/DeliverySystem/client/android/FoodApp/common/build/intermediates/bundles/debug/res/drawable/selectable_bg.xml -->

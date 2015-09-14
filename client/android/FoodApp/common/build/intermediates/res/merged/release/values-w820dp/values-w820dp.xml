@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/home/shreyas/workspace/DeliverySystem/client/android/FoodApp/common/src/main/res/values-w820dp/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">64dp</dimen>
+    <!-- From: file:/home/shreyas/workspace/DeliverySystem/client/android/FoodApp/common/src/main/res/values-w820dp/strings.xml -->
+    <eat-comment/>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_place_order">Place order</string>
+    <string name="lbl_placed_on">Your order was placed</string>
+    <string name="lbl_tax">Tax</string>
+    <string name="lbl_total">Total</string>
+    <string name="order_label">Order No:</string>
+</resources>

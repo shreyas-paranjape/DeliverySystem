@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Volumes/ssd/src/mnc-dev/frameworks/data-binding/library/src/main/res/values/ids.xml -->
+    <eat-comment/>
+    <item name="dataBinding" type="id"/>
+</resources>
