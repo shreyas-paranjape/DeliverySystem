@@ -9,14 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import in.co.foodamigo.foodapp.databinding.FragmentOrderStatusBinding;
+import in.co.foodamigo.foodapp.module.order.model.Order;
+import in.co.foodamigo.foodapp.module.order.model.OrderManagerImpl;
 
 public class OrderStatusFragment extends Fragment {
+
+    private Order order;
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
+        order = new OrderManagerImpl().getOrderById(args.getLong("order_id"));
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FragmentOrderStatusBinding binding = FragmentOrderStatusBinding.inflate(inflater);
-        return binding.getRoot();
+        FragmentOrderStatusBinding rootBinding = FragmentOrderStatusBinding.inflate(inflater);
+        rootBinding.setOrder(order);
+        return rootBinding.getRoot();
     }
 
 }

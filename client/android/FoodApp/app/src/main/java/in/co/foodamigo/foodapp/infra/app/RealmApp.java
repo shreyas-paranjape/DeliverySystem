@@ -1,4 +1,4 @@
-package in.co.foodamigo.foodapp;
+package in.co.foodamigo.foodapp.infra.app;
 
 import android.app.Application;
 

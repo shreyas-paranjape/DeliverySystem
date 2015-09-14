@@ -5,7 +5,7 @@
 
         <variable
             name="order"
-            type="in.co.foodamigo.foodapp.module.order.model.Order" />
+            type="in.co.foodamigo.foodapp.module.order.view.model.OrderViewModel" />
     </data>
 
     <LinearLayout
@@ -30,26 +30,47 @@
                 android:src="@drawable/ic_shopping_cart_black_24dp" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@{@string/Rs + order.total}" />
+
+                android:layout_weight="0"
+                android:text="@{String.valueOf(order.quantity)}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="0"
+                android:text="@string/divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="0"
+                android:text="@{@string/Rs + String.valueOf(order.total)}" />
 
             <Button
                 android:id="@+id/btn_checkout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="3"
-                android:text="@string/checkout" />
+                android:background="@color/primary_color"
+                android:text="@string/checkout"
+                android:textColor="@color/grey_darkest"
+                android:textStyle="bold"/>
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_new_item" />
 
         <ListView
             android:id="@+id/lv_cart_items"

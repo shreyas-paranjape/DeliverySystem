@@ -1,5 +1,6 @@
 package in.co.foodamigo.foodapp;
 
+import in.co.foodamigo.foodapp.infra.app.RealmApp;
 import in.co.foodamigo.foodapp.module.catalogue.model.Product;
 import in.co.foodamigo.foodapp.module.catalogue.model.ProductCategory;
 import in.co.foodamigo.foodapp.module.catalogue.model.Supplier;
@@ -24,51 +25,92 @@ public class CustomerApp extends RealmApp {
         awesomeRest.setId(1);
         awesomeRest.setName("My fancy rest");
 
-        Product chickenBiryani = objectStore.createObject(Product.class);
-        chickenBiryani.setId(1);
-        chickenBiryani.setName("Chicken biryani");
-        chickenBiryani.setDescription("Popular indian dish which is a mix of rice and well marinated " +
-                "chicken which is infused with indian spices.");
-        chickenBiryani.setRate(220);
-        chickenBiryani.setDish_url("file:///android_asset/chick bir.JPG");
-        chickenBiryani.setProductSupplier(awesomeRest);
-
-        Product butterChicken = objectStore.createObject(Product.class);
-        butterChicken.setId(2);
-        butterChicken.setName("Butter chicken");
-        butterChicken.setDescription("North indian dish has a base of tomato puree and cream. " +
-                "Ground cashews are added to enhance the flavour and texture");
-        butterChicken.setRate(220);
-        butterChicken.setDish_url("file:///android_asset/but chick.jpg");
-        butterChicken.setProductSupplier(awesomeRest);
-
-
         Product prawnCurry = objectStore.createObject(Product.class);
-        prawnCurry.setId(3);
+        prawnCurry.setId(1);
         prawnCurry.setName("Prawn Curry");
-        prawnCurry.setDescription("Goan traditional dish with prawn cooked in " +
-                "a spicy gravy using 13 different spices");
-        prawnCurry.setRate(1000);
+        prawnCurry.setDescription("Traditional Goan curry has prawn cooked In a perfect blend of 13 different spices");
+        prawnCurry.setRate(80);
         prawnCurry.setProductSupplier(awesomeRest);
         prawnCurry.setDish_url("file:///android_asset/Prawn curry.jpg");
 
-        Product chicSukha = objectStore.createObject(Product.class);
-        chicSukha.setId(4);
-        chicSukha.setName("Chicken Sukha");
-        chicSukha.setDescription("Goan traditional dish with chicken");
-        chicSukha.setRate(1000);
-        chicSukha.setProductSupplier(awesomeRest);
-        chicSukha.setDish_url("file:///android_asset/chic sukha.jpg");
+
+        Product chickenBiryani = objectStore.createObject(Product.class);
+        chickenBiryani.setId(2);
+        chickenBiryani.setName("Chicken biryani");
+        chickenBiryani.setDescription("Traditional Awadhi delicacy made with basmati rice, chicken, spices and onion");
+        chickenBiryani.setRate(160);
+        chickenBiryani.setDish_url("file:///android_asset/chick bir.JPG");
+        chickenBiryani.setProductSupplier(awesomeRest);
+
+        Product palakPaneer = objectStore.createObject(Product.class);
+        palakPaneer.setId(3);
+        palakPaneer.setName("Palak panner");
+        palakPaneer.setDescription("A much loved vegetarian dish with curd cheese in a thick, mild spinach puree");
+        palakPaneer.setRate(150);
+        palakPaneer.setDish_url("file:///android_asset/palak paneer.JPG");
+        palakPaneer.setProductSupplier(awesomeRest);
+
+        Product jeeraRice = objectStore.createObject(Product.class);
+        jeeraRice.setId(4);
+        jeeraRice.setName("Jeera rice");
+        jeeraRice.setDescription("Basmati rice cooked with cumin seeds; tastes great with most Indian curries");
+        jeeraRice.setRate(100);
+        jeeraRice.setDish_url("file:///android_asset/jeera rice.jpg");
+        jeeraRice.setProductSupplier(awesomeRest);
+
+
+        Product butterChicken = objectStore.createObject(Product.class);
+        butterChicken.setId(5);
+        butterChicken.setName("Butter chicken");
+        butterChicken.setDescription("Tandoori chicken in creamy gravy with sour and sweet undertones; a real treat");
+        butterChicken.setRate(180);
+        butterChicken.setDish_url("file:///android_asset/but chick.jpg");
+        butterChicken.setProductSupplier(awesomeRest);
 
         Product butterChickenSand = objectStore.createObject(Product.class);
-        butterChickenSand.setId(5);
-        butterChickenSand.setName("Chicken Sandwich");
-        butterChickenSand.setDescription("Goan traditional dish with chicken");
-        butterChickenSand.setRate(1000);
+        butterChickenSand.setId(6);
+        butterChickenSand.setName("Butter chicken sandwich");
+        butterChickenSand.setDescription("A whole new twist to Butter chicken by putting it between perfectly toasted bread");
+        butterChickenSand.setRate(120);
         butterChickenSand.setProductSupplier(awesomeRest);
         butterChickenSand.setDish_url("file:///android_asset/but chick sand.jpg");
 
-        String[] categories = new String[]{"Snacks", "Goan", "Oriental", "Rice", "Breads", "Dessert"};
+
+        Product lahoriChicken = objectStore.createObject(Product.class);
+        lahoriChicken.setId(7);
+        lahoriChicken.setName("Lahori chicken");
+        lahoriChicken.setDescription("Chicken cooked in a rich spicy gravy with a heavy dose of ginger and garlic");
+        lahoriChicken.setRate(180);
+        lahoriChicken.setProductSupplier(awesomeRest);
+        lahoriChicken.setDish_url("file:///android_asset/Lahori Chicken.jpg");
+
+
+        Product chicSukha = objectStore.createObject(Product.class);
+        chicSukha.setId(8);
+        chicSukha.setName("Chicken Sukha");
+        chicSukha.setDescription("Goan traditional dish with chicken");
+        chicSukha.setRate(120);
+        chicSukha.setProductSupplier(awesomeRest);
+        chicSukha.setDish_url("file:///android_asset/chic sukha.jpg");
+
+        Product dalTadka = objectStore.createObject(Product.class);
+        dalTadka.setId(9);
+        dalTadka.setName("Dal tadka");
+        dalTadka.setDescription("Quintessential Indian yellow lentil curry; mild gravy infused with pan-fried spices");
+        dalTadka.setRate(100);
+        dalTadka.setProductSupplier(awesomeRest);
+        dalTadka.setDish_url("file:///android_asset/dal tadka.jpg");
+
+        Product raraMutton = objectStore.createObject(Product.class);
+        raraMutton.setId(10);
+        raraMutton.setName("Rara mutton");
+        raraMutton.setDescription("succulent pieces of lamb cooked with mutton mince and a myriad of spices");
+        raraMutton.setRate(200);
+        raraMutton.setProductSupplier(awesomeRest);
+        raraMutton.setDish_url("file:///android_asset/Rara Mutton.JPG");
+
+
+        String[] categories = new String[]{"Snacks", "Goan", "Desi", "Oriental", "Rice", "Breads", "Dessert"};
 
         ProductCategory food = objectStore.createObject(ProductCategory.class);
         food.setName("food");
@@ -78,19 +120,16 @@ public class CustomerApp extends RealmApp {
             ProductCategory prodCat = objectStore.createObject(ProductCategory.class);
             prodCat.setId(i + 2);
             prodCat.setName(categories[i]);
-            if (i == 0) {
-                prodCat.getProducts().add(chickenBiryani);
-                prodCat.getProducts().add(butterChicken);
-                prodCat.getProducts().add(prawnCurry);
-                prodCat.getProducts().add(chicSukha);
-                prodCat.getProducts().add(butterChickenSand);
-            } else {
-                prodCat.getProducts().add(butterChickenSand);
-                prodCat.getProducts().add(chicSukha);
-                prodCat.getProducts().add(prawnCurry);
-                prodCat.getProducts().add(butterChicken);
-                prodCat.getProducts().add(chickenBiryani);
-            }
+            prodCat.getProducts().add(prawnCurry);
+            prodCat.getProducts().add(palakPaneer);
+            prodCat.getProducts().add(jeeraRice);
+            prodCat.getProducts().add(butterChicken);
+            prodCat.getProducts().add(butterChickenSand);
+            prodCat.getProducts().add(raraMutton);
+            prodCat.getProducts().add(chickenBiryani);
+            prodCat.getProducts().add(lahoriChicken);
+            prodCat.getProducts().add(chicSukha);
+            prodCat.getProducts().add(dalTadka);
             food.getSubCategories().add(prodCat);
         }
 

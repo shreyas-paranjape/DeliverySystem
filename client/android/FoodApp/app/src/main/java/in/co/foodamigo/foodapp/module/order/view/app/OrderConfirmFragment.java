@@ -11,7 +11,7 @@ import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.databinding.FragmentOrderConfirmBinding;
 import in.co.foodamigo.foodapp.module.order.model.Order;
 import in.co.foodamigo.foodapp.module.order.model.OrderManagerImpl;
-import in.co.foodamigo.foodapp.module.order.view.widget.CartItemAdapter;
+import in.co.foodamigo.foodapp.module.order.view.widget.OrderConfirmAdapter;
 
 public class OrderConfirmFragment extends Fragment {
 
@@ -32,10 +32,11 @@ public class OrderConfirmFragment extends Fragment {
                 confirmOrder();
             }
         });
+        binding.setOrder(order);
         binding.lvOrderItems.setAdapter(
-                new CartItemAdapter(
+                new OrderConfirmAdapter(
                         getActivity(),
-                        R.layout.item_order_current,
+                        R.layout.item_order_confirm,
                         order.getOrderItems()));
         return binding.getRoot();
     }
