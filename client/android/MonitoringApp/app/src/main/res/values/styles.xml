@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:typeface">monospace</item>
+        <!--<item name="android:selectableItemBackground">@drawable/selectable_bg</item>-->
+        <!-- <item name="android:windowBackground">@color/primary_color_trans</item>-->
+        <!--<item name="colorPrimary">@color/yellow</item>
+        <item name="android:windowBackground">@color/yellow</item>
+        <item name="android:colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="android:colorBackground">@color/yellow</item>-->
+        <!--<item name="android:textColorPrimary">@color/secondary_color</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
+        <item name="android:windowBackground">@color/primary_color</item>
+        <item name="android:colorBackground">@color/primary_color</item>-->
+    </style>
+
+</resources>
