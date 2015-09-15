@@ -37,4 +37,6 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="mins">Minutes</string>
+    <string name="skip">See menu</string>
+    <string name="img_desc_tut">Tutorial image</string>
 </resources>
