@@ -63,21 +63,20 @@ public abstract class AbstractDrawerActivity extends AppCompatActivity {
         if (hasParent()) {
             switch (item.getItemId()) {
                 case android.R.id.home:
-                    new AlertDialog.Builder(this)
+                    navigateToParent();
+                   /* new AlertDialog.Builder(this)
                             .setMessage(R.string.dialog_order_cancel_message)
                             .setTitle(R.string.dialog_order_cancel_title)
                             .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    navigateToParent();
+
                                 }
                             })
                             .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                 }
-                            }).create().show();
-
+                            }).create().show();*/
                     return true;
-
             }
         }
         return super.onOptionsItemSelected(item);

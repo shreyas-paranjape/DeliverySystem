@@ -20,7 +20,8 @@
     <string name="retry">Retry</string>
     <string name="product_add">Add</string>
     <string name="app_city">Panjim, Goa</string>
-    <string name="Rs">\u20B9</string>
+    <string name="Rs"> \u20B9 </string>
+    <string name="divider"> | </string>
     <string name="dialog_order_cancel_message">Are you sure you want to cancel the current order ?</string>
     <string name="dialog_order_cancel_title">Cancel order</string>
     <string name="btn_use_current_location">Use current location</string>
@@ -32,4 +33,10 @@
     <string name="add_new_item">Add new Item</string>
     <string name="pick_a_username">Pick a username</string>
     <string name="enter_mobile_number">Enter mobile number</string>
+    <string name="remove_item">-</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="mins">Minutes</string>
+    <string name="skip">See menu</string>
+    <string name="img_desc_tut">Tutorial image</string>
 </resources>

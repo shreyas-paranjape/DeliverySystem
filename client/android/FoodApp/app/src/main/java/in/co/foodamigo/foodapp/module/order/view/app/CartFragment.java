@@ -11,14 +11,14 @@ import de.greenrobot.event.EventBus;
 import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.databinding.FragmentCartBinding;
 import in.co.foodamigo.foodapp.module.catalogue.model.Product;
-import in.co.foodamigo.foodapp.module.order.model.OrderManager;
-import in.co.foodamigo.foodapp.module.order.model.OrderManagerImpl;
+import in.co.foodamigo.foodapp.module.order.model.Order;
+import in.co.foodamigo.foodapp.module.order.model.OrderRepository;
+import in.co.foodamigo.foodapp.module.order.view.model.OrderViewModelManagerImpl;
 import in.co.foodamigo.foodapp.module.order.view.widget.CartItemAdapter;
 
 public class CartFragment extends Fragment {
 
-    private static final String TAG = CartFragment.class.getName();
-    private final OrderManager orderManager = new OrderManagerImpl();
+    private final OrderViewModelManagerImpl orderManager = new OrderViewModelManagerImpl();
     private ArrayAdapter cartItemsAdapter;
 
     @Override
@@ -35,9 +35,8 @@ public class CartFragment extends Fragment {
         rootBinding.btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                orderManager.placeOrder();
-                EventBus.getDefault().post(new CheckOutEvent(orderManager.getOrder().getId()));
-
+                Order order = OrderRepository.createOrderAndSave(orderManager.getOrder());
+                EventBus.getDefault().post(new CheckOutEvent(order.getId()));
             }
         });
         return rootBinding.getRoot();
@@ -55,6 +54,7 @@ public class CartFragment extends Fragment {
         cartItemsAdapter.notifyDataSetChanged();
         EventBus.getDefault().post(new CartModifiedEvent(orderManager.cartSize()));
     }
+
 
     public static class CartModifiedEvent {
         private final int cartSize;

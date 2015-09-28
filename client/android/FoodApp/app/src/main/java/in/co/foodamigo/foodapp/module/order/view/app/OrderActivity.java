@@ -2,26 +2,33 @@ package in.co.foodamigo.foodapp.module.order.view.app;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import in.co.foodamigo.foodapp.R;
 import in.co.foodamigo.foodapp.module.common.view.app.AbstractDrawerActivity;
 
 public class OrderActivity extends AbstractDrawerActivity {
 
-    private static final String TAG = OrderActivity.class.getName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(" ");
-        Fragment orderConfirm = new OrderConfirmFragment();
-        orderConfirm.setArguments(getIntent().getExtras().getBundle("order"));
-        replaceContent(orderConfirm);
+        setOrderIdAndReplace(new OrderConfirmFragment());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected boolean confirmExit() {
-        return true;
+        return false;
     }
 
     @Override
@@ -58,16 +65,22 @@ public class OrderActivity extends AbstractDrawerActivity {
 
         public void onEvent(DeliveryDetailsFragment.PlaceOrderEvent event) {
             if (!isDestroyed()) {
-                replaceContent(new OrderStatusFragment());
+                OrderStatusFragment orderStatusFragment = new OrderStatusFragment();
+                orderStatusFragment.setArguments(getIntent().getExtras().getBundle("order"));
+                replaceContent(orderStatusFragment);
             }
         }
 
         public void onEvent(OrderConfirmFragment.ConfirmOrderEvent event) {
             if (!isDestroyed()) {
-                replaceContent(new DeliveryDetailsFragment());
+                setOrderIdAndReplace(new OrderStatusFragment());
             }
         }
     }
 
+    private void setOrderIdAndReplace(Fragment fragment) {
+        fragment.setArguments(getIntent().getExtras().getBundle("order"));
+        replaceContent(fragment);
+    }
 
 }

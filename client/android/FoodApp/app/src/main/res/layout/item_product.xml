@@ -81,12 +81,13 @@
                     android:layout_weight="3"
                     android:lines="3"
                     android:text="@{product.description}"
+                    android:layout_gravity="bottom"
                     android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_product_add"
                     android:layout_width="0dp"
-                    android:layout_height="20dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"

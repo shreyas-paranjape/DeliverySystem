@@ -21,9 +21,8 @@ public class Order extends RealmObject {
 
     private long number;
     private RealmList<OrderItem> orderItems = new RealmList<>();
-    private double tax;
     private double total;
-    private String status;
+    private String status = "NEW";
     private Date orderDate = new Date();
 
     public long getId() {
@@ -49,14 +48,6 @@ public class Order extends RealmObject {
 
     public void setNumber(long number) {
         this.number = number;
-    }
-
-    public double getTax() {
-        return tax;
-    }
-
-    public void setTax(double tax) {
-        this.tax = tax;
     }
 
     public double getTotal() {

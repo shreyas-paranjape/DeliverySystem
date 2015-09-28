@@ -153,6 +153,9 @@ public class CatalogueActivity extends AbstractDrawerActivity {
 
     private void hideCartPanel() {
         cartHolder.setPanelHeight(0);
+        if (SlidingUpPanelLayout.PanelState.EXPANDED == cartHolder.getPanelState()) {
+            cartHolder.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        }
     }
 
     public static class CatalogueRefreshedEvent {

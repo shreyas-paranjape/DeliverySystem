@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- RED -->
+    <!--<color name="primary_color">#f44336</color>
+    <color name="primary_color_trans">#ffcdd2</color>
+    <color name="primary_color_dark">#b71c1c</color>
+    <color name="text_color_Categories">#ffffff</color>-->
+
+    <!-- YELLOW -->
+    <!--<color name="primary_color">#ffeb3b</color>-->
+    <color name="primary_color">#fecb4c</color>
+    <color name="primary_color_trans">#fffde7</color>
+    <color name="primary_color_dark">#fbc02d</color>
+    <color name="text_color_Categories">#212121</color>
+
+    <!-- ORANGE -->
+    <!--<color name="primary_color">#ff9800</color>
+    <color name="primary_color_trans">#fff3e0</color>
+    <color name="primary_color_dark">#e65100</color>-->
+
+    <color name="second_color">#ffffff</color>
+    <color name="green">#4caf50</color>
+    <color name="grey_normal">#9e9e9e</color>
+    <color name="grey_dark">#424242</color>
+    <color name="grey_darkest">#212121</color>
+    <color name="white">#ffffff</color>
+
+</resources>

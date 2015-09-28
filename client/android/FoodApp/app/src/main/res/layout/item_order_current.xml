@@ -16,23 +16,60 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
             android:layout_weight="2"
-            android:text="@{orderItem.product.name}" />
-        <!-- android:textColor="@color/secondary_color" -->
+            android:text="@{orderItem.product.name}"
+            android:textSize="16sp"
+            android:typeface="serif" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@{String.valueOf(orderItem.quantity)}" />
-        <!-- android:textColor="@color/secondary_color" -->
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@{@string/Rs + String.valueOf(orderItem.charge)}" />
 
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@{String.valueOf(orderItem.charge)}" />
-        <!-- android:textColor="@color/secondary_color" -->
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0">
+
+            <Button
+                android:id="@+id/btnAddQuantity"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/primary_color"
+                android:text="@string/plus"
+                android:textColor="@color/grey_darkest"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@{String.valueOf(orderItem.quantity)}" />
+
+            <Button
+                android:id="@+id/btnRemoveQuantity"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/primary_color"
+                android:text="@string/minus"
+                android:textColor="@color/grey_darkest"
+                android:textSize="16sp" />
+        </LinearLayout>
 
     </LinearLayout>
 </layout>
