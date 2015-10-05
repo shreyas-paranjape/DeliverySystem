@@ -30,6 +30,15 @@ securedBy:
   get:
 
   post:
+    description: "Creates a new product in the system"
+    body:
+      application/json:
+        schema: |
+        example: |
+          {
+            
+          }
+
 
   /{product_id}
 
@@ -42,8 +51,80 @@ securedBy:
 # Party
 /party
   get:
+    description: |
+      Returns all Customers/Vendors in the system.
+    queryParameters:
+      party_type:
+        type: string
+        description: Vendors/Customers/All
+        default: all
+      count:
+        type: integer
+        description: Number of enteries to retrieve
+        default: 20
+      start_id:
+        type: integer
+        description: Id at which to start the retrieval.
+        default: *first entry in the party table
+    responses:
+      200:
+        body:
+          schema: |
+            {
+              "": "http://json-schema.org/draft-03/schema",
+              "type": "object",
+              "properties": {
+
+                }
+            }
+          example: |
 
   post:
+    description: |
+      Creates a new Customer/Vendor in the system.
+    body:
+      application/json:
+        schema: |
+        example: |
+            {
+              "name": "",
+              "address":
+                [
+                  {
+                    "name": "",
+                    "address_string": "",
+                    "latitude": "",
+                    "longitude": ""
+                  }
+                ]
+              "comm":
+                [
+                  {
+                    "name": "",
+                    "email": "",
+                    "mobile": ""
+                  }
+                ],
+              "description": "",
+              "image_url": "",
+              "sites":
+                [
+                  {
+                    "name": "",
+                    "address":
+                      {
+                        "address_string": "",
+                        "latitude": "",
+                        "longitude": ""
+                      }
+                    "comm":
+                      {
+                        "email": "",
+                        "mobile":""
+                      }
+                  }
+                ]
+            }
 
   /{party_id}
     get:
