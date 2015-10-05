@@ -3,7 +3,6 @@
             [korma.db :as db]
             [environ.core :refer [env]]))
 
-
 (def db {:classname         "com.mysql.jdbc.Driver"
          :subprotocol       "mysql"
          :subname           "//localhost:3306/delivery"
@@ -11,16 +10,6 @@
          :useUnicode        "yes"
          :characterEncoding "UTF-8"
          :user              "root"
-         :password          (env :password)})
+         :password          "livefree"})
 
 (db/defdb delivery db)
-
-;; Entities
-(declare address)
-(core/defentity address)
-
-
-
-
-
-

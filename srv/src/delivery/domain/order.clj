@@ -1,19 +1,16 @@
 (ns delivery.domain.order
+  (:use delivery.domain.entity)
   (:require [korma.core :as orm]
-            [delivery.domain.product :as prod]
             [liberator.core :refer [defresource]]
-            [compojure.core :refer [ANY defroutes]]))
+            [compojure.core :refer [ANY defroutes]]
+            [taoensso.timbre :as timbre]))
 
-;; Entities
-(declare orderr order_item)
-(orm/defentity orderr
-               (orm/has-many order_item))
-(orm/defentity order_item
-               (orm/has-one prod/product))
+(timbre/refer-timbre)
+(timbre/set-level! :debug)
 
-;; Helper functions
+;; Impl
 (defn- insert-order [ord]
-  (orm/insert orderr (orm/values ord)))
+  (orm/insert ordr (orm/values ord)))
 
 (defn- insert-order-item [new-order-item]
   (orm/insert order_item
@@ -30,26 +27,25 @@
                            (get-in new-order [:order_items]) order_id)))
 
 (defn cancel [order-to-cancel]
-  (orm/update orderr
+  (orm/update ordr
               (orm/set-fields {:status "D"})
               (orm/where {:id (:id order-to-cancel)})))
 
 (defn get-order-history [customer_id]
-  (orm/select orderr
+  (orm/select ordr
               (orm/with order_item)
               (orm/where {:customer_id customer_id})))
 
 ;; Resources
-(defresource order-all
+(defresource order-list-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :put])
 
-(defresource order-single
+(defresource order-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :delete])
 
 ;; Routes
 (defroutes routes
-           (ANY "/order" request (order-all request))
-           (ANY "/order/:order_id" request (order-single request)))
-
+           (ANY "/order" request (order-list-res request))
+           (ANY "/order/:order_id" request (order-res request)))

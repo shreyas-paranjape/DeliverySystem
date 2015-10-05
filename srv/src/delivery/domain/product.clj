@@ -1,28 +1,12 @@
 (ns delivery.domain.product
-  (:require [delivery.infra.db :as db]
-            [korma.core :as orm]
+  (:use delivery.domain.entity)
+  (:require [korma.core :as orm]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre]))
 
 (timbre/refer-timbre)
 (timbre/set-level! :debug)
-
-;; Entities
-(declare product product_category product_supplier supplier)
-
-(orm/defentity product_category)
-
-(orm/defentity product
-               (orm/belongs-to product_category)
-               (orm/has-many product_supplier))
-
-(orm/defentity product_supplier
-               (orm/has-one supplier))
-
-(orm/defentity supplier
-               (orm/has-one db/address))
-
 
 ;; Functions
 (defn- get-root-category []
@@ -70,24 +54,24 @@
 
 
 ;; Resource
-(declare product-all product-single catalogue-all catalogue-food)
-(defresource product-all
+(declare product-list-res product-res catalogue-res)
+(defresource product-list-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :put :delete])
 
-(defresource product-single
+(defresource product-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :put :delete])
 
-(defresource catalogue-all
+(defresource catalogue-res
              :available-media-types ["application/json"]
              :allowed-methods [:get]
-             :handle-ok (fn [ctx]
-                          (get-catalogue (get-in ctx [:request :params]))))
+             :handle-ok 
+                (fn [ctx]
+                  (get-catalogue (get-in ctx [:request :params]))))
 
 ;; Routes
 (defroutes routes
-           (ANY "/product" request (product-all request))
-           (ANY "/product/:product_id" request (product-single request))
-           (ANY "/catalogue" request (catalogue-all request)))
-
+           (ANY "/product" request (product-list-res request))
+           (ANY "/product/:product_id" request (product-res request))
+           (ANY "/catalogue" request (catalogue-res request)))

@@ -10,15 +10,21 @@
             [delivery.domain.party :as cust]
             [delivery.domain.order :as ord]
             [delivery.domain.product :as prod]
-            [delivery.middleware.keywordize :as mw]))
+            [delivery.infra.middleware :as mw]
+            [delivery.infra.socket :as socket]))
 
-
+(defn dummy [request]
+  (socket/send-msg "i rule"))
 
 ;; ROUTES
 (defroutes home
-           (GET "/" request (str request)))
+           (GET "/" request (str request))
+           (GET "/dummy" [] dummy)
+           (ANY "/connect" [] socket/socket-handler))
+
 (defroutes not-found
            (route/not-found "Not Found"))
+
 (def app-routes
   (routes
     home
@@ -28,13 +34,11 @@
     not-found))
 
 ;; APPLICATION
-(def app
-  ;;(wrap-defaults
-  (wrap-json-body
-    (wrap-json-params
-      (wrap-json-response
-        (wrap-params
-          (mw/keywordize-params
-            app-routes))))
-    :keywords? true))
-;;site-defaults)
+(defn app [& request]
+  (wrap-defaults
+    (->  app-routes
+         mw/keywordize-params
+         wrap-params
+         wrap-json-response
+         wrap-json-params
+         wrap-json-body) site-defaults))

@@ -1,4 +1,4 @@
-(ns delivery.middleware.keywordize
+(ns delivery.infra.middleware
   (:require [clojure.walk :as walk]))
 
 ;; Handler
