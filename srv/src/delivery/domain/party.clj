@@ -1,7 +1,7 @@
 (ns delivery.domain.party
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
-            [delivery.infra.db :as db]
+            [delivery.domain.entity :as ent]
             [delivery.infra.util :as util]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
@@ -22,6 +22,11 @@
 (defn update-profile []
   nil)
 
+(defn insert-party [request]
+  (def party_id (:generated_key (insert ent/party (values (apply dissoc request [:sites :address :comm])))))
+  
+  )
+
 ;; Resources
 (declare party-list-res party-res)
 (defresource party-list-res
@@ -29,6 +34,8 @@
              :allowed-methods [:get :post :put :delete]
              :handle-ok (fn [ctx]
                           (orm/select party))
+             :post! (fn [ctx]
+                          )
              :put! (fn [ctx]
                      ((orm/insert (util/request-body ctx)))))
 

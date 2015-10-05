@@ -39,11 +39,11 @@
 ;; Resources
 (defresource order-list-res
              :available-media-types ["application/json"]
-             :allowed-methods [:get :put])
+             :allowed-methods [:get :post])
 
 (defresource order-res
              :available-media-types ["application/json"]
-             :allowed-methods [:get :post :delete])
+             :allowed-methods [:get :put :delete])
 
 ;; Routes
 (defroutes routes

@@ -20,7 +20,7 @@
 (defroutes home
            (GET "/" request (str request))
            (GET "/dummy" [] dummy)
-           (ANY "/connect" [] socket/socket-handler))
+           (ANY "/connect" request (socket/socket-handler request)))
 
 (defroutes not-found
            (route/not-found "Not Found"))
