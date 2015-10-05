@@ -23,8 +23,36 @@
   nil)
 
 (defn insert-party [request]
-  (def party_id (:generated_key (insert ent/party (values (apply dissoc request [:sites :address :comm])))))
-  
+  (do
+    (def party_id (:generated_key (orm/insert ent/party (values (apply dissoc request [:role :sites :address :comm])))))
+    (dorun
+     (for [i (:comm request)]
+       (do
+         (def comm_id (:generated_key (orm/insert ent/comm (values i))))
+         (orm/insert ent/party_comm (values {:party_id party_id :comm_id comm_id}))
+         )
+       )
+     )
+    (dorun
+     (for [i (:address request)]
+       (do
+         (def address_id (:generated_key (orm/insert ent/address (values i))))
+         (orm/insert ent/party_address (values {:party_id party_id :address_id address_id}))
+         )
+       )
+     )
+     (dorun
+       (for [i (:sites request)]
+         (do
+           (def address_id (:generated_key (orm/insert ent/address (values (:address i)))))
+           (def comm_id (:generated_key (orm/insert ent/comm (values (:comm i)))))
+           (def site_id (:generated_key (orm/insert ent/site (values {:name (:name i) :address_id address_id :comm_id comm_id}))))
+           (orm/insert ent/party_site (values {:party_id party_id :site_id site_id}))
+           )
+         )
+       )
+     (orm/insert ent/party_role (values {:role (:role request) :party_id party_id}))
+     )
   )
 
 ;; Resources

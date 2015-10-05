@@ -1,6 +1,6 @@
 #%RAML 0.8
 
-title: Goa amigo API
+title: Food amigo API
 version: "0.1"
 baseUri: "https://api.foodamigo.co.in/{version}"
 mediaType: "application/json"
@@ -8,26 +8,102 @@ mediaType: "application/json"
 securitySchemes:
 securedBy:
 
-# Catalogue
-/catalogue
+# Product category
+/product_category
   get:
     description: |
-      Returns all the product categories and associated product info.
-      Optional queryParameter can specify the parent category to start at
-    queryParameters:
-      root:
-        type: string
-        description: |
-          The category to start at. All sub categoies and associated products of this category will
-          be fetched.
-        required: false
+      Return product categories.
+    body:
+      application/json:
+        schema: |
+        example: |
+          {
+            "fetchSubcategories": "true/false" // Default true
+            "fetchProducts": "true/false" // Default false
+          }
     responses:
-    example:
+      200:
+        body:
+          schema: |
+          example: |
+            [
+              {
+                "name": "",
+                "subCategories":
+                  [
+                    {
+                      // Product Category object
+                    }
+                  ],
+                "products":
+                  [
+                    {
+                      // Product object
+                    }
+                  ]
+              }
+            ]
+  post:
+    description: |
+      creates a new product category
+    body:
+      application/json:
+        schema: |
+        example: |
+          {
+            "name": "",
+            "parent" "parent category id"
+          }
 
+  /{product_category_id}
+    get:
+      body:
+        schema: |
+        example: |
+          application/json:
+            {
+              "fetchSubcategories": "true/false" // Default true
+              "fetchProducts": "true/false" // Default false
+            }
+      responses:
+        200:
+          body:
+            schema: |
+            example: |
+              {
+                // Product Category Object
+              }
+    put:
+      body:
+        application/json:
+          schema: |
+          example: |
+            {
+              "parent_category_id": ""
+            }
 
 # Product
 /product
   get:
+    description: "Get all products from the system"
+    query:
+      body:
+        application/json:
+          description: Product fetch query
+          example:
+            {
+              "count": "Number of rows to return",
+              "start_id": "Product ID to start at",
+              "category":
+                {
+                  "product_category_id": "ID of parent category",
+                  "include_sub_categories": "true/false"
+                },
+              "party":
+                {
+                  "party_id": ""
+                }
+            }
 
   post:
     description: "Creates a new product in the system"
@@ -36,58 +112,84 @@ securedBy:
         schema: |
         example: |
           {
-            
+            "name": "",
+            "product_category_id": "",
+            "parties":
+              [
+                {
+                  "party_id": "",
+                  "description": "",
+                  "price": "",
+                  "preparation_time": "",
+                  "image_url": ""
+                }
+              ]
           }
 
 
   /{product_id}
-
    get:
-
+     description: "Gets details of a product"
+     responses:
+       200:
+         body:
+           schema: |
+           example: |
+             {
+              // product object
+             }
    put:
-
-   delete:
+     description: "Update a product record"
+     body:
+       application/json:
+         schema: |
+         example: |
+          {
+            // product object
+          }
 
 # Party
 /party
   get:
     description: |
-      Returns all Customers/Vendors in the system.
-    queryParameters:
-      party_type:
-        type: string
-        description: Vendors/Customers/All
-        default: all
-      count:
-        type: integer
-        description: Number of enteries to retrieve
-        default: 20
-      start_id:
-        type: integer
-        description: Id at which to start the retrieval.
-        default: *first entry in the party table
+      Returns Customers/Vendors in the system.
+    body:
+      application/json:
+        schema: |
+        example: |
+          {
+            "type": "Customer/Vendor/All" // Default All
+            "count": "",
+            "start_id": "",
+            "area": "",
+            "products":
+              [
+                // Product ID's for which to get corresponding suppliers
+              ],
+            "include_sites": "true/false" // Default false
+          }
     responses:
       200:
         body:
           schema: |
-            {
-              "": "http://json-schema.org/draft-03/schema",
-              "type": "object",
-              "properties": {
-
-                }
-            }
           example: |
+            [
+              {
+                // party object
+              }
+            ]
 
   post:
     description: |
       Creates a new Customer/Vendor in the system.
     body:
       application/json:
+        description: "Party Object"
         schema: |
         example: |
             {
               "name": "",
+              "role" : "customer|vendor"
               "type": "",
               "address":
                 [
@@ -130,8 +232,19 @@ securedBy:
 
   /{party_id}
     get:
+      description: Get details
+      responses:
+        200:
+          body:
+            schema: |
+            example: |
+              // Party object
 
     put:
+      description: Update details
+      body:
+        application/json: |
+          // Party object
 
 # Order
 /order
