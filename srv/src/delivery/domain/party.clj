@@ -15,8 +15,8 @@
 ;; API
 
 (defn get-profile [party_id]
-  (orm/select party
-              (orm/with party_address)
+  (orm/select ent/party
+              (orm/with ent/party_address)
               (orm/where {:id party_id})))
 
 (defn update-profile []
@@ -63,9 +63,11 @@
              :handle-ok (fn [ctx]
                           (orm/select party))
              :post! (fn [ctx]
+                          (insert-party (get-in ctx [:request :body :party]))
                           )
              :put! (fn [ctx]
-                     ((orm/insert (util/request-body ctx)))))
+                     ((orm/insert (util/request-body ctx))))
+             :handle-created {:status "new entries added"})
 
 (defresource party-res
              :available-media-types ["application/json"]
