@@ -1,4 +1,4 @@
-(ns delivery.domain.product-spec
+(ns delivery.domain.product_spec
   (:require [speclj.core :refer :all]
             [delivery.domain.product :refer :all]))
 

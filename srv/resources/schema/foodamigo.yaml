@@ -1,0 +1,79 @@
+#%RAML 0.8
+
+title: Goa amigo API
+version: "0.1"
+baseUri: "https://api.foodamigo.co.in/{version}"
+mediaType: "application/json"
+
+securitySchemes:
+securedBy:
+
+# Catalogue
+/catalogue
+  get:
+    description: |
+      Returns all the product categories and associated product info.
+      Optional queryParameter can specify the parent category to start at
+    queryParameters:
+      root:
+        type: string
+        description: |
+          The category to start at. All sub categoies and associated products of this category will
+          be fetched.
+        required: false
+    responses:
+    example:
+
+
+# Product
+/product
+  get:
+
+  post:
+
+  /{product_id}
+
+   get:
+
+   put:
+
+   delete:
+
+# Party
+/party
+  get:
+
+  post:
+
+  /{party_id}
+    get:
+
+    put:
+
+# Order
+/order
+  get:
+
+  post:
+
+  /{order_id}
+    get:
+
+    put:
+
+    delete:
+
+
+# Shipment
+/shipment
+  get:
+
+  post:
+
+  /{shipment_id}
+
+    get:
+
+    put:
+
+    delete:

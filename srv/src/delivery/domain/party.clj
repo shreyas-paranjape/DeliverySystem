@@ -1,18 +1,14 @@
 (ns delivery.domain.party
+  (:use delivery.domain.entity)
   (:require [korma.core :as orm]
             [delivery.infra.db :as db]
             [delivery.infra.util :as util]
             [liberator.core :refer [defresource]]
-            [compojure.core :refer [ANY defroutes]]))
+            [compojure.core :refer [ANY defroutes]]
+            [taoensso.timbre :as timbre]))
 
-;; Entity
-(declare party party_address)
-
-(orm/defentity party_address
-               (orm/has-one db/address))
-
-(orm/defentity party
-               (orm/has-many party_address))
+(timbre/refer-timbre)
+(timbre/set-level! :debug)
 
 ;; Impl
 
