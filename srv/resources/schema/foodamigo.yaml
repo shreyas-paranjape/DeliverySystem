@@ -158,7 +158,7 @@ securedBy:
         schema: |
         example: |
           {
-            "type": "Customer/Vendor/All" // Default All
+            "role": "Customer/Vendor/All" // Default All
             "count": "",
             "start_id": "",
             "area": "",

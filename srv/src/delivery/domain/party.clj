@@ -16,8 +16,20 @@
 
 (defn get-profile [party_id]
   (orm/select ent/party
-              (orm/with ent/party_address)
+              (orm/with ent/party_address
+                (orm/with ent/address))
+              (orm/with ent/party_role)
+              (orm/with ent/party_comm
+                (orm/with ent/comm))
               (orm/where {:id party_id})))
+
+(defn get-all-profiles []
+  (orm/select ent/party
+              (orm/with ent/party_address
+                (orm/with ent/address))
+              (orm/with ent/party_role)
+              (orm/with ent/party_comm
+                (orm/with ent/comm))))
 
 (defn update-profile []
   nil)
@@ -61,10 +73,7 @@
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :put :delete]
              :handle-ok (fn [ctx]
-                          (orm/select party))
-             :post! (fn [ctx]
-                          (insert-party (get-in ctx [:request :body :party]))
-                          )
+                          (get-all-profiles))
              :put! (fn [ctx]
                      ((orm/insert (util/request-body ctx))))
              :handle-created {:status "new entries added"})
@@ -74,7 +83,10 @@
              :allowed-methods [:get :post :put :delete]
              :handle-ok (fn [ctx]
                           (get-profile
-                            (get-in ctx [:request :params :party_id]))))
+                            (get-in ctx [:request :params :party_id])))
+             :post! (fn [ctx]
+                          (insert-party (get-in ctx [:request :body :party]))
+                          ))
 
 ;; Routes
 (defroutes routes
