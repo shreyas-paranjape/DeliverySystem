@@ -21,15 +21,30 @@
               (orm/with ent/party_role)
               (orm/with ent/party_comm
                 (orm/with ent/comm))
-              (orm/where {:id party_id})))
+              (orm/where {:party.id party_id})))
 
-(defn get-all-profiles []
-  (orm/select ent/party
+(defn get-all-profiles [party_query]
+  (do
+    (def results [])
+    (dorun
+      (for [i (:products party_query)]
+        (do
+          (def results (into results (orm/select ent/party
               (orm/with ent/party_address
                 (orm/with ent/address))
               (orm/with ent/party_role)
               (orm/with ent/party_comm
-                (orm/with ent/comm))))
+                (orm/with ent/comm))
+              (orm/with ent/product_party
+                (orm/with ent/product))
+              (where {:product.id i}))))
+          )
+        )
+      )
+    (def request (vec (distinct results)))
+    )
+  
+  )
 
 (defn update-profile []
   nil)
@@ -69,11 +84,12 @@
 
 ;; Resources
 (declare party-list-res party-res)
+
 (defresource party-list-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :put :delete]
              :handle-ok (fn [ctx]
-                          (get-all-profiles))
+                          (get-all-profiles (get-in ctx [:request :body :party_query])))
              :put! (fn [ctx]
                      ((orm/insert (util/request-body ctx))))
              :handle-created {:status "new entries added"})
