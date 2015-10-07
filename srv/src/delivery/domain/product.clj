@@ -22,9 +22,18 @@
                  [(:id category)]]
                 :results))
 
-(defn- get-products-for-category [category]
+(defn- get-products-for-category [query]
+  (if (= (:include_sub_categories (:category query)) "false")
   (orm/select product
-              (orm/where {:product_category_id (:id category)})))
+              (orm/with product_category)
+              (orm/with product_party
+                (orm/with party))
+              (orm/where {:product_category_id (:product_category_id (:category query)) :party.id (:party_id (:party query))})
+              (orm/limit (:count query))
+              (orm/offset (dec (:start_id query)))))
+  
+  ; Else condition a bit of a problem
+  )
 
 (defn- get-category-all [parent]
   (assoc parent
