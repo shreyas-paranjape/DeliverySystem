@@ -11,7 +11,7 @@
 ;; Functions
 (defn- get-root-category []
   (first (orm/select product_category
-                     (orm/where {:lft 1}))))
+                     (orm/where {:lft 1}) (orm/order :id :ASC))))
 
 (defn- get-category [name]
   (first (orm/select product_category

@@ -1,8 +1,7 @@
 (ns delivery.domain.party
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
-            [delivery.domain.entity :as ent]
-            [delivery.infra.util :as util]
+              [delivery.infra.util :as util]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre]))
@@ -15,12 +14,12 @@
 ;; API
 
 (defn get-profile [party_id]
-  (orm/select ent/party
-              (orm/with ent/party_address
-                (orm/with ent/address))
-              (orm/with ent/party_role)
-              (orm/with ent/party_comm
-                (orm/with ent/comm))
+  (orm/select party
+              (orm/with party_address
+                (orm/with address))
+              (orm/with party_role)
+              (orm/with party_comm
+                (orm/with comm))
               (orm/where {:party.id party_id})))
 
 (defn get-all-profiles [party_query]
@@ -29,15 +28,18 @@
     (dorun
       (for [i (:products party_query)]
         (do
-          (def results (into results (orm/select ent/party
-              (orm/with ent/party_address
-                (orm/with ent/address))
-              (orm/with ent/party_role)
-              (orm/with ent/party_comm
-                (orm/with ent/comm))
-              (orm/with ent/product_party
-                (orm/with ent/product))
-              (where {:product.id i}))))
+          (def results (into results (orm/select party
+              (orm/with party_address
+                (orm/with address))
+              (orm/with party_role)
+              (orm/with party_comm
+                (orm/with comm))
+              (orm/with product_party
+                (orm/with product))
+              (where {:product.id i :party_role.role (:role party_query)})
+              (limit (:count party_query))
+              (offset (dec (:start_id party_query)))
+              )))
           )
         )
       )
@@ -51,34 +53,34 @@
 
 (defn insert-party [request]
   (do
-    (def party_id (:generated_key (orm/insert ent/party (values (apply dissoc request [:role :sites :address :comm])))))
+    (def party_id (:generated_key (orm/insert party (values (apply dissoc request [:role :sites :address :comm])))))
     (dorun
      (for [i (:comm request)]
        (do
-         (def comm_id (:generated_key (orm/insert ent/comm (values i))))
-         (orm/insert ent/party_comm (values {:party_id party_id :comm_id comm_id}))
+         (def comm_id (:generated_key (orm/insert comm (values i))))
+         (orm/insert party_comm (values {:party_id party_id :comm_id comm_id}))
          )
        )
      )
     (dorun
      (for [i (:address request)]
        (do
-         (def address_id (:generated_key (orm/insert ent/address (values i))))
-         (orm/insert ent/party_address (values {:party_id party_id :address_id address_id}))
+         (def address_id (:generated_key (orm/insert address (values i))))
+         (orm/insert party_address (values {:party_id party_id :address_id address_id}))
          )
        )
      )
      (dorun
        (for [i (:sites request)]
          (do
-           (def address_id (:generated_key (orm/insert ent/address (values (:address i)))))
-           (def comm_id (:generated_key (orm/insert ent/comm (values (:comm i)))))
-           (def site_id (:generated_key (orm/insert ent/site (values {:name (:name i) :address_id address_id :comm_id comm_id}))))
-           (orm/insert ent/party_site (values {:party_id party_id :site_id site_id}))
+           (def address_id (:generated_key (orm/insert address (values (:address i)))))
+           (def comm_id (:generated_key (orm/insert comm (values (:comm i)))))
+           (def site_id (:generated_key (orm/insert site (values {:name (:name i) :address_id address_id :comm_id comm_id}))))
+           (orm/insert party_site (values {:party_id party_id :site_id site_id}))
            )
          )
        )
-     (orm/insert ent/party_role (values {:role (:role request) :party_id party_id}))
+     (orm/insert party_role (values {:role (:role request) :party_id party_id}))
      )
   )
 
