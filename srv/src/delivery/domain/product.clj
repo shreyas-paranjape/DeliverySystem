@@ -35,6 +35,18 @@
   ; Else condition a bit of a problem
   )
 
+(defn insert-product [request]
+  (do
+    (dorun
+      (for [i (:parties request)]
+        (do
+          
+          )
+        )
+      )
+    )
+  )
+
 (defn- get-category-all [parent]
   (assoc parent
     :subCategories (map get-category-all (get-sub-categories parent))
