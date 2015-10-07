@@ -1,5 +1,5 @@
 (ns delivery.infra.db
-  (:require [korma.core :as core]
+  (:require
             [korma.db :as db]
             [environ.core :refer [env]]))
 

@@ -1,6 +1,7 @@
 (ns delivery.domain.product
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
+            [clojure.java.jdbc :as j]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre]))
@@ -33,6 +34,13 @@
               (orm/offset (dec (:start_id query)))))
   
   ; Else condition a bit of a problem
+  (j/query db ["SELECT distinct * FROM nested_category AS node,
+                      nested_category AS parent,
+                      nested_category 
+                      inner join products on 
+                      nested_category.id=products.nested_category_id 
+                      WHERE node.lft BETWEEN parent.lft AND parent.rgt AND parent.id=2 
+                      ORDER BY node.lft" ])
   )
 
 (defn insert-product [request]
@@ -40,7 +48,7 @@
     (dorun
       (for [i (:parties request)]
         (do
-          
+
           )
         )
       )

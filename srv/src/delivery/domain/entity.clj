@@ -1,6 +1,6 @@
 (ns delivery.domain.entity
-  (:use [korma.core :refer [defentity has-many has-one belongs-to]])
-  (:require [delivery.infra.db]))
+  (:use [korma.core :refer [defentity has-many has-one belongs-to]]
+            [delivery.infra.db]))
 
 (declare
   address
