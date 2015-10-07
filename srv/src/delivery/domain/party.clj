@@ -36,9 +36,9 @@
                 (orm/with comm))
               (orm/with product_party
                 (orm/with product))
-              (where {:product.id i :party_role.role (:role party_query)})
-              (limit (:count party_query))
-              (offset (dec (:start_id party_query)))
+              (orm/where {:product.id i :party_role.role (:role party_query)})
+              (orm/limit (:count party_query))
+              (orm/offset (dec (:start_id party_query)))
               )))
           )
         )
@@ -53,34 +53,34 @@
 
 (defn insert-party [request]
   (do
-    (def party_id (:generated_key (orm/insert party (values (apply dissoc request [:role :sites :address :comm])))))
+    (def party_id (:generated_key (orm/insert party (orm/values (apply dissoc request [:role :sites :address :comm])))))
     (dorun
      (for [i (:comm request)]
        (do
-         (def comm_id (:generated_key (orm/insert comm (values i))))
-         (orm/insert party_comm (values {:party_id party_id :comm_id comm_id}))
+         (def comm_id (:generated_key (orm/insert comm (orm/values i))))
+         (orm/insert party_comm (orm/values {:party_id party_id :comm_id comm_id}))
          )
        )
      )
     (dorun
      (for [i (:address request)]
        (do
-         (def address_id (:generated_key (orm/insert address (values i))))
-         (orm/insert party_address (values {:party_id party_id :address_id address_id}))
+         (def address_id (:generated_key (orm/insert address (orm/values i))))
+         (orm/insert party_address (orm/values {:party_id party_id :address_id address_id}))
          )
        )
      )
      (dorun
        (for [i (:sites request)]
          (do
-           (def address_id (:generated_key (orm/insert address (values (:address i)))))
-           (def comm_id (:generated_key (orm/insert comm (values (:comm i)))))
-           (def site_id (:generated_key (orm/insert site (values {:name (:name i) :address_id address_id :comm_id comm_id}))))
-           (orm/insert party_site (values {:party_id party_id :site_id site_id}))
+           (def address_id (:generated_key (orm/insert address (orm/values (:address i)))))
+           (def comm_id (:generated_key (orm/insert comm (orm/values (:comm i)))))
+           (def site_id (:generated_key (orm/insert site (orm/values {:name (:name i) :address_id address_id :comm_id comm_id}))))
+           (orm/insert party_site (orm/values {:party_id party_id :site_id site_id}))
            )
          )
        )
-     (orm/insert party_role (values {:role (:role request) :party_id party_id}))
+     (orm/insert party_role (orm/values {:role (:role request) :party_id party_id}))
      )
   )
 
