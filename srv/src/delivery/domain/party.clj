@@ -41,9 +41,9 @@
           )
         )
       )
-    (def request (vec (distinct results)))
+    (def results (vec (distinct results)))
+    results
     )
-  
   )
 
 (defn update-profile []
