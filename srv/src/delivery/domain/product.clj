@@ -45,10 +45,11 @@
 
 (defn insert-product [request]
   (do
+    (def product_id (:generated_key (orm/insert (orm/values (apply dissoc request [:parties])))))
     (dorun
       (for [i (:parties request)]
         (do
-
+          (orm/insert product_party (orm/values (conj i {:product_id product_id})))
           )
         )
       )
@@ -86,7 +87,15 @@
 (declare product-list-res product-res catalogue-res)
 (defresource product-list-res
              :available-media-types ["application/json"]
-             :allowed-methods [:get :post :put :delete])
+             :allowed-methods [:get :post :put :delete]
+             :handle-ok (fn [ctx]
+                                  (get-products-for-category (get-in ctx [:request :body :product]))
+                                  )
+             :post! (fn [ctx]
+                          (insert-product (get-in ctx [:request :body :product]))
+                          )
+             :handle-created {:status "New product has been added"}
+             )
 
 (defresource product-res
              :available-media-types ["application/json"]

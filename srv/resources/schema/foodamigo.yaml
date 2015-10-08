@@ -113,6 +113,7 @@ securedBy:
         example: |
           {
             "name": "",
+            "description": "",
             "product_category_id": "",
             "parties":
               [
