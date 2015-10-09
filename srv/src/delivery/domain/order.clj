@@ -39,7 +39,10 @@
 ;; Resources
 (defresource order-list-res
              :available-media-types ["application/json"]
-             :allowed-methods [:get :post])
+             :allowed-methods [:get :post]
+             :post! (fn [ctx]
+                          
+              ))
 
 (defresource order-res
              :available-media-types ["application/json"]

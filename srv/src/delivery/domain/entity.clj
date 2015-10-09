@@ -5,7 +5,7 @@
 (declare
   address
   comm
-  order
+  ordr
   order_item
   order_item_status_type
   order_party
@@ -37,7 +37,7 @@
   (has-one party_comm)
   (has-one site))
 
-(defentity order
+(defentity ordr
   (has-many shipment_order)
   (has-many order_party)
   (has-many order_item)
@@ -46,7 +46,7 @@
 (defentity order_item
   (belongs-to product)
   (belongs-to order_item_status_type)
-  (belongs-to order))
+  (belongs-to ordr))
 
 (defentity order_item_status_type
   (has-many order_item))
@@ -54,13 +54,13 @@
 (defentity order_party
   (belongs-to party)
   (belongs-to order)
-  (belongs-to order_party_role_type))
+  (belongs-to ordr_party_role_type))
 
 (defentity order_party_role_type
   (has-many order_party))
 
 (defentity order_status_type
-  (has-many order))
+  (has-many ordr))
 
 (defentity party
   (has-many party_role)
@@ -124,7 +124,7 @@
 
 (defentity shipment_order
   (belongs-to shipment)
-  (belongs-to order))
+  (belongs-to ordr))
 
 (defentity site
   (has-many route_segment {:fk :site_one_id})

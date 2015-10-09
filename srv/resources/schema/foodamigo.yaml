@@ -252,6 +252,28 @@ securedBy:
   get:
 
   post:
+    description: |
+      creates a new order
+    body:
+      application/json:
+        description: "order object"
+        schema: |
+        example: |
+          {
+            party_id: 1,
+            orders:
+            [
+              {
+                product_id: 1,
+                quantity: 1
+              },
+              {
+                product_id: 2,
+                quantity: 3
+              }
+            ]
+          }
+
 
   /{order_id}
     get:
