@@ -9,8 +9,18 @@
 (timbre/set-level! :debug)
 
 ;; Impl
-(defn- insert-order [ord]
-  (orm/insert ordr (orm/values ord)))
+(defn- insert-order [order]
+  (do
+    (def ordr_id (orm/insert ordr (orm/values {:code (str (java.util.UUID/randomUUID))})))
+    (dorun
+     (for [i (:orders order)]
+        (do
+          (orm/insert (orm/values (conj {:ordr_id ordr_id} i)))
+          )
+        )
+      )
+    )
+  ) 
 
 (defn- insert-order-item [new-order-item]
   (orm/insert order_item
@@ -41,7 +51,7 @@
              :available-media-types ["application/json"]
              :allowed-methods [:get :post]
              :post! (fn [ctx]
-                          
+                          (insert-order (get-in ctx [:request :body :order]))
               ))
 
 (defresource order-res

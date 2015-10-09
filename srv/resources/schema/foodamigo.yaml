@@ -260,15 +260,16 @@ securedBy:
         schema: |
         example: |
           {
-            party_id: 1,
             orders:
             [
               {
                 product_id: 1,
+                party_id: 1,
                 quantity: 1
               },
               {
                 product_id: 2,
+                party_id: 3,
                 quantity: 3
               }
             ]
