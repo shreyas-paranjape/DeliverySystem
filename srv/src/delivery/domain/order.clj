@@ -4,7 +4,7 @@
             [schema.core :as s]
             [delivery.domain.schema :as schema]
             [liberator.core :refer [defresource]]
-            [compojure.core :refer [ANY defroutes]]
+            [compojure.core :refer [ANY GET POST PUT DELETE defroutes]]
             [taoensso.timbre :as timbre]))
 
 (timbre/refer-timbre)
@@ -61,12 +61,17 @@
 ;; Resources
 (defresource order-list-res
              :available-media-types ["application/json"]
-             :allowed-methods [:get :post]
+             :allowed-methods [:get :post :delete]
              :handle-created (fn [ctx]
-                          ;(info (get-in ctx [:request]))
                           (info (:struct schema/Order))
                           (validate-fn (:struct schema/Order) (get-in ctx [:request :body :order]) insert-order)
               ))
+
+(defresource order-list-put-res
+             :available-media-types ["application/json"]
+             :allowed-methods [:put]
+
+              )
 
 (defresource order-res
              :available-media-types ["application/json"]

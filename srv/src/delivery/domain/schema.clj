@@ -91,7 +91,7 @@
   {
    :struct
    {:party_id clType/Int
-    :orders [(:struct Order-Item)]}
+    :orders [(:struct Order-Item)]
 	}
    :sql-def
    (tbl-base-name-desc :ordr
