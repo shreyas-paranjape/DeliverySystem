@@ -1,7 +1,9 @@
 (ns delivery.domain.party
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
-              [delivery.infra.util :as util]
+            [schema.core :as s]
+            [delivery.domain.schema :as schema]
+            [delivery.infra.util :as util]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre]))
@@ -10,6 +12,13 @@
 (timbre/set-level! :debug)
 
 ;; Impl
+
+(defn validate-fn [schema data func]
+  (try
+    (func (s/validate schema data))
+    (catch Exception e (str "Data is not valid: " (.getMessage e)))
+    )
+  )
 
 ;; API
 
@@ -87,23 +96,23 @@
 ;; Resources
 (declare party-list-res party-res)
 
-(defresource party-list-res
-             :available-media-types ["application/json"]
-             :allowed-methods [:get :post :put :delete]
-             :handle-ok (fn [ctx]
-                          (get-all-profiles (get-in ctx [:request :body :party_query])))
-             :put! (fn [ctx]
-                     ((orm/insert (util/request-body ctx))))
-             :handle-created {:status "new entries added"})
-
 (defresource party-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :put :delete]
              :handle-ok (fn [ctx]
                           (get-profile
                             (get-in ctx [:request :params :party_id])))
-             :post! (fn [ctx]
-                          (insert-party (get-in ctx [:request :body :party]))
+             :put! (fn [ctx]
+                     ((orm/insert (util/request-body ctx))))
+             :handle-created {:status "new entries added"})
+
+(defresource party-list-res
+             :available-media-types ["application/json"]
+             :allowed-methods [:get :post :put :delete]
+             :handle-ok (fn [ctx]
+                          (get-all-profiles (get-in ctx [:request :body :party_query])))
+             :handle-created (fn [ctx]
+                          (validate-fn (:struct schema/Party) (get-in ctx [:request :body :party]) insert-party)
                           ))
 
 ;; Routes

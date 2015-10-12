@@ -190,8 +190,9 @@ securedBy:
         example: |
             {
               "name": "",
-              "role" : "customer|vendor"
-              "type": "",
+              "role" : "customer|vendor",
+              "description": "",
+              "image_url": "",
               "address":
                 [
                   {
@@ -208,9 +209,7 @@ securedBy:
                     "email": "",
                     "mobile": ""
                   }
-                ],
-              "description": "",
-              "image_url": "",
+                ]   
               "sites":
                 [
                   {
