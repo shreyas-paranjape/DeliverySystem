@@ -34,11 +34,16 @@
     not-found))
 
 ;; APPLICATION
-(defn app [& request]
-  (wrap-defaults
-    (->  app-routes
-         mw/keywordize-params
-         wrap-params
-         wrap-json-response
-         wrap-json-params
-         wrap-json-body) site-defaults))
+;(def app
+  ;(wrap-defaults
+ ;   (->  app-routes
+  ;       mw/keywordize-params
+   ;      wrap-params
+    ;     wrap-json-response
+     ;    wrap-json-params
+      ;   wrap-json-body)) 
+    ;site-defaults))
+(def app
+  (wrap-json-body ;(session/wrap-noir-session
+   (wrap-json-response ;(wrap-multipart-params 
+    (wrap-params app-routes)) {:keywords? true}))

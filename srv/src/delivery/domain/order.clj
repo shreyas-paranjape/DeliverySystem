@@ -2,7 +2,7 @@
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
             [schema.core :as s]
-            [delivery.domain.schema :as shema]
+            [delivery.domain.schema :as schema]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre]))
@@ -10,23 +10,28 @@
 (timbre/refer-timbre)
 (timbre/set-level! :debug)
 
+;;
+(defn validate-fn [schema data func]
+  (try
+    (func (s/validate schema data))
+    (catch Exception e (str "Data is not valid: " (.getMessage e)))
+    )
+  )
+
 ;; Impl
 (defn- insert-order [order]
-  (try
     (do
-      (def data (s/validate shema/Order order))
+      
       (def ordr_id (:generated_key (orm/insert ordr (orm/values {:code (str (java.util.UUID/randomUUID))}))))
-      (orm/insert order_party (orm/values {:party_id data}))
+      (orm/insert order_party (orm/values {:party_id order}))
       (dorun
-      (for [i (:orders data)]
+      (for [i (:orders order)]
          (do
            (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i)))
            )
          )
        )
       )
-    (catch Exception e "the data is not valid")
-    )
   )
 
 (defn- insert-order-item [new-order-item]
@@ -57,8 +62,10 @@
 (defresource order-list-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post]
-             :handle-created! (fn [ctx]
-                          (insert-order (get-in ctx [:request :body :order]))
+             :handle-created (fn [ctx]
+                          ;(info (get-in ctx [:request]))
+                          (info (:struct schema/Order))
+                          (validate-fn (:struct schema/Order) (get-in ctx [:request :body :order]) insert-order)
               ))
 
 (defresource order-res
