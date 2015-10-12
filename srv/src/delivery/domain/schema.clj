@@ -80,9 +80,9 @@
 (def Order-Item
   {:struct
    {:product_id clType/Int
-    :party_id   clType/Int
-    :qunatity   clType/Int
-    :price      clType/Num}
+     :party_id   clType/Int
+     :quantity   clType/Int
+     :price      clType/Num}}
    :sql-def
    (tbl-base-name-desc :order_item
                        (sqlType/integer :product_category_id))})
@@ -90,8 +90,8 @@
 (def Order
   {
    :struct
-   {{:party_id clType/Int}
-    {:order_items [Order-Item]}}
+   {:party_id clType/Int
+    :orders [(:struct Order-Item)]}
    :sql-def
    (tbl-base-name-desc :ordr
                        (sqlType/integer :product_category_id))})

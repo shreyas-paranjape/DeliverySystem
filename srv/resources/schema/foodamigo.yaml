@@ -260,17 +260,20 @@ securedBy:
         schema: |
         example: |
           {
+            party_id: 4,
             orders:
             [
               {
                 product_id: 1,
                 party_id: 1,
-                quantity: 1
+                quantity: 1,
+                price: 213.21
               },
               {
                 product_id: 2,
                 party_id: 3,
-                quantity: 3
+                quantity: 3,
+                price: 434.3
               }
             ]
           }

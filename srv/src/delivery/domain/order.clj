@@ -1,6 +1,8 @@
 (ns delivery.domain.order
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
+            [schema.core :as s]
+            [delivery.domain.schema :as shema]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre]))
@@ -11,11 +13,13 @@
 ;; Impl
 (defn- insert-order [order]
   (do
-    (def ordr_id (orm/insert ordr (orm/values {:code (str (java.util.UUID/randomUUID))})))
+    (def data (s/validate shema/Order order))
+    (def ordr_id (:generated_key (orm/insert ordr (orm/values {:code (str (java.util.UUID/randomUUID))}))))
+    (orm/insert order_party (orm/values {:party_id data}))
     (dorun
-     (for [i (:orders order)]
+     (for [i (:orders data)]
         (do
-          (orm/insert (orm/values (conj {:ordr_id ordr_id} i)))
+          (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i)))
           )
         )
       )
