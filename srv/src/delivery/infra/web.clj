@@ -1,17 +1,22 @@
 (ns delivery.infra.web
-  (:require [compojure.core :refer :all]
-            [compojure.route :as route]
-            [ring.middleware.defaults :refer
-             [wrap-defaults site-defaults]]
-            [ring.middleware.json :refer
-             [wrap-json-response wrap-json-body wrap-json-params]]
-            [ring.middleware.params :refer
-             [wrap-params]]
-            [delivery.domain.party :as cust]
-            [delivery.domain.order :as ord]
-            [delivery.domain.product :as prod]
-            [delivery.infra.middleware :as mw]
-            [delivery.infra.socket :as socket]))
+  (:require
+    (compojure
+      [core :refer :all]
+      [route :as route])
+    (ring.middleware
+      [defaults :refer [wrap-defaults site-defaults]]
+      [json :refer [wrap-json-response wrap-json-params]]
+      [params :refer [wrap-params]]
+      [keyword-params :refer [wrap-keyword-params]])
+    (delivery.domain
+      [party :as cust]
+      [product :as prod]
+      [order :as ord])
+    (delivery.infra
+      [middleware :as mw]
+      [socket :as socket])))
+
+
 
 (defn dummy [request]
   (socket/send-msg "i rule"))
@@ -33,17 +38,11 @@
     prod/routes
     not-found))
 
-;; APPLICATION
-;(def app
-  ;(wrap-defaults
- ;   (->  app-routes
-  ;       mw/keywordize-params
-   ;      wrap-params
-    ;     wrap-json-response
-     ;    wrap-json-params
-      ;   wrap-json-body)) 
-    ;site-defaults))
 (def app
-  (wrap-json-body ;(session/wrap-noir-session
-   (wrap-json-response ;(wrap-multipart-params 
-    (wrap-params app-routes)) {:keywords? true}))
+  ;(wrap-defaults
+  (-> app-routes
+      wrap-params
+      wrap-keyword-params
+      wrap-json-params
+      wrap-json-response))
+;site-defaults))

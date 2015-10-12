@@ -1,6 +1,7 @@
 (ns delivery.infra.util
   (:require [taoensso.timbre :as timbre]
-            [lobos.schema :as sqlType]))
+            [lobos.schema :as sqlType]
+            [schema.core :as s]))
 
 (timbre/refer-timbre)
 (timbre/set-level! :debug)
@@ -50,3 +51,7 @@
                       (col-datetime-tracked)
                       (col-name-desc))
        ~@elements))
+
+
+(defn validate-fn [schema data func]
+  (func (s/validate (:struct schema) data)))

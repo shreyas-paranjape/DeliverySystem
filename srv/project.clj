@@ -2,8 +2,8 @@
   :description "Intra city package delivery system"
   :url "http://tbd.com/delivery"
   :min-lein-version "2.0.0"
-  :test-paths ["spec"]
-  ;; :main delivery.infra.server
+  ;:test-paths ["spec"]
+  :main delivery.infra.server
   ;; :aot [delivery.infra.server]
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/tools.nrepl "0.2.10"]
@@ -13,6 +13,8 @@
                  [com.taoensso/timbre "4.1.1"]
                  ;; Util
                  [org.clojure/tools.cli "0.3.3"]
+                 [org.clojure/core.match "0.3.0-alpha4" :exclusions [org.clojure/core.cache]]
+                 [org.clojure/core.cache "0.6.4"]
                  ;; DB JDBC driver
                  [org.postgresql/postgresql "9.2-1002-jdbc4"]
                  [mysql/mysql-connector-java "5.1.36"]
@@ -26,7 +28,7 @@
                  [ring/ring-devel "1.4.0"]
                  ;; Auth
                  [com.cemerick/friend "0.2.1"]
-                 [friend-oauth2 "0.1.3"]
+                 ;[friend-oauth2 "0.1.3"]
                  ;; REST
                  [liberator "0.13"]
                  ;; JSON Parsing
@@ -40,7 +42,7 @@
                  ;; Http
                  [http-kit "2.1.19"]]
 
-  :plugins [[lein-ring "0.8.13"]
+  :plugins [[lein-ring "0.9.7"]
             [lein-environ "1.0.0"]
             [speclj "3.3.0"]]
   :ring {:handler delivery.infra.web/app}

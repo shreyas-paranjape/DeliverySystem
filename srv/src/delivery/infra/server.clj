@@ -21,16 +21,18 @@
 
 (defn start-server []
   (when-not (nil? @server) (@server))
-  (reset! server (srv/run-server (web/app) {:port (cfg :port)
-                                    :thread (cfg :thread)})))
+  (reset! server
+          (srv/run-server
+            web/app
+            {:port (cfg :port) :thread (cfg :thread)})))
 
 (defn -main [& args]
   (let [[options _ banner]
         (cli/cli args
-             ["-p" "--port" "Port to listen" :default 8080 :parse-fn to-int]
-             ["--thread" "Http worker thread count" :default 4 :parse-fn to-int]
-             ["--profile" "dev or prod" :default :dev :parse-fn keyword]
-             ["--[no-]help" "Print this help"])]
+                 ["-p" "--port" "Port to listen" :default 3000 :parse-fn to-int]
+                 ["--thread" "Http worker thread count" :default 4 :parse-fn to-int]
+                 ["--profile" "dev or prod" :default :dev :parse-fn keyword]
+                 ["--[no-]help" "Print this help"])]
     (when (:help options) (println banner) (System/exit 0))
     (swap! app-configs merge options)
     (start-server)

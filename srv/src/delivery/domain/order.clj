@@ -5,34 +5,24 @@
             [delivery.domain.schema :as schema]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY GET POST PUT DELETE defroutes]]
-            [taoensso.timbre :as timbre]))
+            [taoensso.timbre :as timbre]
+            [delivery.infra.util :as util])
+  (:import (java.util UUID)))
 
 (timbre/refer-timbre)
-(timbre/set-level! :debug)
-
-;;
-(defn validate-fn [schema data func]
-  (try
-    (func (s/validate schema data))
-    (catch Exception e (str "Data is not valid: " (.getMessage e)))
-    )
-  )
 
 ;; Impl
 (defn- insert-order [order]
-    (do
-      
-      (def ordr_id (:generated_key (orm/insert ordr (orm/values {:code (str (java.util.UUID/randomUUID))}))))
-      (orm/insert order_party (orm/values {:party_id order}))
-      (dorun
+  (do
+    (def ordr_id
+      (:generated_key
+        (orm/insert ordr
+                    (orm/values {:code (str (UUID/randomUUID))}))))
+    (orm/insert order_party (orm/values {:party_id order}))
+    (dorun
       (for [i (:orders order)]
-         (do
-           (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i)))
-           )
-         )
-       )
-      )
-  )
+        (do
+          (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i))))))))
 
 (defn- insert-order-item [new-order-item]
   (orm/insert order_item
@@ -59,19 +49,19 @@
               (orm/where {:customer_id customer_id})))
 
 ;; Resources
+(declare order-list-res order-list-put-res order-res)
 (defresource order-list-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post :delete]
              :handle-created (fn [ctx]
-                          (info (:struct schema/Order))
-                          (validate-fn (:struct schema/Order) (get-in ctx [:request :body :order]) insert-order)
-              ))
+                               (util/validate-fn
+                                 (:struct schema/Order)
+                                 (get-in ctx [:request :body :order])
+                                 insert-order)))
 
 (defresource order-list-put-res
              :available-media-types ["application/json"]
-             :allowed-methods [:put]
-
-              )
+             :allowed-methods [:put])
 
 (defresource order-res
              :available-media-types ["application/json"]

@@ -26,8 +26,7 @@
   route_segment
   shipment
   shipment_order
-  site
-  )
+  site)
 
 (defentity address
            (has-one party_address)
@@ -86,17 +85,14 @@
 
 (defentity product
            (has-many product_party)
-           (has-many order_item)
-           (has-many product_price_component)
            (belongs-to product_category))
 
 (defentity product_category
            (has-many product))
 
 (defentity product_party
-           (belongs-to party)
-           (belongs-to product)
-           (belongs-to product_party_role_type))
+           (has-one party)
+           (has-one product))
 
 (defentity product_party_role_type
            (has-many product_party))
