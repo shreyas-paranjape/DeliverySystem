@@ -39,12 +39,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`order`
+-- Table `delivery`.`ordr`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`order` (
+CREATE TABLE IF NOT EXISTS `delivery`.`ordr` (
   `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `code` VARCHAR(45) NULL DEFAULT NULL COMMENT '',
-  `order_status_type_id` INT NOT NULL COMMENT '',
+  `code` TEXT NULL DEFAULT NULL COMMENT '',
+  `order_status_type_id` INT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_ordr_order_status_type1_idx` (`order_status_type_id` ASC)  COMMENT '',
   CONSTRAINT `fk_ordr_order_status_type1`
@@ -104,26 +104,28 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`order_item` (
   `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `ordr_id` INT(11) NOT NULL COMMENT '',
-  `quantity` INT NULL COMMENT '',
+  `quantity` INT NOT NULL COMMENT '',
   `product_id` INT(11) NOT NULL COMMENT '',
-  `status_type_id` INT NOT NULL COMMENT '',
+  `party_id` INT NOT NULL COMMENT '',
+  `ordr_id` INT(11) NOT NULL COMMENT '',
+  `order_item_status_type_id` INT NULL COMMENT '',
+  `price` FLOAT(10,3) NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_order_item_order1_idx` (`ordr_id` ASC)  COMMENT '',
   INDEX `fk_ordr_item_product1_idx` (`product_id` ASC)  COMMENT '',
-  INDEX `fk_ordr_item_status_type1_idx` (`status_type_id` ASC)  COMMENT '',
-  CONSTRAINT `fk_order_item_order1`
-    FOREIGN KEY (`ordr_id`)
-    REFERENCES `delivery`.`order` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_order_item_ordr1_idx` (`ordr_id` ASC)  COMMENT '',
+  INDEX `fk_order_item_order_item_status_type1_idx` (`order_item_status_type_id` ASC)  COMMENT '',
   CONSTRAINT `fk_ordr_item_product1`
     FOREIGN KEY (`product_id`)
     REFERENCES `delivery`.`product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ordr_item_status_type1`
-    FOREIGN KEY (`status_type_id`)
+  CONSTRAINT `fk_order_item_ordr1`
+    FOREIGN KEY (`ordr_id`)
+    REFERENCES `delivery`.`ordr` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_item_order_item_status_type1`
+    FOREIGN KEY (`order_item_status_type_id`)
     REFERENCES `delivery`.`order_item_status_type` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -133,52 +135,28 @@ COMMENT = '		';
 
 
 -- -----------------------------------------------------
--- Table `delivery`.`product_party_role_type`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`product_party_role_type` (
-  `id` INT NOT NULL COMMENT '',
-  `title` VARCHAR(100) NULL COMMENT '',
-  `description` TEXT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `delivery`.`product_party`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`product_party` (
-  `product_id` INT(11) NOT NULL COMMENT '',
+  `id` INT NOT NULL COMMENT '',
   `party_id` INT(11) NOT NULL COMMENT '',
-  `product_party_role_type_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`product_id`, `party_id`)  COMMENT '',
+  `product_id` INT(11) NOT NULL COMMENT '',
+  `price` FLOAT(7,3) NULL COMMENT '',
+  `preparation_time` INT NULL COMMENT '',
+  `image_url` VARCHAR(200) NULL COMMENT '',
+  `description` VARCHAR(200) NULL COMMENT '',
   INDEX `fk_product_party_party1_idx` (`party_id` ASC)  COMMENT '',
-  INDEX `fk_product_party_product_party_role_type1_idx` (`product_party_role_type_id` ASC)  COMMENT '',
-  CONSTRAINT `fk_product_party_product1`
-    FOREIGN KEY (`product_id`)
-    REFERENCES `delivery`.`product` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_product_party_product1_idx` (`product_id` ASC)  COMMENT '',
   CONSTRAINT `fk_product_party_party1`
     FOREIGN KEY (`party_id`)
     REFERENCES `delivery`.`party` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_product_party_product_party_role_type1`
-    FOREIGN KEY (`product_party_role_type_id`)
-    REFERENCES `delivery`.`product_party_role_type` (`id`)
+  CONSTRAINT `fk_product_party_product1`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `delivery`.`product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `delivery`.`order_party_role_type`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `delivery`.`order_party_role_type` (
-  `id` INT NOT NULL COMMENT '',
-  `title` VARCHAR(100) NULL COMMENT '',
-  `description` TEXT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -186,25 +164,20 @@ ENGINE = InnoDB;
 -- Table `delivery`.`order_party`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`order_party` (
-  `ordr_id` INT(11) NOT NULL COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `party_id` INT(11) NOT NULL COMMENT '',
-  `order_party_role_type_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`ordr_id`, `party_id`)  COMMENT '',
+  `ordr_id` INT(11) NOT NULL COMMENT '',
   INDEX `fk_ordr_party_party1_idx` (`party_id` ASC)  COMMENT '',
-  INDEX `fk_order_party_order_party_role_type1_idx` (`order_party_role_type_id` ASC)  COMMENT '',
-  CONSTRAINT `fk_ordr_party_ordr1`
-    FOREIGN KEY (`ordr_id`)
-    REFERENCES `delivery`.`order` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  PRIMARY KEY (`id`)  COMMENT '',
+  INDEX `fk_order_party_ordr1_idx` (`ordr_id` ASC)  COMMENT '',
   CONSTRAINT `fk_ordr_party_party1`
     FOREIGN KEY (`party_id`)
     REFERENCES `delivery`.`party` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_order_party_order_party_role_type1`
-    FOREIGN KEY (`order_party_role_type_id`)
-    REFERENCES `delivery`.`order_party_role_type` (`id`)
+  CONSTRAINT `fk_order_party_ordr1`
+    FOREIGN KEY (`ordr_id`)
+    REFERENCES `delivery`.`ordr` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -260,9 +233,11 @@ ENGINE = InnoDB;
 -- Table `delivery`.`party_comm`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`party_comm` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `party_id` INT(11) NOT NULL COMMENT '',
   `comm_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`party_id`, `comm_id`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  INDEX `fk_party_comm_party1_idx` (`party_id` ASC)  COMMENT '',
   INDEX `fk_party_comm_comm1_idx` (`comm_id` ASC)  COMMENT '',
   CONSTRAINT `fk_party_comm_party1`
     FOREIGN KEY (`party_id`)
@@ -374,9 +349,10 @@ ENGINE = InnoDB;
 -- Table `delivery`.`shipment_order`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`shipment_order` (
+  `id` INT NOT NULL COMMENT '',
   `shipment_id` INT NOT NULL COMMENT '',
   `ordr_id` INT(11) NOT NULL COMMENT '',
-  PRIMARY KEY (`shipment_id`, `ordr_id`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_shipment_order_ordr1_idx` (`ordr_id` ASC)  COMMENT '',
   CONSTRAINT `fk_shipment_order_shipment1`
     FOREIGN KEY (`shipment_id`)
@@ -385,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `delivery`.`shipment_order` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_shipment_order_ordr1`
     FOREIGN KEY (`ordr_id`)
-    REFERENCES `delivery`.`order` (`id`)
+    REFERENCES `delivery`.`ordr` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -395,9 +371,10 @@ ENGINE = InnoDB;
 -- Table `delivery`.`party_site`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`party_site` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `party_id` INT(11) NOT NULL COMMENT '',
   `site_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`party_id`, `site_id`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_party_site_site1_idx` (`site_id` ASC)  COMMENT '',
   CONSTRAINT `fk_party_site_party1`
     FOREIGN KEY (`party_id`)
@@ -416,9 +393,10 @@ ENGINE = InnoDB;
 -- Table `delivery`.`party_address`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`party_address` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `party_id` INT(11) NOT NULL COMMENT '',
   `address_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`party_id`, `address_id`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_party_address_address1_idx` (`address_id` ASC)  COMMENT '',
   CONSTRAINT `fk_party_address_party1`
     FOREIGN KEY (`party_id`)
