@@ -12,19 +12,22 @@
 
 ;; Impl
 (defn- insert-order [order]
-  (do
-    (def data (s/validate shema/Order order))
-    (def ordr_id (:generated_key (orm/insert ordr (orm/values {:code (str (java.util.UUID/randomUUID))}))))
-    (orm/insert order_party (orm/values {:party_id data}))
-    (dorun
-     (for [i (:orders data)]
-        (do
-          (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i)))
-          )
-        )
+  (try
+    (do
+      (def data (s/validate shema/Order order))
+      (def ordr_id (:generated_key (orm/insert ordr (orm/values {:code (str (java.util.UUID/randomUUID))}))))
+      (orm/insert order_party (orm/values {:party_id data}))
+      (dorun
+      (for [i (:orders data)]
+         (do
+           (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i)))
+           )
+         )
+       )
       )
+    (catch Exception e "the data is not valid")
     )
-  ) 
+  )
 
 (defn- insert-order-item [new-order-item]
   (orm/insert order_item
@@ -54,7 +57,7 @@
 (defresource order-list-res
              :available-media-types ["application/json"]
              :allowed-methods [:get :post]
-             :post! (fn [ctx]
+             :handle-created! (fn [ctx]
                           (insert-order (get-in ctx [:request :body :order]))
               ))
 
