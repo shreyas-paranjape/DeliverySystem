@@ -79,5 +79,8 @@
 
 ;; Routes
 (defroutes routes
-           (ANY "/order" request (order-list-res request))
+           (POST "/order" request (order-list-res request))
+           (GET "/order" request (order-list-res request))
+           (DELETE "/order" request (order-list-res request))
+           (PUT "/order" request (order-list-put-res request))
            (ANY "/order/:order_id" request (order-res request)))
