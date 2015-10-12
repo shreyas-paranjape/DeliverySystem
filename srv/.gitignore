@@ -10,3 +10,5 @@ pom.xml.asc
 /.nrepl-port
 profiles.clj
 /.idea
+.lobos_stash.clj
+*.*~

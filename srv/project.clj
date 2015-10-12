@@ -3,8 +3,8 @@
   :url "http://tbd.com/delivery"
   :min-lein-version "2.0.0"
   :test-paths ["spec"]
-  :main delivery.infra.server
-  :aot [delivery.infra.server]
+  ;; :main delivery.infra.server
+  ;; :aot [delivery.infra.server]
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/tools.nrepl "0.2.10"]
                  ;; Environment variables
@@ -16,6 +16,8 @@
                  ;; DB JDBC driver
                  [org.postgresql/postgresql "9.2-1002-jdbc4"]
                  [mysql/mysql-connector-java "5.1.36"]
+                 ;; DB schema creator
+                 [lobos "1.0.0-beta3"]
                  ;; HTTP routing
                  [compojure "1.4.0"]
                  ;; HTTP abstraction
@@ -33,7 +35,9 @@
                  [korma "0.4.2"]
                  ;; Mail
                  [clojurewerkz/mailer "1.2.0"]
-                 ;; Http Client
+                 ;; Schema
+                 [prismatic/schema "1.0.1"]
+                 ;; Http
                  [http-kit "2.1.19"]]
 
   :plugins [[lein-ring "0.8.13"]
