@@ -22,7 +22,8 @@
     (dorun
       (for [i (:orders order)]
         (do
-          (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i))))))))
+          (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i))))))
+    (socket/send-msg "order was posted")))
 
 (defn- insert-order-item [new-order-item]
   (orm/insert order_item

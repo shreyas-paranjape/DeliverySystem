@@ -26,22 +26,36 @@
              (sqlType/varchar :email 254)
              (sqlType/varchar :mobile 10))})
 
-(def Party
-  {:struct
-   {:name        clType/Str
-    :description clType/Str
-    :role        clType/Str
-    :image_url   clType/Str
-    :address     [(:struct Address)]
-    ;:sites       [(:struct Party-Sites)]
-    :comm        [(:struct Comm)]}
-   :sql-def
-   (tbl-base-name-desc :party
-                       (sqlType/varchar :image_url 250))})
+(def Party-Sites
+  {
+      :struct
+        {
+          :name clType/Str
+          :address
+                {
+                        :address_string clType/Str
+                        :latitude clType/Num
+                        :longitude clType/Num
+                }
+          :comm
+                {
+                        :name clType/Str
+                        :email clType/Str
+                        :mobile clType/Str
+                }
+          }
+      :sql-def
+        (tbl-base :party_site)  
+  }
+  )
 
 (def Party-Comm
   {:struct
-   {}
+   {
+    :name clType/Str
+     :email clType/Str
+     :mobile clType/Str
+   }
    :sql-def
    (tbl-base :party_comm
              (sqlType/integer :party_id)
@@ -49,19 +63,51 @@
 
 (def Party-Add
   {:struct
-   {}
+   { :name clType/Str
+      :address_string clType/Str
+      :latitude clType/Num
+      :longitude clType/Num}
    :sql-def
    (tbl-base :party_add
              (sqlType/integer :party_id)
              (sqlType/integer :address_id))})
 
+
 (def Party-Sites
+  {
+      :struct
+        {
+          :name clType/Str
+          :address
+                {
+                        :address_string clType/Str
+                        :latitude clType/Num
+                        :longitude clType/Num
+                }
+          :comm
+                {
+                        :name clType/Str
+                        :email clType/Str
+                        :mobile clType/Str
+                }
+          }
+      :sql-def
+        (tbl-base :party_site)  
+  }
+  )
+
+(def Party
   {:struct
-   {}
+   {:name        clType/Str
+    :description clType/Str
+    :role        clType/Str
+    :image_url   clType/Str
+    :address     [(:struct Address)]
+    :sites       [(:struct Party-Sites)]
+    :comm        [(:struct Comm)]}
    :sql-def
-   (tbl-base :party_site)})
-
-
+   (tbl-base-name-desc :party
+                       (sqlType/varchar :image_url 250))})
 
 (def Product
   {:struct
