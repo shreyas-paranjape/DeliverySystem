@@ -2,6 +2,7 @@
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
             [schema.core :as s]
+            [cheshire.core :as c]
             [delivery.domain.schema :as schema]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY GET POST PUT DELETE defroutes]]
@@ -23,7 +24,7 @@
       (for [i (:orders order)]
         (do
           (orm/insert order_item (orm/values (conj {:ordr_id ordr_id} i))))))
-    (socket/send-msg "order was posted")))
+    (socket/send-msg (s/generate-string order))))
 
 (defn- insert-order-item [new-order-item]
   (orm/insert order_item

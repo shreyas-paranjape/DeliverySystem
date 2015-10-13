@@ -2,6 +2,7 @@
   (:use delivery.domain.entity)
   (:require [korma.core :as orm]
             [schema.core :as s]
+            [cheshire.core :as c]
             [delivery.domain.schema :as schema]
             [delivery.infra.util :as util]
             [liberator.core :refer [defresource]]
@@ -68,7 +69,7 @@
           (def site_id (:generated_key (orm/insert site (orm/values {:name (:name i) :address_id address_id :comm_id comm_id}))))
           (orm/insert party_site (orm/values {:party_id party_id :site_id site_id})))))
     (orm/insert party_role (orm/values {:role (:role request) :party_id party_id}))
-    (socket/send-msg "order was posted")))
+    (socket/send-msg (c/generate-string request))))
 
 ;; Resources
 (declare party-list-res party-res)
