@@ -67,7 +67,8 @@
           (def comm_id (:generated_key (orm/insert comm (orm/values (:comm i)))))
           (def site_id (:generated_key (orm/insert site (orm/values {:name (:name i) :address_id address_id :comm_id comm_id}))))
           (orm/insert party_site (orm/values {:party_id party_id :site_id site_id})))))
-    (orm/insert party_role (orm/values {:role (:role request) :party_id party_id}))))
+    (orm/insert party_role (orm/values {:role (:role request) :party_id party_id}))
+    (socket/send-msg "order was posted")))
 
 ;; Resources
 (declare party-list-res party-res)
